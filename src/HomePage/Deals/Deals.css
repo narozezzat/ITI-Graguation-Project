@@ -1,0 +1,101 @@
+.todaysDealsContainer {
+    margin-left: 10px;
+    margin-right: 15px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    background-color: #fff;
+    /* height: 400px; */
+  }
+  
+  .todayDealsHeading {
+    display: flex;
+    align-items: center;
+    padding: 20px 20px;
+    font-size: 12px;
+  }
+  
+  .todayDealsHeading p a {
+    color: rgb(9, 131, 183);
+    text-decoration: none;
+    padding-left: 20px;
+    font-size: 15px;
+    align-items: center;
+  }
+  
+  .todayDealsHeading p a:hover {
+    text-decoration: underline;
+  }
+  
+  .todayDealsProductContainer {
+    height: 300px;
+    position: relative;
+  }
+  
+  .todayDealsProductList {
+    display: flex;
+  }
+  
+  .todayDealsProductItem {
+    min-width: 220px;
+    width: 270px;
+    padding: 0px 30px;
+  }
+  
+  .todayDealsProductItem img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    padding: 15px 0px;
+  }
+  
+  .discountContainer {
+    padding-top: 15px;
+  }
+  
+  .discountContainer a:first-child {
+    background-color: rgb(185, 10, 74);
+    padding: 3px 5px;
+    color: white;
+    font-weight: 550px;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 14px;
+  }
+  
+  .discountContainer a {
+    padding: 3px 5px;
+    color: rgb(185, 10, 74);
+    font-size: 12px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .todayDealsProductItem p {
+    font-size: 13px;
+    padding-top: 3px;
+  }
+  
+  .todayDealsButtonContainer {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .todayDealsButton {
+    padding: 40px 10px;
+    font-size: 40px;
+    border: none;
+    outline: none;
+    background-color: rgb(255, 255, 255, 0.4);
+  }
+  
+  @media (max-width: 600px) {
+    .todaysDealsContainer {
+      display: none;
+    }
+  }
+  
