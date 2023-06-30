@@ -34,7 +34,7 @@ export default function ListProduct() {
         <>
         {/* Start navbar category*/}
             <div className=" table-responsive " >
-                    <ul className="d-flex flex-row pt-2 " style={{"fontSize": "13px"}}>
+                    <ul className="d-flex flex-row pt-3 " style={{"fontSize": "13px"}}>
                         {
                             uniqueCategory.map((item,index)=>{
                                 return(

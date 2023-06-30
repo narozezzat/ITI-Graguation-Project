@@ -13,11 +13,12 @@ export default function Router() {
     <div>
         <Routes>
 
+            <Route path="/" element={ <MainPage/> }></Route>
             <Route path="/Login" element={ <Login/> }></Route>
             <Route path="/SignUp" element={ <SignUp/> }></Route>
-            <Route path="/" element={ <MainPage/> }></Route>
+
             <Route path="/ListProduct" element={ <ListProduct/> }></Route>
-            <Route path="/MainProductDetails" element={ <MainProductDetails/> }></Route>
+            <Route path="/MainProductDetails/:id" element={ <MainProductDetails/> }></Route>
         </Routes>
     </div>
     )

@@ -1,32 +1,41 @@
-import axios from "axios"
-import { useEffect, useState } from "react"
+// import axios from "axios"
+// import { useEffect, useState } from "react"
+// import { useLocation } from "react-router-dom";
 
-export default function ProductDetails() {
+export default function ProductDetails(props) {
 
-    const [ allProduct, setAllProduct]=useState([])
-    // console.log(allProduct)
 
-    const fetchAxios = async ()=>{
-        const response = await axios.get('https://dummyjson.com/products/2')
-        setAllProduct(response.data)
-        // console.log(response.data)
-    }
-    
-    useEffect(()=>{
-        fetchAxios();
-    },[])
-    
+    const item = props.singleProduct.singleProduct
+    // console.log(item)
+
+
     return(
         <>
-        <div className="row m-0">
-            <div className="col-5 left border">
-                <img src={allProduct.images} alt="" className="w-100"/>
+        <div className="row me-0 mt-5 mb-3">
+
+            <div className="col-5  left border row">
+
+                <ul className="col-2">
+                    {
+                        item.images.map((img , index) => {
+                            return(
+                                    <li key={index} className="mb-2">
+                                        <img className="w-100 rounded-1" src={img} alt="" />
+                                    </li>
+                                )
+                            })
+                    }
+
+                </ul>
+
+                <img className="col-10 rounded-5" src={item.images[0]} alt="" />
+            
             </div>
 
-            <div className="col-5 center border">
+            <div className="col-5  center border">
                 <div>   
-                    <p className="mb-1">{allProduct.description}</p>
-                    <a href="" >Vist Store</a>
+                    <p className="mb-1 p-2 fw-semibold fs-5">{item.description}</p>
+                    <a href="" >Vist ( Store name ) Store</a>
                     <p>stars</p>
                 </div>
 
@@ -36,64 +45,74 @@ export default function ProductDetails() {
                     <span className="text-danger me-2 fs-5"> -9% </span>
                     <span>
                         <sup className="" style={{fontSize:"12px"}}> EGP </sup> 
-                        <span className="fs-4 fw-bold">{allProduct.price}</span>
+                        <span className="fs-4 fw-semibold">{item.price}</span>
+                        <sup className="" style={{fontSize:"12px"}}> 00 </sup> 
                     </span>
-                    <p>
-                        <span>List Price</span>
-                        <sup className="" style={{fontSize:"12px"}}> EGP </sup> 
-                        <del className="fs-4 fw-bold">{allProduct.price}</del>
-                    </p>
+
+                    <div>
+                        <span>List Price : <del className="">EGP {item.price} .00</del> </span>
+                    </div>
+
                 </div>
 
                 <hr/>
 
+                <div>
+                    <h3 className="text-center">data</h3>
                     <div>
-                        <h3 className="text-center">data</h3>
-                        <div>Color : {allProduct.brand}</div>
-                        <div>Brand : {allProduct.brand}</div>
-                        <div>Model : {allProduct.brand}</div>
+                        <span className="fw-semibold">Color</span> : {item.brand}
                     </div>
+                    <div>
+                        <span className="fw-semibold">Brand</span> : {item.brand}
+                    </div>
+                    <div>
+                        <span className="fw-semibold">Model</span> : {item.brand}
+                    </div>
+                </div>
                     
                 <hr/>
 
-                    <div>
-                    About this item
-                        <ul>
-                            <li>Talk from sunrise to sunset - Maximum standby battery life of up to 35 days and 15 hours talk time on a single charge</li>
-                            <li>Talk from sunrise to sunset - Maximum standby battery life of up to 35 days and 15 hours talk time on a single charge</li>
-                            <li>Talk from sunrise to sunset - Maximum standby battery life of up to 35 days and 15 hours talk time on a single charge</li>
-                        </ul>
-                    </div>
+                <div>
+                    <span className="fw-semibold">About this item</span>
+                    <ul>
+                        <li>Talk from sunrise to sunset - Maximum standby battery life of up to 35 days and 15 hours talk time on a single charge</li>
+                        <li>Talk from sunrise to sunset - Maximum standby battery life of up to 35 days and 15 hours talk time on a single charge</li>
+                        <li>Talk from sunrise to sunset - Maximum standby battery life of up to 35 days and 15 hours talk time on a single charge</li>
+                    </ul>
+                </div>
 
             </div>
 
-            <div className="col-2 right border">
+            <div className="col-2  right border">
                 <div>
                     <span>
                         <sup className="" style={{fontSize:"12px"}}> EGP </sup> 
-                        <span className="fs-4 fw-bold">{allProduct.price}</span>
+                        <span className="fs-4 fw-semibold">{item.price}</span>
+                        <sup className="" style={{fontSize:"12px"}}> 00 </sup> 
+
                     </span>
 
                     <div className="dropdown">
-                        <span>FREE Returns</span>
+                        <a href="">FREE Returns</a>
                         {/* <div className="dropdown-content">
                             <p>Easy and Hassle Free Returns You can return this item for FREE within the allowed return period for any reason and without any shipping charges. The item must be returned in new and unused condition.</p>
                         </div> */}
                     </div>
 
-                    <div>
+                    <div style={{fontSize:"13px"}} className="my-2 ps-2">
                     Deliver to mina - Giza ‌
                     </div>
 
-                    <div>
-                        <div>in stock</div>
+                    <div className="mb-2">
+                        <div className="text-success fs-5">In Stock</div>
                         <span>Qty 2</span>
                     </div>
-                    <button className="btn btn-primary mb-1 col-12">
+
+                    <button className="btn btn-warning mb-1 col-12">
                         Add To Cart 
                     </button>
                     <br/>
-                    <button className="btn btn-primary col-12">
+                    <button className="btn btn-warning col-12 mb-2">
                         Buy Now
                     </button>
 

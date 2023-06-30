@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button, Container, Form, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import logo from "../images/amazon-logo(1).png"
 
 export default function NavBar() {
 
@@ -16,7 +17,7 @@ export default function NavBar() {
         }
     })
 
-    console.log(uniqueCategory)
+    // console.log(uniqueCategory)
 
     const fetchAxios = async ()=>{
         const response = await axios.get('https://dummyjson.com/products')
@@ -35,13 +36,14 @@ export default function NavBar() {
 
             <Navbar expand="lg" className="bg-black ">
                 <Container fluid>
-                    <Navbar.Brand className=" text-light"><Link className="nav-link " to="/MainPage"><img src="../images/amazon-logo.png" alt=""/>h</Link></Navbar.Brand>
+                    <Navbar.Brand className=" text-light">
+                        <Link className="nav-link " to="/MainPage">
+                            <img src={logo} className="col-12" alt="" style={{width:"120px"}}/>
+                        </Link>
+                    </Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" className=" text-light"/>
                     <Navbar.Collapse id="navbarScroll" className="text-light">
                         <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll >
-                            <Nav.Link href="#action1" className=" ">
-                                <Link className="nav-link text-light" to="/MainProductDetails">Product Details</Link>
-                            </Nav.Link>
 
                             <Nav.Link href="#action1" className=" ">
                                 <Link className="nav-link text-light" to="/ListProduct">List Product </Link>
@@ -114,7 +116,7 @@ export default function NavBar() {
                             <Link className="text-light me-2" style={{textDecoration:"none"}} to="/">Order</Link>
 
                             <Link className="text-light" style={{textDecoration:"none"}} to="/">
-                                <i class="fa-regular fa-cart-shopping"></i>
+                                {/* <i class="fa-regular fa-cart-shopping"></i> */}
                                 Cart
                             </Link>
 

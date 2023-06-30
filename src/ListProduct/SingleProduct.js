@@ -1,5 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import Rating from "react-rating"
+import { useNavigate } from "react-router-dom"
 // import Rating from "react-rating"
 
 export default function SingleProduct() {
@@ -14,14 +16,30 @@ export default function SingleProduct() {
         fetchAxios();
     },[])
 
+
+
+
+    const navigate = useNavigate();
+    
+    const singleMove = ((item) => {
+        navigate(`/MainProductDetails/${item.id}`, {
+            state: {
+                item
+            }
+        })
+    })
     return(
         <>
         <div className="row mx-auto pt-3 ">
             {allProduct.map((item)=>{
                 return(
+                    
                         <div key={item.id} className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3 ">
+                            <hr/>
                             <div className="" >
-                                <img src={item.images[0]} className="card-img-top" alt="" style={{"height": "15rem"}}/>
+                                <img src={item.images[0]} className="card-img-top" 
+                                alt="" style={{"height": "15rem"}}
+                                onClick={() => singleMove(item)}/>
                                 <div className="card-body">
                                     <div className="">
                                         <p className="card-text m-0">{item.description}</p>
@@ -31,17 +49,14 @@ export default function SingleProduct() {
                                         </p>
                                         {/* <h5 className="card-title fw-bold text-center">{item.title}</h5> */}
                                         {/* <Rating readonly value={item.rating} /> */}
-                                        {/* <Rating
+                                        <Rating
                                             readonly
                                             initialRating={item.rating}
-                                        /> */}
-                                        <hr/>
+                                        />
+                                        
                                     </div>
                                     
-                                    <div className="position-relative ">
-                                            <button className="btn btn-primary col-12"  >Know More</button>
-                                            <button className="btn btn-primary col-12" >Add To Cart</button>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>

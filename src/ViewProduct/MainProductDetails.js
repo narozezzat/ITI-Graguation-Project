@@ -1,5 +1,6 @@
 // import axios from "axios"
 // import { useEffect, useState } from "react"
+import { useLocation } from "react-router-dom";
 import CoustomerReviews from "./CoustomerReviews"
 import ProductDetails from "./ProductDetails"
 
@@ -18,9 +19,15 @@ export default function MainProductDetails() {
     //     fetchAxios();
     // },[])
     
+
+
+    const location = useLocation()
+    const singleProduct = location.state.item ; 
+
+    // console.log(singleProduct)
     return(
         <>
-        <ProductDetails/>
+        <ProductDetails singleProduct={{singleProduct}} />
         <CoustomerReviews/>
         </>
     )
