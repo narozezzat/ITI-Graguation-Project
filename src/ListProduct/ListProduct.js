@@ -7,19 +7,21 @@ import axios from "axios";
 export default function ListProduct() {
 
     const [ allProduct, setAllProduct] = useState([])
-    const [uniqueCategory,setUniqueCategory] =  useState([1,2,3])
+    const [uniqueCategory,setUniqueCategory] =  useState([])
 
     const SimilarCategory = allProduct.map((item)=>item.category)
-    console.log(SimilarCategory)
-    SimilarCategory.forEach((item)=>console.log(item))
 
+    SimilarCategory.forEach((item)=>{
+        if(!uniqueCategory.includes(item)){
+            uniqueCategory.push(item)
+        }
+    })
+
+    console.log(uniqueCategory)
 
     const fetchAxios = async ()=>{
         const response = await axios.get('https://dummyjson.com/products')
         setAllProduct(response.data.products)
-        console.log(uniqueCategory)
-        setUniqueCategory(SimilarCategory)
-        console.log(uniqueCategory)
 
     }
     
@@ -27,10 +29,12 @@ export default function ListProduct() {
         fetchAxios();
         
     },[])
+
     return (
         <>
-            <div className=" table-responsive" >
-                    <ul className="d-flex flex-row " style={{"fontSize": "13px"}}>
+        {/* Start navbar category*/}
+            <div className=" table-responsive " >
+                    <ul className="d-flex flex-row pt-2 " style={{"fontSize": "13px"}}>
                         {
                             uniqueCategory.map((item,index)=>{
                                 return(
@@ -39,8 +43,10 @@ export default function ListProduct() {
                             })
                         }
                     </ul>
+                    <hr/>
             </div>
-            <hr/>
+        {/* End navbar category*/}
+
             <SingleProduct/>
         </>
     );

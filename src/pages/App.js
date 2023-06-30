@@ -7,13 +7,15 @@ import Router from "./Router";
 function App() {
   return (
     <div className="App">
-      <NavBar/>
         
         <BrowserRouter>
-          <Router/>
+          <NavBar/>
+
+            <Router/>
+
+          <Footer/>
         </BrowserRouter>
         
-      <Footer/>
     </div>
   );
 }

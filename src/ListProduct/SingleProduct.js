@@ -37,9 +37,7 @@ export default function SingleProduct() {
                                         /> */}
                                         <hr/>
                                     </div>
-
-                                    <br/>
-
+                                    
                                     <div className="position-relative ">
                                             <button className="btn btn-primary col-12"  >Know More</button>
                                             <button className="btn btn-primary col-12" >Add To Cart</button>
