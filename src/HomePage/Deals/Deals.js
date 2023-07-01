@@ -38,7 +38,7 @@ function Deals() {
       <div className="todaysDealsContainer text-nowrap">
         <div className="todayDealsHeading">
           <h5 className="mx-3">Exciting Deals</h5>
-          <span className="mx-3">
+          <span className="">
             <Link className="deal">See all deals</Link>
           </span>
         </div>
