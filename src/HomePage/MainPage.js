@@ -1,3 +1,9 @@
+import Banner from "./Banner/Banner";
+import Deals from "./Deals/Deals";
+import Products from "./Products/Products";
+import ProductsTwo from "./Products/ProductsTwo";
+
+
 
 
 export default function MainPage() {
@@ -6,10 +12,11 @@ export default function MainPage() {
     
     return(
         <>
-        
-        <div>slider</div>
 
-
+            <Banner />
+            <Products/>
+            <Deals/>
+            <ProductsTwo />
         </>
     )
 }

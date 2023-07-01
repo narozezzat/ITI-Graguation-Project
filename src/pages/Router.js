@@ -19,6 +19,9 @@ export default function Router() {
 
             <Route path="/ListProduct" element={ <ListProduct/> }></Route>
             <Route path="/MainProductDetails/:id" element={ <MainProductDetails/> }></Route>
+            {/* <Route path="/MainProductDetails" element={ <MainProductDetails/> }></Route> */}
+            <Route path="/MainPage" element={ <MainPage/> }></Route>
+            
         </Routes>
     </div>
     )

@@ -1,0 +1,33 @@
+.logoContainer {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+  }
+  .logo {
+    width: 100px;
+    padding-top: 11px;
+  }
+  
+  .dotIn {
+    position: relative;
+    padding-bottom: 5px;
+    font-size: 15px;
+  }
+  
+  .borderWhite {
+    border: 1.5px solid transparent;
+    padding: 0 10px;
+  }
+  
+  .borderWhite:hover {
+    border: 1.5px solid #fff;
+  }
+  
+.cartIcon{
+  color: #fff;
+}
+
+  
+
+  
