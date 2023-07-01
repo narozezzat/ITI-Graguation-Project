@@ -45,19 +45,9 @@ export default function NavBar() {
         <Navbar expand="lg" className="bg-black ">
             <Container fluid>
 
-                <Navbar.Brand className=" text-light">
-                    <Link className="nav-link " to="/MainPage">
-                        <img src={logo} className="col-12" alt="" style={{width:"120px"}}/>
-                    </Link>
-                </Navbar.Brand>
-
-                <Navbar.Toggle aria-controls="navbarScroll" className=" text-light"/>
-
-                
-                    <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll ></Nav>
-
+                <Navbar.Brand className=" text-light borderWhite">
                     <Link to="/MainPage">
-                        <div className="logoContainer borderWhite">
+                        <div className="logoContainer">
                         <img
                             src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
                             className="logo"
@@ -66,6 +56,11 @@ export default function NavBar() {
                         <span className="dotIn">.in</span>
                         </div>
                     </Link>
+                </Navbar.Brand>
+
+                <Navbar.Toggle aria-controls="navbarScroll" className=" text-light"/>
+                
+                <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll ></Nav>
 
                 <Navbar.Toggle aria-controls="navbarScroll" className=" text-light" />
 
@@ -75,13 +70,8 @@ export default function NavBar() {
                     style={{ maxHeight: "100px" }}
                     navbarScroll
                     >
-                    <Nav.Link href="#action1" className=" ">
-                        <Link className="nav-link text-light" to="/MainProductDetails">
-                        Product Details
-                        </Link>
-                    </Nav.Link>
 
-                    <Nav.Link href="#action1" className=" ">
+                    <Nav.Link  className="borderWhite">
                         <Link className="nav-link text-light" to="/ListProduct">
                         List Product{" "}
                         </Link>
@@ -102,96 +92,88 @@ export default function NavBar() {
                     </Nav>
 
                     <Form className="d-flex me-2">
-                    <Form.Control
-                        type="search"
-                        placeholder=""
-                        className="me-2"
-                        aria-label="Search"
-                    />
+                        <Form.Control
+                            type="search"
+                            placeholder=""
+                            className="me-2"
+                            aria-label="Search"
+                        />
 
-                    <Button className="btn btn-light">Search</Button>
+                        <Button className="btn btn-light">Search</Button>
 
-                        <NavDropdown
-                            title="Account & lists"
-                            id="navbarScrollingDropdown"
-                            className="mx-3 "
-                        >
-                            <NavDropdown.Item href="#action3" className=" ">
-                            <Link className=" " to="/SignUp">
-                                Your Account
-                            </Link>
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action4" className=" ">
-                            <Link className="" to="/Login">
-                                Your Orders
-                            </Link>
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action4" className=" ">
-                            <Link className="" to="/Login">
-                                Your Addresses
-                            </Link>
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action4" className=" ">
-                            <Link className="" to="/Login">
-                                Your Lists
-                            </Link>
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action4" className=" ">
-                            <Link className="" to="/Login">
-                                Your Seller Account
-                            </Link>
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action4" className=" ">
-                            <Link className="" to="/Login">
-                                Switch Accounts
-                            </Link>
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action4" className=" ">
-                            <Link className="" to="/Login">
-                                Login
-                            </Link>
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action4" className=" ">
-                            <Link className="" to="/SignUp">
-                                SignUp
-                            </Link>
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action4" className=" ">
-                            <Link className="" to="/Login">
-                                Sign Out
-                            </Link>
-                            </NavDropdown.Item>
+                            <NavDropdown
+                                title="Account & lists"
+                                id="navbarScrollingDropdown"
+                                className="mx-3 borderWhite"
+                            >
+                                <NavDropdown.Item href="#action3" className=" ">
+                                <Link className=" " to="/SignUp">
+                                    Your Account
+                                </Link>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item href="#action4" className=" ">
+                                <Link className="" to="/Login">
+                                    Your Orders
+                                </Link>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item href="#action4" className=" ">
+                                <Link className="" to="/Login">
+                                    Your Addresses
+                                </Link>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item href="#action4" className=" ">
+                                <Link className="" to="/Login">
+                                    Your Lists
+                                </Link>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item href="#action4" className=" ">
+                                <Link className="" to="/Login">
+                                    Your Seller Account
+                                </Link>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item href="#action4" className=" ">
+                                <Link className="" to="/Login">
+                                    Switch Accounts
+                                </Link>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item href="#action4" className=" ">
+                                <Link className="" to="/Login">
+                                    Login
+                                </Link>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item href="#action4" className=" ">
+                                <Link className="" to="/SignUp">
+                                    SignUp
+                                </Link>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item href="#action4" className=" ">
+                                <Link className="" to="/Login">
+                                    Sign Out
+                                </Link>
+                                </NavDropdown.Item>
 
-                            <NavDropdown.Divider />
+                                <NavDropdown.Divider />
 
-                            <NavDropdown.Item href="#action5" className=" ">
-                            Something else here
-                            </NavDropdown.Item>
-                        </NavDropdown>
+                                <NavDropdown.Item href="#action5" className=" ">
+                                Something else here
+                                </NavDropdown.Item>
+                            </NavDropdown>
 
-                    <Link
-                        className="text-light me-2"
-                        style={{ textDecoration: "none" }}
-                        to="/"
-                    >
-                        Order
-                    </Link>
-
-                    {/* <Link
-                        className="text-light"
-                        style={{ textDecoration: "none" }}
-                        to="/"
-                    >
-                        <i class="fa-regular fa-cart-shopping"></i>
-                        Cart
-                    </Link> */}
-                    <div className="cartContainer borderWhite">
-                        <Link to="/cart">
-                        <i class="fa-solid fa-cart-shopping cartIcon">
-                            <span className="digit"></span>
-                        </i>
+                        <Link className="text-light me-2 borderWhite" style={{ textDecoration: "none" }} to="/">
+                            Order
                         </Link>
-                    </div>
+
+                        <div className="cartContainer borderWhite text-nowrap">
+                            <Link to="/cart">
+                                <div>
+                                    <i class="fa-solid fa-cart-shopping cartIcon "> 
+                                        <span className=" fw-normal text-warning"> 0 </span> 
+                                        <span className=" fw-normal ">Cart</span> 
+                                    </i>
+                                    
+                                </div>
+                            </Link>
+                        </div>
                     </Form>
                 </Navbar.Collapse>
 
