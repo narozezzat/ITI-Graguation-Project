@@ -1,3 +1,7 @@
+.header{
+  height: 70px;
+}
+
 .logoContainer {
     height: 50px;
     display: flex;
@@ -23,11 +27,79 @@
   .borderWhite:hover {
     border: 1.5px solid #fff;
   }
+
   
 .cartIcon{
   color: #fff;
 }
 
-  
+/* LANGUAGE SECTION */
 
-  
+.languageContainer {
+  margin-left: 15px;
+  display: flex;
+}
+
+.languageContainer p {
+  font-size: 1rem;
+  color: #fff;
+  margin: 0;
+}
+.languageImage {
+  width: 28px;
+}
+
+.languageImage img {
+  width: 100%;
+  padding-right: 5px;
+}
+
+.NavBottom {
+  background-color: #232f3e;
+  height: 40px;
+}
+
+.cartFont{
+  font-size: 8px;
+}
+
+
+/* SEARCHBOX */
+
+.searchBoxContainer {
+  margin-left: 15px;
+  width: 450px;
+  display: flex;
+  height: 30px;
+  justify-content: space-between;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.searchBoxContainer:hover {
+  outline: 3px solid orange;
+}
+.searchSelect {
+  width: 45px;
+  background-color: rgb(230, 227, 227);
+  font-size: small;
+  padding-left: 5px;
+}
+
+.searchInput {
+  width: 100%;
+  height: 100%;
+  font-size: 0.9rem;
+  padding-left: 10px;
+}
+
+.searchIcon {
+  width: 40px;
+  background-color: rgb(243, 182, 69);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #000;
+}
+

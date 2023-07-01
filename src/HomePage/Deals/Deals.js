@@ -5,31 +5,31 @@ import { Link } from "react-router-dom";
 function Deals() {
   const data = [{
     image: 'https://m.media-amazon.com/images/I/31f7nuANQNL._AC_SY200_.jpg',
-    title:'Amazon Prime Video - Free Movies',
-    sell: '49' },
+    title:'Crocs Footwear',
+    sell: '53' },
     {
-      image: 'https://m.media-amazon.com/images/I/31f7nuANQNL._AC_SY200_.jpg',
-      title:'Amazon Prime Video - Free Movies!',
-      sell: '49' },
+      image: 'https://m.media-amazon.com/images/I/41-+itFyZlL._AC_SY200_.jpg',
+      title:'Grand Gaming Days - Game o..',
+      sell: '35' },
       {
-      image: 'https://m.media-amazon.com/images/I/31f7nuANQNL._AC_SY200_.jpg',
-      title:'Amazon Prime Video - Free Movie',
-      sell: '49' },
+      image: 'https://m.media-amazon.com/images/I/31RwE3ltrQL._AC_SY200_.jpg',
+      title:'Exciting offers on One Plus Mobi..',
+      sell: '46' },
       {
-      image: 'https://m.media-amazon.com/images/I/31f7nuANQNL._AC_SY200_.jpg',
-      title:'Amazon Prime Video - Free Movie',
-      sell: '49' },
+      image: 'https://m.media-amazon.com/images/I/4151aOEWqAL._AC_SY200_.jpg',
+      title:'Lava Blaze 5G (6GB) available at..',
+      sell: '27' },
       {
-      image: 'https://m.media-amazon.com/images/I/31f7nuANQNL._AC_SY200_.jpg',
-      title:'Amazon Prime Video - Free Movie',
-      sell: '49' },
+      image: 'https://m.media-amazon.com/images/I/61QQtY6qtHL._AC_SY200_.jpg',
+      title:"Levi's, Allen Solly, ANNI Designer..",
+      sell: '87' },
       {
-      image: 'https://m.media-amazon.com/images/I/31f7nuANQNL._AC_SY200_.jpg',
-      title:'Amazon Prime Video - Free Movie',
-      sell: '49' },
+      image: 'https://m.media-amazon.com/images/I/41Jzbjg6TpL._AC_SY200_.jpg',
+      title:'ROCCAT Tusko Across-The-Board Flat...',
+      sell: '21' },
       {
-      image: 'https://m.media-amazon.com/images/I/31f7nuANQNL._AC_SY200_.jpg',
-      title:'Amazon Prime Video - Free Movie',
+      image: 'https://m.media-amazon.com/images/I/31Ypgh5SJyL._AC_SY200_.jpg',
+      title:'Sunny Health & Fitness Exercise Vinyl...',
       sell: '49' }
   
   ]
@@ -50,11 +50,11 @@ function Deals() {
                 <span className="" key={index}>
                   <span className="todayDealsProductItem">
                     <img className="dealsImage" src={item.image} alt="" />
-                    <div className="discountContainer">
-                      <Link>Upto {item.sell} off</Link>
+                    <div className="discountContainer mx-4">
+                      <Link>Upto {item.sell}% off</Link>
                       <Link>Deal of the Day</Link>
                     </div>
-                    <p>{item.title}</p>
+                    <p className="mx-4">{item.title}</p>
                   </span>
                 </span>
               )

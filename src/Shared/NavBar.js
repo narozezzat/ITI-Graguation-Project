@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import {
-  Button,
+  
   Container,
   Form,
   Nav,
@@ -9,7 +9,6 @@ import {
   Navbar,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import logo from "../images/amazon-logo(1).png"
 import "./NavBar.css";
 
 export default function NavBar() {
@@ -42,7 +41,7 @@ export default function NavBar() {
 
   return (
     <>
-        <Navbar expand="lg" className="bg-black ">
+        <Navbar expand="lg" className="bg-black header">
             <Container fluid>
 
                 <Navbar.Brand className=" text-light borderWhite">
@@ -90,16 +89,50 @@ export default function NavBar() {
 
                     {/* <Nav.Link href="#" disabled className=" text-light">Link</Nav.Link> */}
                     </Nav>
-
+                    
                     <Form className="d-flex me-2">
-                        <Form.Control
+                        {/* <Form.Control
                             type="search"
                             placeholder=""
                             className="me-2"
                             aria-label="Search"
                         />
 
-                        <Button className="btn btn-light">Search</Button>
+                        <Button className="btn btn-light">Search</Button> */}
+
+                        <div className="searchBoxContainer">
+                            <select className="searchSelect">
+                            <option>All</option>
+                            <option>Arts & Crafts</option>
+                            <option>Automotive</option>
+                            <option>Baby</option>
+                            <option>Books</option>
+                            <option>Beauty & Personal Care</option>
+                            <option>Deals</option>
+                            <option>Electronics</option>
+                            <option>Girls' Fashion</option>
+                            <option>Health & Household</option>
+                            <option>Home & Kitchen</option>
+                            </select>
+                            <input
+                            type="text"
+                            placeholder="Search Amazon"
+                            className="searchInput"
+                            />
+                            <div className="searchIcon">
+                            <i className="fa-solid fa-magnifying-glass"></i>
+                            </div>
+                        </div>
+                        
+                        <div className="languageContainer borderWhite">
+                            <div className="languageImage">
+                            <img
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_Egypt.svg/255px-Flag_of_Egypt.svg.png"
+                                alt=""
+                            />
+                            </div>
+                            <p>EN</p>
+                        </div>
 
                             <NavDropdown
                                 title="Account & lists"
@@ -166,9 +199,9 @@ export default function NavBar() {
                         <div className="cartContainer borderWhite text-nowrap">
                             <Link to="/cart">
                                 <div>
-                                    <i class="fa-solid fa-cart-shopping cartIcon "> 
+                                    <i class="fa-solid fa-cart-shopping cartIcon"> 
                                         <span className=" fw-normal text-warning"> 0 </span> 
-                                        <span className=" fw-normal ">Cart</span> 
+                                        <span className=" fw-normal cartFont">Cart</span> 
                                     </i>
                                     
                                 </div>
@@ -180,12 +213,12 @@ export default function NavBar() {
             </Container>
         </Navbar>
             
-        <div className=" table-responsive bg-dark text-light pt-2" >
-                <ul className="d-flex flex-row   fs-5" style={{"fontSize": "13px"}}>
+        <div className=" table-responsive text-light pt-2 NavBottom" >
+                <ul className="d-flex flex-row fs-5">
                     {
                         uniqueCategory.map((item,index)=>{
                             return(
-                            <button key={index} className="me-2  list-group-item" >{item}</button>
+                            <button key={index} className="mx-2 list-group-item btn" ><small>{item}</small></button>
                             )
                         })
                     }
