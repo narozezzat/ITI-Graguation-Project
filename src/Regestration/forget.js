@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 
-export default function Login() {
+export default function Forget() {
 
     const { register, handleSubmit,watch,formState:{errors} } = useForm();
     const onSubmit = data => console.log(data)
     console.log(watch('name'))
-
+    
     return(
         <>
         <div className="container">
@@ -25,7 +25,8 @@ export default function Login() {
                 <div className="col-md-6">
                     <div className="card">
                     <div className="card-header">
-                        <h4 className="text-center">Sing in</h4>
+                        <h4 className="text-center">Password assistance</h4>
+                        <p className="text-center">Enter the email address associated with your Amazon account.</p>
                     </div>
                     <div className="card-body">
                         <form id='form' onSubmit={handleSubmit(onSubmit)} className="form-group row">
@@ -45,12 +46,13 @@ export default function Login() {
                         <div className="d-grid gap-2">
                             <button type="submit" className="btn btn-warning">Continue</button>
                         </div>
-                        <div className="mt-3 text-center">
-                            <Link to="/Forget">Forget your passwod</Link>
-                        </div>
                         </form>
                     </div>
                     <div className="card-footer text-center">
+                    <div className="mb-3 card-header">
+                        <h6 className="text-center">Has your email changed?</h6>
+                        <p className="text-center">If you no longer use the email address associated with your Amazon account, you may contact Customer Service for help restoring access to your account.</p>
+                    </div>
                         <p className="mb-0"><Link className="btn btn-secondary" to="/SignUp">
                         Create your Amazon account
                                 </Link></p>
