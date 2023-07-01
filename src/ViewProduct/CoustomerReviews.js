@@ -1,3 +1,4 @@
+import StarsRating from "../Shared/StarsRating";
 
 export default function CoustomerReviews(){
 
@@ -9,7 +10,7 @@ export default function CoustomerReviews(){
             <div className="col-4  left">
                 <div className=" p-2">
                     <h2>Customer Reviews</h2>
-                    <span> <mark>stars</mark> stars 3.9 out of 5</span>
+                    <span> <StarsRating Rating={4}/> stars 3.9 out of 5</span>
                 </div>
 
                 <hr/>
@@ -39,7 +40,8 @@ export default function CoustomerReviews(){
                         </div>
                         
                         <div>
-                            <mark>stars</mark>  :  Small Review 
+                            <span> <StarsRating Rating={4} /> </span>
+                            <span>:  Small Review</span>  
                         </div>
 
                         <div>

@@ -2,6 +2,8 @@
 // import { useEffect, useState } from "react"
 // import { useLocation } from "react-router-dom";
 
+import StarsRating from "../Shared/StarsRating"
+
 export default function ProductDetails(props) {
 
 
@@ -36,7 +38,7 @@ export default function ProductDetails(props) {
                 <div className="ms-2">   
                     <p className="mb-1 p-2 fw-semibold fs-5">{item.description}</p>
                     <p>Vist ( Store name ) Store</p>
-                    <p>stars</p>
+                    <StarsRating Rating={item.rating} />
                 </div>
 
                 <hr/>

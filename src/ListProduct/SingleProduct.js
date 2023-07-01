@@ -2,6 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import Rating from "react-rating"
 import { useNavigate } from "react-router-dom"
+import StarsRating from "../Shared/StarsRating"
 // import Rating from "react-rating"
 
 export default function SingleProduct() {
@@ -43,20 +44,14 @@ export default function SingleProduct() {
                                 <div className="card-body">
                                     <div className="">
                                         <p className="card-text m-0">{item.description}</p>
-                                        <p className="card-text m-0">
-                                        <sup className="fw-bold" style={{fontSize:"12px"}}> EGP </sup> 
-                                        <span className="fs-4 fw-bold">{item.price}</span>
-                                        </p>
-                                        {/* <h5 className="card-title fw-bold text-center">{item.title}</h5> */}
-                                        {/* <Rating readonly value={item.rating} /> */}
-                                        <Rating
-                                            readonly
-                                            initialRating={item.rating}
-                                        />
                                         
+                                        <p className="card-text m-0">
+                                            <sup className="" style={{fontSize:"12px"}}> EGP </sup> 
+                                            <span className="fs-4 fw-semibold">{item.price}</span>
+                                            <sup className="" style={{fontSize:"12px"}}> 00 </sup> 
+                                        </p>
+                                        <StarsRating Rating={item.rating}/>
                                     </div>
-                                    
-                                    
                                 </div>
                             </div>
                         </div>
