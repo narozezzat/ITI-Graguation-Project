@@ -32,16 +32,16 @@ export default function ProductDetails(props) {
             
             </div>
 
-            <div className="col-5  center border">
-                <div>   
+            <div className="col-5 center border">
+                <div className="ms-2">   
                     <p className="mb-1 p-2 fw-semibold fs-5">{item.description}</p>
-                    <a href="" >Vist ( Store name ) Store</a>
+                    <p>Vist ( Store name ) Store</p>
                     <p>stars</p>
                 </div>
 
                 <hr/>
 
-                <div>
+                <div className="ms-2">
                     <span className="text-danger me-2 fs-5"> -9% </span>
                     <span>
                         <sup className="" style={{fontSize:"12px"}}> EGP </sup> 
@@ -57,7 +57,7 @@ export default function ProductDetails(props) {
 
                 <hr/>
 
-                <div>
+                <div className="ms-2">
                     <h3 className="text-center">data</h3>
                     <div>
                         <span className="fw-semibold">Color</span> : {item.brand}
@@ -72,12 +72,12 @@ export default function ProductDetails(props) {
                     
                 <hr/>
 
-                <div>
+                <div className="ms-2">
                     <span className="fw-semibold">About this item</span>
                     <ul>
+                        <li>Talk from sunrise to sunset - Maximum standby battery life of up to 35 days </li>
                         <li>Talk from sunrise to sunset - Maximum standby battery life of up to 35 days and 15 hours talk time on a single charge</li>
-                        <li>Talk from sunrise to sunset - Maximum standby battery life of up to 35 days and 15 hours talk time on a single charge</li>
-                        <li>Talk from sunrise to sunset - Maximum standby battery life of up to 35 days and 15 hours talk time on a single charge</li>
+                        <li>Talk from sunrise to sunset -  and 15 hours talk time on a single charge</li>
                     </ul>
                 </div>
 

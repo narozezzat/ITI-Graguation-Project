@@ -17,7 +17,7 @@ export default function ListProduct() {
         }
     })
 
-    console.log(uniqueCategory)
+    // console.log(uniqueCategory)
 
     const fetchAxios = async ()=>{
         const response = await axios.get('https://dummyjson.com/products')
