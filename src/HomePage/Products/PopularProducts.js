@@ -1,38 +1,46 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import "../Deals/Deals.css"
+import img1 from '../../assets/Images/img1.jpg'
+import img2 from '../../assets/Images/img2.jpg'
+import img3 from '../../assets/Images/img3.jpg'
+import img4 from '../../assets/Images/img4.jpg'
+import img5 from '../../assets/Images/img5.jpg'
+import img6 from '../../assets/Images/img6.jpg'
+import img7 from '../../assets/Images/img7.jpg'
 
 function PopularProducts() {
     const data = [
         {
-            image: 'https://m.media-amazon.com/images/I/715UuCH5OES._AC_SY200_.jpg',
+            image: img1,
         },
         {
-            image: 'https://m.media-amazon.com/images/I/71xWh67sBNL._AC_SY200_.jpg',
+            image: img2,
         },
         {
-            image: 'https://m.media-amazon.com/images/I/719p0eyZiSL._AC_SY200_.jpg',
+            image: img3,
         },
         {
-            image: 'https://m.media-amazon.com/images/I/71hKMkVHYfL._AC_SY200_.jpg',
+            image: img4,
         },
         {
-            image: 'https://m.media-amazon.com/images/I/51RGCmrbyKL._AC_SY200_.jpg',
+            image: img5,
         },
         {
-            image: 'https://m.media-amazon.com/images/I/51D3DrDmwkL._AC_SY200_.jpg',
+            image: img6,
         },
         {
-            image: 'https://m.media-amazon.com/images/I/71jTFnk7XiL._AC_SY200_.jpg',
+            image: img7,
         },
         {
-            image: 'https://m.media-amazon.com/images/I/81uzT1EYOSL._AC_SY200_.jpg',
+            image: img1,
         },
         {
-            image: 'https://m.media-amazon.com/images/I/51gLnYN1W7L._AC_SY200_.jpg',
+            image: img2,
         },
-        
     ]
+
+    console.log(data[0])
   return (
     <>
       <div className="todaysDealsContainer text-nowrap">

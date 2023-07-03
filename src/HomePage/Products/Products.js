@@ -18,10 +18,11 @@ function Products() {
       image:"https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2021/September/DashboardCards/Fuji_Dash_Fitness_1X._SY304_CB639748186_.jpg",
       title: "For your Fitness Needs",
       linkToProductPage : "Shop now"},
-    {
-    image:"https://images-na.ssl-images-amazon.com/images/G/01/home/THILGMA/SpringEvent2023/XCM_CUTTLE_1559454_3018199_379x304_1X_en_US._SY304_CB592739737_.jpg",
-    title: "Home refresh ideas",
-    linkToProductPage : "Shop kitchen upgrades"},
+      // {
+      // image:"https://images-na.ssl-images-amazon.com/images/G/01/home/THILGMA/SpringEvent2023/XCM_CUTTLE_1559454_3018199_379x304_1X_en_US._SY304_CB592739737_.jpg",
+      // title: "Home refresh ideas",
+      // linkToProductPage : "Shop kitchen upgrades"}
+      
   ]
   return (
     <>
@@ -40,6 +41,14 @@ function Products() {
               )
             })
           }
+              <div className="card col-md-3 bg-light" >
+                  <h5 className="card-title mt-3">mina</h5>
+                  <img className="card-img-top mt-3" src="" alt="" />
+                  <Link className="my-4 lin">
+                    <small>mina</small>
+                  </Link>
+                </div>
+
         </div>
       </div>
     </>
