@@ -1,44 +1,45 @@
 import React from "react";
-import img1 from "../../assets/Images/img1.jpg";
-import img2 from "../../assets/Images/img2.jpg";
-import img3 from "../../assets/Images/img3.jpg";
-import img4 from "../../assets/Images/img4.jpg";
 import { Link } from "react-router-dom";
 import "./Products.css"
 
+
+
 function Products() {
+
+  const data = [{
+    image:"https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2021/September/DashboardCards/Fuji_Dash_Toys_1X._SY304_CB639759658_.jpg",
+    title: "New arrivals in Toys",
+    linkToProductPage : "Shop Now"},
+    {
+      image:"https://images-na.ssl-images-amazon.com/images/G/01/softlines/shopbop/ingress/2023/March/mp_20230219_ff_desktopsinglecategory_desktop_379x304_1._SY304_CB612639047_.jpg",
+      title: "Discover fashion trends",
+      linkToProductPage : "See more"},
+    {
+      image:"https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2021/September/DashboardCards/Fuji_Dash_Fitness_1X._SY304_CB639748186_.jpg",
+      title: "For your Fitness Needs",
+      linkToProductPage : "Shop now"},
+    {
+    image:"https://images-na.ssl-images-amazon.com/images/G/01/home/THILGMA/SpringEvent2023/XCM_CUTTLE_1559454_3018199_379x304_1X_en_US._SY304_CB592739737_.jpg",
+    title: "Home refresh ideas",
+    linkToProductPage : "Shop kitchen upgrades"},
+  ]
   return (
     <>
       <div className="container mt-5">
         <div className="card-deck row">
-          <div className="card col-md-3 bg-light">
-          <h5 className="card-title mt-3">New arrivals in Toys</h5>
-            <img className="card-img-top mt-3" src={img1} alt="" />
-            <Link className="my-4 lin">
-                <small>Shop Now</small>
-            </Link>
-          </div>
-          <div className="card col-md-3 bg-light">
-            <h5 className="card-title mt-3">Discover fashion trends</h5>
-            <img className="card-img-top mt-3" src={img2} alt="" />
-            <Link className="my-4 lin">
-                <small>See more</small>
-            </Link>
-          </div>
-          <div className="card col-md-3 bg-light">
-            <h5 className="card-title mt-3">For your Fitness Needs</h5>
-            <img className="card-img-top mt-3" src={img3} alt="" />
-            <Link className="my-4 lin">
-                <small>Shop now</small>
-            </Link>
-          </div>
-          <div className="card col-md-3 bg-light">
-            <h5 className="card-title mt-3">Home refresh ideas</h5>
-            <img className="card-img-top mt-3" src={img4} alt="" />
-            <Link className="my-4 lin">
-                <small>Shop kitchen upgrades</small>
-            </Link>
-          </div>
+          {
+            data.map((item, index) => {
+              return (
+                <div className="card col-md-3 bg-light" key={index}>
+                  <h5 className="card-title mt-3">{item.title}</h5>
+                  <img className="card-img-top mt-3" src={item.image} alt="" />
+                  <Link className="my-4 lin">
+                    <small>{item.linkToProductPage}</small>
+                  </Link>
+                </div>
+              )
+            })
+          }
         </div>
       </div>
     </>
