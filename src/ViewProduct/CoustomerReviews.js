@@ -10,7 +10,7 @@ export default function CoustomerReviews(){
             <div className="col-4  left">
                 <div className=" p-2">
                     <h2>Customer Reviews</h2>
-                    <span> <StarsRating Rating={4}/> stars 3.9 out of 5</span>
+                    <span> <StarsRating Rating={4}/>  3.9 out of 5</span>
                 </div>
 
                 <hr/>
@@ -39,7 +39,7 @@ export default function CoustomerReviews(){
                             <span>Mina Onsy</span>
                         </div>
                         
-                        <div>
+                        <div >
                             <span> <StarsRating Rating={4} /> </span>
                             <span>:  Small Review</span>  
                         </div>

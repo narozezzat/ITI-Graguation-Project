@@ -1,7 +1,7 @@
 
 export default function StarsRating(props) {
     const item = props.Rating
-console.log(item)
+    // console.log(item)
     
     const numberOfYellowStars = Math.round(item);
     const numberOfBlackStars = 5 - numberOfYellowStars;
@@ -24,10 +24,10 @@ console.log(item)
 
     return(
         <>
-            <div>
+            <span>
                 {yellowStars}
                 {blackStars}
-            </div>
+            </span>
         </>
     )
 }

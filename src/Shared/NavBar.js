@@ -1,13 +1,5 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import {
-  
-  Container,
-  Form,
-  Nav,
-  NavDropdown,
-  Navbar,
-} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
 
@@ -41,58 +33,33 @@ export default function NavBar() {
 
 return (
     <>
-        <Navbar expand="lg" className="bg-black header">
-            <Container fluid>
-
-                <Navbar.Brand className=" text-light borderWhite">
-                    <Link to="/MainPage">
-                        <div className="logoContainer">
-                        <img
-                            src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
-                            className="logo"
-                            alt=""
-                        />
-                        <span className="dotIn">.in</span>
-                        </div>
-                    </Link>
-                </Navbar.Brand>
-
-                <Navbar.Toggle aria-controls="navbarScroll" className=" text-light"/>
+        <nav className="navbar navbar-expand-lg bg-black">
+            <div className="container-fluid">
                 
-                <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll ></Nav>
+                <Link to="/MainPage">
+                    <div className="navbar-brand logoContainer">
+                    <img
+                        src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
+                        className="logo"
+                        alt=""
+                    />
+                    <span className="dotIn text-light">.in</span>
+                    </div>
+                </Link>
 
-                <Navbar.Collapse id="navbarScroll" className="text-light">
-                    
-                    <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: "100px" }} navbarScroll>
+                <Link className="nav-link text-light" to="/ListProduct">
+                    List Product
+                </Link>
 
-                    <Nav.Link  className="borderWhite">
-                        <Link className="nav-link text-light" to="/ListProduct">
-                        List Product{" "}
-                        </Link>
-                    </Nav.Link>
-                    
-                    {/* <NavDropdown title="Link" id="navbarScrollingDropdown" className=" text-light">
-                            <NavDropdown.Item href="#action3" className=" text-light">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action4" className=" text-light">Another action</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action5" className=" text-light">Something else here</NavDropdown.Item>
-                        </NavDropdown> */}
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
-                    {/* <Nav.Link href="#" disabled className=" text-light">Link</Nav.Link> */}
-                    </Nav>
-                    
-                    <Form className="d-flex me-2">
-                        {/* <Form.Control
-                            type="search"
-                            placeholder=""
-                            className="me-2"
-                            aria-label="Search"
-                        />
+                    <div className="searchBoxContainer m-0 w-100 mx-md-2">
 
-                        <Button className="btn btn-light">Search</Button> */}
-
-                        <div className="searchBoxContainer">
-                            <select className="searchSelect">
+                        <select className="searchSelect">
                             <option>All</option>
                             <option>Arts & Crafts</option>
                             <option>Automotive</option>
@@ -104,119 +71,107 @@ return (
                             <option>Girls' Fashion</option>
                             <option>Health & Household</option>
                             <option>Home & Kitchen</option>
-                            </select>
-                            <input
-                            type="text"
-                            placeholder="Search Amazon"
-                            className="searchInput"
-                            />
-                            <div className="searchIcon">
+                        </select>
+
+                        <input type="text" placeholder="Search Amazon" className="searchInput" />
+
+                        <div className="searchIcon">
                             <i className="fa-solid fa-magnifying-glass"></i>
-                            </div>
-                        </div>
-                        
-                        <div className="languageContainer borderWhite">
-                            <div className="languageImage">
-                            <img
-                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_Egypt.svg/255px-Flag_of_Egypt.svg.png"
-                                alt=""
-                            />
-                            </div>
-                            <p>EN</p>
                         </div>
 
-                            <NavDropdown title="Account & lists" id="navbarScrollingDropdown" className="borderWhite"> 
-                                
-                                <div>
-                                    <Link className=" ms-3" to="/SignUp">
-                                        Your Account
-                                    </Link>
-                                </div>
-                                <div>
-                                    <Link className=" ms-3 text-black" to="/SignUp">
+                    </div>
+                            
+                    <div className="languageContainer borderWhite">
+                        <div className="languageImage">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_Egypt.svg/255px-Flag_of_Egypt.svg.png" alt="" />
+                        </div>
+                        <p>EN</p>
+                    </div>
+
+                    <div className="nav-item dropdown borderWhite">
+                        <a className="nav-link dropdown-toggle text-light" href="#1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Accounts & Lists
+                        </a>
+
+                        <ul className="dropdown-menu ps-3 listNavBar">
+                            
+                            <li>
+                                <Link className="" to="/Login">
                                     Your Orders
-                                    </Link>
-                                </div>
-                                
-                                
-                                <NavDropdown.Item  className=" ">
-                                    <Link className="" to="/Login">
-                                        Your Orders
-                                    </Link>
-                                </NavDropdown.Item>
+                                </Link>
+                            </li>
 
-                                <NavDropdown.Item href="#action4" className=" ">
-                                    <Link className="" to="/Login">
-                                        Your Addresses
-                                    </Link>
-                                </NavDropdown.Item>
+                            <li>
+                                <Link className="" to="/Login">
+                                    Your Account 
+                                </Link>
+                            </li>
 
-                                <NavDropdown.Item href="#action4" className=" ">
-                                    <Link className="" to="/Login">
-                                        Your Lists
-                                    </Link>
-                                    </NavDropdown.Item>
+                            <li>
+                                <Link className="" to="/Login">
+                                    Your Addresses
+                                </Link>
+                            </li>
 
-                                <NavDropdown.Item href="#action4" className=" ">
-                                    <Link className="" to="/Login">
-                                        Your Seller Account
-                                    </Link>
-                                    </NavDropdown.Item>
+                            <li>
+                                <Link className="" to="/Login">
+                                    Your Lists
+                                </Link>
+                            </li>
 
-                                <NavDropdown.Item href="#action4" className=" ">
-                                    <Link className="" to="/Login">
-                                        Switch Accounts
-                                    </Link>
-                                    </NavDropdown.Item>
+                            <li>
+                                <Link className="" to="/Login">
+                                    Your Seller Account
+                                </Link>
+                            </li>
 
-                                <NavDropdown.Item href="#action4" className=" ">
-                                    <Link className="" to="/Login">
-                                        Login
-                                    </Link>
-                                </NavDropdown.Item>
+                            <li>
+                                <Link className="" to="/Login">
+                                    Switch Accounts
+                                </Link>
+                            </li>
 
-                                <NavDropdown.Item href="#action4" className=" ">
-                                    <Link className="" to="/SignUp">
-                                        SignUp
-                                    </Link>
-                                </NavDropdown.Item>
+                            <li>
+                                <Link className="" to="/Login">
+                                    Login
+                                </Link>
+                            </li>
 
-                                <NavDropdown.Item href="#action4" className=" ">
-                                    <Link className="" to="/Login">
-                                        Sign Out
-                                    </Link>
-                                </NavDropdown.Item>
+                            <li>
+                                <Link className="" to="/SignUp">
+                                    Sign Up
+                                </Link>
+                            </li>
 
-                                {/* <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action5" className=" ">
-                                Something else here
-                                </NavDropdown.Item> */}
+                            <li>
+                                <Link className="" to="/Login">
+                                    Sign Out
+                                </Link>
+                            </li>
 
-                            </NavDropdown>
+                            <li><hr className="dropdown-divider"/></li>
+                            <li><a className="dropdown-item text-light" href="#1">Something else here</a></li>
+                        </ul>
+                    </div>
 
-                        <Link className="text-light borderWhite" style={{ textDecoration: "none" }} to="/">
-                            Order
-                        </Link>
+                    <Link className="text-light borderWhite" style={{ textDecoration: "none" }} to="/"> Order </Link>
 
-                        <div className="cartContainer borderWhite text-nowrap">
-                            <Link to="/cart">
-                                <div>
-                                    <i className="fa-solid fa-cart-shopping cartIcon "> 
-                                        <span className=" fw-normal text-warning"> 0 </span> 
-                                        <span className=" fw-normal cartFont">Cart</span> 
-                                    </i>
-                                    
-                                </div>
-                            </Link>
+                    <Link to="/cart" className="borderWhite">
+                        <div>
+                            <i className="fa-solid fa-cart-shopping cartIcon "> 
+                                <span className=" fw-normal text-warning"> 0 </span> 
+                                <span className=" fw-normal cartFont">Cart</span> 
+                            </i>
                         </div>
-                    </Form>
-                </Navbar.Collapse>
+                    </Link>
+                    
+                </div>
 
-            </Container>
-        </Navbar>
-            
+            </div>
+        </nav>
+
         <div className=" table-responsive text-light pt-2 NavBottom" >
-                <ul className="d-flex flex-row fs-5">
+                <ul className="d-flex ">
                     {
                         uniqueCategory.map((item,index)=>{
                             return(

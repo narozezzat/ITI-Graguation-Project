@@ -15,7 +15,7 @@ export default function ProductDetails(props) {
         <>
         <div className="row me-0 mt-5 mb-3">
 
-            <div className="col-5  left border row">
+            <div className="col-11 col-lg-5 col-md-8 mx-auto mb-2 mb-lg-0 left border row">
 
                 <ul className="col-2">
                     {
@@ -34,10 +34,10 @@ export default function ProductDetails(props) {
             
             </div>
 
-            <div className="col-5 center border">
+            <div className="col-11 col-lg-5 col-md-7 mx-auto mb-2 mb-lg-0 mb-md-0 center border">
                 <div className="ms-2">   
                     <p className="mb-1 p-2 fw-semibold fs-5">{item.description}</p>
-                    <p>Vist ( Store name ) Store</p>
+                    <a href="#1">Vist ( Store name ) Store</a>
                     <StarsRating Rating={item.rating} />
                 </div>
 
@@ -78,14 +78,15 @@ export default function ProductDetails(props) {
                     <span className="fw-semibold">About this item</span>
                     <ul>
                         <li>Talk from sunrise to sunset - Maximum standby battery life of up to 35 days </li>
-                        <li>Talk from sunrise to sunset - Maximum standby battery life of up to 35 days and 15 hours talk time on a single charge</li>
+                        <li>Talk from sunrise to sunset - Maximum standby battery life of up to 35 days
+                            and 15 hours talk time on a single charge</li>
                         <li>Talk from sunrise to sunset -  and 15 hours talk time on a single charge</li>
                     </ul>
                 </div>
 
             </div>
 
-            <div className="col-2  right border">
+            <div className="col-10 col-lg-2 col-md-4 mx-auto right border py-2">
                 <div>
                     <span>
                         <sup className="" style={{fontSize:"12px"}}> EGP </sup> 

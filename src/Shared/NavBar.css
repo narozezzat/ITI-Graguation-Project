@@ -56,12 +56,12 @@
 
 .NavBottom {
   background-color: #232f3e;
-  height: 40px;
+  /* height: 40px; */
 }
 
-.cartFont{
+/* .cartFont{
   font-size: 8px;
-}
+} */
 
 
 /* SEARCHBOX */
@@ -103,3 +103,7 @@
   color: #000;
 }
 
+.listNavBar a{
+  text-decoration: none !important;
+  color: black !important;
+}
