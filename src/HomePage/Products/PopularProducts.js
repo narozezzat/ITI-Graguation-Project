@@ -40,7 +40,7 @@ function PopularProducts() {
         },
     ]
 
-    console.log(data[0])
+    // console.log(data[0])
   return (
     <>
       <div className="todaysDealsContainer text-nowrap">

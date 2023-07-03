@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import Rating from "react-rating"
+// import Rating from "react-rating"
 import { useNavigate } from "react-router-dom"
 import StarsRating from "../Shared/StarsRating"
 // import Rating from "react-rating"
@@ -17,9 +17,6 @@ export default function SingleProduct() {
         fetchAxios();
     },[])
 
-
-
-
     const navigate = useNavigate();
     
     const singleMove = ((item) => {
@@ -29,6 +26,7 @@ export default function SingleProduct() {
             }
         })
     })
+
     return(
         <>
         <div className="row mx-auto pt-3 ">
