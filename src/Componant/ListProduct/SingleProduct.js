@@ -2,7 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 // import Rating from "react-rating"
 import { useNavigate } from "react-router-dom"
-import StarsRating from "../Shared/StarsRating"
+import StarsRating from "../../Componant/Shared/StarsRating"
 // import Rating from "react-rating"
 
 export default function SingleProduct() {

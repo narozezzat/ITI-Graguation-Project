@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom";
-import Login from "../Regestration/Login";
-import SignUp from "../Regestration/Signup";
-import MainPage from "../HomePage/MainPage";
-import ListProduct from "../ListProduct/ListProduct";
-import MainProductDetails from "../ViewProduct/MainProductDetails";
-import Forget from "../Regestration/forget";
+import Login from "../Componant/Regestration/Login";
+import SignUp from "../Componant/Regestration/Signup";
+import MainPage from "../Componant/HomePage/MainPage";
+import ListProduct from "../Componant/ListProduct/ListProduct";
+import MainProductDetails from "../Componant/ViewProduct/MainProductDetails";
+import Forget from "../Componant/Regestration/forget";
 
 export default function Router() {
 

@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import "../Deals/Deals.css"
-import img1 from '../../assets/Images/img1.jpg'
-import img2 from '../../assets/Images/img2.jpg'
-import img3 from '../../assets/Images/img3.jpg'
-import img4 from '../../assets/Images/img4.jpg'
-import img5 from '../../assets/Images/img5.jpg'
-import img6 from '../../assets/Images/img6.jpg'
-import img7 from '../../assets/Images/img7.jpg'
+import img1 from '../../../assets/Images/img1.jpg'
+import img2 from '../../../assets/Images/img2.jpg'
+import img3 from '../../../assets/Images/img3.jpg'
+import img4 from '../../../assets/Images/img4.jpg'
+import img5 from '../../../assets/Images/img5.jpg'
+import img6 from '../../../assets/Images/img6.jpg'
+import img7 from '../../../assets/Images/img7.jpg'
 
 function PopularProducts() {
     const data = [
