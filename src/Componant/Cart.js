@@ -1,6 +1,5 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import img1 from "../assets/Images/img1.jpg"
 
 export default function Cart(){
 
