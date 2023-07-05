@@ -5,6 +5,7 @@ import MainPage from "../Componant/HomePage/MainPage";
 import ListProduct from "../Componant/ListProduct/ListProduct";
 import MainProductDetails from "../Componant/ViewProduct/MainProductDetails";
 import Forget from "../Componant/Regestration/forget";
+import Cart from "../Componant/Cart";
 
 export default function Router() {
 
@@ -23,6 +24,7 @@ export default function Router() {
             <Route path="/MainProductDetails/:id" element={ <MainProductDetails/> }></Route>
             {/* <Route path="/MainProductDetails" element={ <MainProductDetails/> }></Route> */}
             <Route path="/MainPage" element={ <MainPage/> }></Route>
+            <Route path="/Cart" element={ <Cart/> }></Route>
             
         </Routes>
     </div>

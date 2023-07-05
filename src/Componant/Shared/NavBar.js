@@ -156,7 +156,7 @@ return (
 
                 <Link className="text-light borderWhite" style={{ textDecoration: "none" }} to="/"> Order </Link>
 
-                <Link to="/cart" className="borderWhite">
+                <Link to="/Cart" className="borderWhite">
                     <div>
                         <i className="fa-solid fa-cart-shopping cartIcon "> 
                             <span className=" fw-normal text-warning"> 0 </span> 

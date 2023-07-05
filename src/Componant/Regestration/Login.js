@@ -6,7 +6,7 @@ export default function Login() {
 
     const { register, handleSubmit,watch,formState:{errors} } = useForm();
     const onSubmit = data => console.log(data)
-    console.log(watch('name'))
+    // console.log(watch('name'))
 
     return(
         <>
@@ -50,9 +50,9 @@ export default function Login() {
                             placeholder="Enter password" />
                             <div id="emailHelp" className="form-text text-danger">
                             <small className="form-text text-danger">
-                              {errors.password?.type ==='minLength' && " Your password must be at least 8 characters long"} 
-                              {errors.password?.type ==='required' && " We'll never share your Password with anyone else"} 
-                              {errors.password?.type ==='pattern' && " must include at least one lowercase letter, one uppercase letter, one number, and one special symbol."}
+                                {errors.password?.type ==='minLength' && " Your password must be at least 8 characters long"} 
+                                {errors.password?.type ==='required' && " We'll never share your Password with anyone else"} 
+                                {errors.password?.type ==='pattern' && " must include at least one lowercase letter, one uppercase letter, one number, and one special symbol."}
                             </small>
                             </div>
                         </div>
