@@ -1,9 +1,12 @@
-import { Link } from "react-router-dom";
+
+// import { Link } from "react-router-dom";
+
 import { useForm } from "react-hook-form";
 
-export default function SignUp() {
+export default function PaymentPage(){
 
     const { register, handleSubmit,watch,formState:{errors} } = useForm();
+
     const onSubmit = data => console.log(data)
     // console.log(watch('name'))
     const password = watch("password");
@@ -12,28 +15,19 @@ export default function SignUp() {
     const passwordMatch = (value) => {
     return value === password || "Passwords do not match";
     }
-    
+
     return(
-        <>
-        <div className="container">
-            <Link to="/MainPage">
-                <div className="row d-flex justify-content-center align-items-center">
-                <img style={{width:'150px'}} 
-                            src="https://marcas-logos.net/wp-content/uploads/2020/01/Amazon-Logo-1-1536x960.jpg"
-                            className=" "
-                            alt=""
-                        />
-                </div>
-            </Link>
+        <div className="">
+            <div className="text-center text-black fw-semibold py-3 fs-4 ">
+                Checkout (<span className="fw-normal" style={{color:"#007185"}}>2 items</span>)
+            </div>
 
-            <div className="row justify-content-center">
-                <div className="col-md-6">
-                    <div className="card">
-                        <div className="card-header">
-                            <h4 className="text-center">Create account</h4>
-                        </div>
+            <hr className="m-0"/>
 
-                        <div className="card-body">
+            <div className="container">
+                <span className="text-danger fw-bold fs-5">1 Enter a new shipping address</span>
+
+                <div className="card-body">
                             <form id='form' onSubmit={handleSubmit(onSubmit)} className="form-group row">
                                 <div className="mb-3">
                                     <label  className="form-label"><b>Your name</b></label>
@@ -99,18 +93,10 @@ export default function SignUp() {
                             </form>
                         </div>
 
-                        <div className="card-footer text-center">
-                            <p className="mb-0">
-                                <small>Already have account!</small>
-                                <Link className="btn btn-primary" to="/Login">Sing in</Link>
-                            </p>
-                        </div>
 
-                    </div>
-                </div>
-            </div>    
+            </div>
+
         </div>
-        </>
     )
-}
 
+}

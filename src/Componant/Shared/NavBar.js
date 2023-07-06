@@ -32,7 +32,7 @@ export default function NavBar() {
     }, []);
 
 return (
-<>
+<div className="sticky-top">
     <nav className="navbar navbar-expand-lg bg-black">
         <div className="container-fluid">
             
@@ -182,6 +182,6 @@ return (
             </ul>
     </div>
 
-</>
+</div>
 )
 }

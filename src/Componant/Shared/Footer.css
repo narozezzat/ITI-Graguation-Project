@@ -44,7 +44,7 @@
   }
   
   .footerVerticalColumnHead {
-    font-size: 15px;
+    font-size: 18px;
     margin: 6px 0 30px 0;
     white-space: nowrap;
     font-weight: 700;
@@ -59,18 +59,18 @@
     cursor: pointer;
   }
   
-  .footerLast {
+  /* .footerLast {
     display: flex;
     padding: 10px 0;
     justify-content: center;
-  }
+  } */
   
-  .footerMessage {
+  /* .footerMessage {
     align-items: center;
     font-size: 120%;
     display: flex;
     padding-top: 50px;
-  }
+  } */
   .lie{
     text-decoration: none;
     color: white;

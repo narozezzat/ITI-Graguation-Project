@@ -6,6 +6,7 @@ import ListProduct from "../Componant/ListProduct/ListProduct";
 import MainProductDetails from "../Componant/ViewProduct/MainProductDetails";
 import Forget from "../Componant/Regestration/forget";
 import Cart from "../Componant/Cart";
+import PaymentPage from "../Componant/Payment/PaymentPage";
 
 export default function Router() {
 
@@ -25,6 +26,7 @@ export default function Router() {
             {/* <Route path="/MainProductDetails" element={ <MainProductDetails/> }></Route> */}
             <Route path="/MainPage" element={ <MainPage/> }></Route>
             <Route path="/Cart" element={ <Cart/> }></Route>
+            <Route path="/PaymentPage" element={ <PaymentPage/> }></Route>
             
         </Routes>
     </div>

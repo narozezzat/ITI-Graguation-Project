@@ -1,4 +1,6 @@
 import axios from "axios"
+import { Link } from "react-router-dom";
+
 import { useEffect, useState } from "react"
 
 export default function Cart(){
@@ -22,7 +24,9 @@ export default function Cart(){
             <div className="fs-4 fw-bold mb-3">Shopping Cart</div>
             <div className=" mb-3">
                 <div className="fs-5">Subtotal (lenght): <span className="fw-bold">EGP 170.00</span></div>
-                <button className="btn btn-warning w-100" >Proceed to Buy</button>
+                {/* <button className="btn btn-warning w-100" >Proceed to Buy</button> */}
+                <Link className="btn btn-warning w-100"  to="/PaymentPage"> Proceed to Buy </Link>
+
             </div>
         </div>
 

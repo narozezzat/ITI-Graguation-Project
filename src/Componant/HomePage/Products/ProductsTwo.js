@@ -31,7 +31,7 @@ function ProductsTwo() {
           {
             data.map((item, index) => {
               return (
-                <div className="card col-md-3 bg-light" key={index}>
+                <div className="card col-12 col-md-6 col-lg-3 bg-light" key={index}>
                   <h5 className="card-title mt-3">{item.title}</h5>
                   <img className="card-img-top mt-3" src={item.image} alt="" />
                   <Link className="my-4 lin">
