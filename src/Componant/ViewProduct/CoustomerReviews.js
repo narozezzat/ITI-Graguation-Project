@@ -1,6 +1,8 @@
 import StarsRating from "../Shared/StarsRating";
 
-export default function CoustomerReviews(){
+export default function CoustomerReviews(props){
+    const item = props.singleProduct.singleProduct
+    console.log(item)
 
 
     return(
@@ -10,7 +12,7 @@ export default function CoustomerReviews(){
             <div className="col-4  left">
                 <div className=" p-2">
                     <h2>Customer Reviews</h2>
-                    <span> <StarsRating Rating={4}/>  3.9 out of 5</span>
+                    <span> <StarsRating Rating={item.ratingAverage}/> {item.ratingAverage} out of 5</span>
                 </div>
 
                 <hr/>

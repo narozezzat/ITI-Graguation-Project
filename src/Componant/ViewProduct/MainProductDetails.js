@@ -1,10 +1,8 @@
-// import axios from "axios"
-// import { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom";
 import CoustomerReviews from "./CoustomerReviews"
 import ProductDetails from "./ProductDetails"
-import Rating from "react-rating";
-import StarsRating from "../Shared/StarsRating";
+// import Rating from "react-rating";
+// import StarsRating from "../Shared/StarsRating";
 
 export default function MainProductDetails() {
 
@@ -14,7 +12,7 @@ export default function MainProductDetails() {
     return(
         <>
         <ProductDetails singleProduct={{singleProduct}} />
-        <CoustomerReviews/>
+        <CoustomerReviews singleProduct={{singleProduct}}/>
         </>
     )
     
