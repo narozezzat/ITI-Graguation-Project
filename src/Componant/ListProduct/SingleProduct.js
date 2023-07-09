@@ -1,10 +1,7 @@
-import axios from "axios"
 import { useEffect, useState } from "react"
-// import Rating from "react-rating"
 import { useNavigate } from "react-router-dom"
 import StarsRating from "../../Componant/Shared/StarsRating"
 import BaseURL from "../../BaseURL.js"
-// import Rating from "react-rating"
 
 export default function SingleProduct() {
     const [ allProduct, setAllProduct]=useState([])

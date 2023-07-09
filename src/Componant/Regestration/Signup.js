@@ -1,10 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import BaseURL from "../../BaseURL.js";
 
 export default function SignUp() {
+    const navigate = useNavigate();
 
     const { register, handleSubmit,watch,formState:{errors} } = useForm();
-    const onSubmit = data => console.log(data)
+
+    const onSubmit = async userData => {
+        const response = await BaseURL.post('/api/auth/signup', userData)
+        console.log(response) 
+
+        if(response){
+            navigate(`/Login`)
+        }
+    
+    }
+
     // console.log(watch('name'))
     const password = watch("password");
      // const confirm = watch("confirm");
@@ -82,12 +94,12 @@ export default function SignUp() {
                                     <label  className="form-label"><b>Re-enter password</b></label>
                                     <input type="password" 
                                     className="form-control"
-                                    {...register('confirm',{ required: true, minLength: 8, validate: passwordMatch })}
+                                    {...register('confirmPassword',{ required: true, minLength: 8, validate: passwordMatch })}
                                     placeholder="Confirm password"
                                     />
                                     <div id="emailHelp" className="form-text text-danger">
                                     <small className="form-text text-danger">
-                                        {errors.confirm?.type ==='validate' && " Passwords do not match"}
+                                        {errors.confirmPassword?.type ==='validate' && " Passwords do not match"}
                                     </small>
                                     </div>
                                 </div>

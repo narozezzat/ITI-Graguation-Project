@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import BaseURL from "../../BaseURL.js";
 
 
 export default function Login() {
 
-    const { register, handleSubmit,watch,formState:{errors} } = useForm();
-    const onSubmit = data => console.log(data)
-    // console.log(watch('name'))
-
+    const { register, handleSubmit,formState:{errors} } = useForm();
+    const onSubmit =async userData => {
+        const response = await BaseURL.post('/api/auth/login', userData)
+        document.cookie = `token=${response.data.token}`;
+    }
     return(
         <>
         <div className="container">
