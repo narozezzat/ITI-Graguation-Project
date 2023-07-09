@@ -114,7 +114,7 @@ export default function SignUp() {
                         <div className="card-footer text-center">
                             <p className="mb-0">
                                 <small>Already have account!</small>
-                                <Link className="btn btn-primary" to="/Login">Sing in</Link>
+                                <Link className="btn btn-primary ms-2" to="/Login">Login </Link>
                             </p>
                         </div>
 

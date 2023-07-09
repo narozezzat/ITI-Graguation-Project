@@ -7,11 +7,17 @@ export default function ResetPassword() {
     const navigate = useNavigate();
     const { register, handleSubmit,formState:{errors} } = useForm();
     const onSubmit =async userData => {
-        const response = await BaseURL.post('/api/auth/resetPassword', userData)
-        console.log(response)
-        if(response){
-            navigate(`/Login`)
+        console.log(userData)
+        try {
+            const response = await BaseURL.put('/api/auth/resetPassword', userData)
+            console.log(response)
+            if(response){
+                navigate(`/Login`)
+            }
+        } catch (error) {
+            console.log(error);
         }
+
     
     }
     return(

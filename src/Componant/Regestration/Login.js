@@ -1,14 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import BaseURL from "../../BaseURL.js";
 
 
 export default function Login() {
+    const navigate = useNavigate();
 
     const { register, handleSubmit,formState:{errors} } = useForm();
     const onSubmit =async userData => {
         const response = await BaseURL.post('/api/auth/login', userData)
         document.cookie = `token=${response.data.token}`;
+        
+        if(response){
+            navigate(`/MainPage`)
+        }
     }
     return(
         <>
