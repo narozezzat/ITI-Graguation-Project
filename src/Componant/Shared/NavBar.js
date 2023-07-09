@@ -1,38 +1,21 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
+import BaseURL from "../../BaseURL.js";
 
 export default function NavBar() {
-
-    const [allProduct, setAllProduct] = useState([]);
-    const [uniqueCategory, setUniqueCategory] = useState([]);
-
-    const SimilarCategory = allProduct.map((item)=>item.category)
-
-    const fetchAxios = async ()=>{
-        const response = await axios.get('https://dummyjson.com/products')
-        setAllProduct(response.data.products)
-        
+    const [allCategory, setAllCategory] = useState([]);
+    const get = async ()=>{
+        const response = await BaseURL.get('/api/category')
+        setAllCategory(response.data.data)
     }
-
-    SimilarCategory.forEach((item) => {
-        if (!uniqueCategory.includes(item)) {
-        // console.log(uniqueCategory)
-        uniqueCategory.push(item);
-        // setUniqueCategory([...uniqueCategory,item])
-        // console.log(uniqueCategory)
-
-        }
-    });
-
     useEffect(() => {
-        fetchAxios();
-        
+        get();
     }, []);
 
 return (
 <div className="sticky-top">
+
     <nav className="navbar navbar-expand-lg bg-black">
         <div className="container-fluid">
             
@@ -45,10 +28,6 @@ return (
                 />
                 <span className="dotIn text-light">.in</span>
                 </div>
-            </Link>
-
-            <Link className="nav-link text-light" to="/ListProduct">
-                List Product
             </Link>
 
             <button className="navbar-toggler bg-light runded-5" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -171,15 +150,16 @@ return (
     </nav>
 
     <div className=" table-responsive text-light pt-2 NavBottom" >
-            <ul className="d-flex ">
-                {
-                    uniqueCategory.map((item,index)=>{
-                        return(
-                        <button key={index} className="mx-2 list-group-item btn" ><small>{item}</small></button>
-                        )
-                    })
-                }
-            </ul>
+        <ul className="d-flex ">
+        <Link  className="mx-2 list-group-item btn fs-5" to="/ListProduct"><small>all</small></Link>
+            {
+            allCategory.map((item,index)=>{
+                return(
+                <Link key={index} className="mx-2 list-group-item btn" to="/ListProduct"><small>{item.name}</small></Link>
+                )
+            })
+            }
+        </ul>
     </div>
 
 </div>

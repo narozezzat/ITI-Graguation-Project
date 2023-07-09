@@ -19,21 +19,21 @@ export default function ListProduct() {
 
     // console.log(uniqueCategory)
 
-    const fetchAxios = async ()=>{
-        const response = await axios.get('https://dummyjson.com/products')
-        setAllProduct(response.data.products)
+    // const fetchAxios = async ()=>{
+    //     const response = await axios.get('https://dummyjson.com/products')
+    //     setAllProduct(response.data.products)
 
-    }
+    // }
     
-    useEffect(()=>{
-        fetchAxios();
+    // useEffect(()=>{
+    //     fetchAxios();
         
-    },[])
+    // },[])
 
     return (
         <>
         {/* Start navbar category*/}
-            <div className=" table-responsive " >
+            {/* <div className=" table-responsive " >
                     <ul className="d-flex flex-row pt-3 " style={{"fontSize": "13px"}}>
                         {
                             uniqueCategory.map((item,index)=>{
@@ -44,7 +44,7 @@ export default function ListProduct() {
                         }
                     </ul>
                     <hr/>
-            </div>
+            </div> */}
         {/* End navbar category*/}
 
             <SingleProduct/>
