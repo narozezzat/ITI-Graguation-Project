@@ -8,12 +8,18 @@ export default function SignUp() {
     const { register, handleSubmit,watch,formState:{errors} } = useForm();
 
     const onSubmit = async userData => {
-        const response = await BaseURL.post('/api/auth/signup', userData)
-        console.log(response) 
-
-        if(response){
+        try {
+            const response = await BaseURL.post('/api/auth/signup', userData)
+            console.log(response) 
             navigate(`/Login`)
+        } catch (error) {
+            console.log(error)
         }
+
+
+        // if(response){
+        
+        // }
     
     }
 

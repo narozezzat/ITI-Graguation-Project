@@ -2,14 +2,32 @@
 // import { useEffect, useState } from "react"
 // import { useLocation } from "react-router-dom";
 
+import { json } from "react-router-dom";
+import BaseURL from "../../BaseURL.js";
 import StarsRating from "../Shared/StarsRating"
 
 export default function ProductDetails(props) {
 
 
     const item = props.singleProduct.singleProduct
-    // console.log(item)
+    // console.log(item._id)
 
+    const AddProduct= async (id)=>{
+        console.log(id)
+        const token = document.cookie.split(';').find(cookie => cookie.startsWith('token')).split('=')[1];
+        // console.log(token)
+        // const userData =JSON.stringify({productId:id})
+        const response = await BaseURL.post('/api/cart',
+            {
+                productId: id
+            },
+            {
+                headers: {
+                'Authorization': `Bearer ${token}`
+                }
+            })
+        console.log(response)
+    }
 
     return(
         <>
@@ -38,7 +56,7 @@ export default function ProductDetails(props) {
                     <div className="ms-2">   
                         <p className="mb-1 p-2 fw-semibold fs-5">{item.title}</p>
                         {/* <a href="#1">Vist ( Store name ) Store</a> */}
-                        <StarsRating Rating={item.ratingAverage} />
+                        {/* <StarsRating Rating={item.ratingAverage} /> */}
                     </div>
 
                     <hr/>
@@ -108,7 +126,7 @@ export default function ProductDetails(props) {
                             <span>Qty 2</span>
                         </div>
 
-                        <button className="btn btn-warning mb-1 col-12">
+                        <button className="btn btn-warning mb-1 col-12" onClick={()=>AddProduct(item._id)}>
                             Add To Cart 
                         </button>
                         <br/>

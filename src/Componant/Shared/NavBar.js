@@ -17,12 +17,7 @@ export default function NavBar() {
 
 
     const SignOut = () => {
-        console.log("0")
-        document.cookie = `token= `;
-        console.log("1")
-        navigate(`/MainPage`)
-        console.log("2")
-
+        localStorage.removeItem("token")
     }
     
     return (
@@ -135,7 +130,7 @@ export default function NavBar() {
                                 </li>
 
                                 <li>
-                                    <Link className="" to="/Login" onClick={SignOut}>
+                                    <Link className="" to="/MainPage" onClick={SignOut}>
                                         Sign Out
                                     </Link>
                                 </li>

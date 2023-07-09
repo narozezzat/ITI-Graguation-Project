@@ -2,18 +2,38 @@ import axios from "axios"
 import { Link } from "react-router-dom";
 
 import { useEffect, useState } from "react"
+import BaseURL from "../BaseURL.js";
 
 export default function Cart(){
-
     const [ cart, setCart]=useState([])
 
+    const token = document.cookie.split(';').find(cookie => cookie.startsWith('token')).split('=')[1];
+
     const fetchAxios = async ()=>{
-        const response = await axios.get('https://dummyjson.com/products')
-        setCart(response.data.products)
+        const response = await BaseURL.get('api/cart',
+        {
+            headers: {
+            'Authorization': `Bearer ${token}`
+            }
+        })
+        // console.log(response.data.data.cartItems.forEach(item => {
+        //     item
+        // }))
     }
-    
+
+    const getSpacifcProduct = async ()=>{
+        const response = await BaseURL.get(`/api/products`,
+        {
+            headers: {
+            'Authorization': `Bearer ${token}`
+            }
+        })
+        setCart(response.data.data)
+    }
+
     useEffect(()=>{
         fetchAxios();
+        getSpacifcProduct()
     },[])
 
 
@@ -31,7 +51,7 @@ export default function Cart(){
         </div>
 
         <hr className="mt-0"/>
-        {
+        {/* {
             cart.map((item,index)=>{
                 return(
                     <>
@@ -61,7 +81,7 @@ export default function Cart(){
                     </>
                 )
             })
-        }
+        } */}
 
 
 

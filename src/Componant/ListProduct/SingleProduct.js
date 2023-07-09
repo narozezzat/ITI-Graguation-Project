@@ -5,7 +5,7 @@ import BaseURL from "../../BaseURL.js"
 
 export default function SingleProduct() {
     const [ allProduct, setAllProduct]=useState([])
-
+    console.log(allProduct)
     const fetchAxios = async ()=>{
         const response = await BaseURL.get('/api/products')
         setAllProduct(response.data.data)
@@ -46,7 +46,7 @@ export default function SingleProduct() {
                                             <span className="fs-4 fw-semibold">{item.price}</span>
                                             <sup className="" style={{fontSize:"12px"}}> 00 </sup> 
                                         </p>
-                                        <StarsRating Rating={item.ratingAverage}/>
+                                        {/* <StarsRating Rating={item.ratingAverage}/> */}
                                     </div>
                                 </div>
                             </div>

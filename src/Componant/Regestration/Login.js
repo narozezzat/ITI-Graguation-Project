@@ -8,12 +8,18 @@ export default function Login() {
 
     const { register, handleSubmit,formState:{errors} } = useForm();
     const onSubmit =async userData => {
-        const response = await BaseURL.post('/api/auth/login', userData)
-        document.cookie = `token=${response.data.token}`;
-        
-        if(response){
-            navigate(`/MainPage`)
+        try {
+            const response = await BaseURL.post('/api/auth/login', userData)
+            localStorage.setItem("token",response.data.token)
+            
+            if(response){
+                navigate(`/MainPage`)
+            }
+
+        } catch (error) {
+            console.log(error.response.data.message)
         }
+
     }
     return(
         <>
