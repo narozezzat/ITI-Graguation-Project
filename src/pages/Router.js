@@ -7,6 +7,8 @@ import MainProductDetails from "../Componant/ViewProduct/MainProductDetails";
 import Forget from "../Componant/Regestration/forget";
 import Cart from "../Componant/Cart";
 import PaymentPage from "../Componant/Payment/PaymentPage";
+import ResetCode from "../Componant/Regestration/ResetCode";
+import ResetPassword from "../Componant/Regestration/ResetPassword";
 
 export default function Router() {
 
@@ -20,10 +22,10 @@ export default function Router() {
             <Route path="/Login" element={ <Login/> }></Route>
             <Route path="/SignUp" element={ <SignUp/> }></Route>
             <Route path="/Forget" element={ <Forget/>}></Route>
-
+            <Route path="/ResetCode" element={ <ResetCode/>}></Route>
+            <Route path="/ResetPassword" element={ <ResetPassword/>}></Route>
             <Route path="/ListProduct" element={ <ListProduct/> }></Route>
             <Route path="/MainProductDetails/:id" element={ <MainProductDetails/> }></Route>
-            {/* <Route path="/MainProductDetails" element={ <MainProductDetails/> }></Route> */}
             <Route path="/MainPage" element={ <MainPage/> }></Route>
             <Route path="/Cart" element={ <Cart/> }></Route>
             <Route path="/PaymentPage" element={ <PaymentPage/> }></Route>

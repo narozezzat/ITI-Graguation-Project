@@ -27,7 +27,7 @@ export default function Login() {
                 <div className="col-md-6">
                     <div className="card">
                     <div className="card-header">
-                        <h4 className="text-center">Sing in</h4>
+                        <h4 className="text-center">Logn in</h4>
                     </div>
                     <div className="card-body">
                         <form id='form' onSubmit={handleSubmit(onSubmit)} className="form-group row">

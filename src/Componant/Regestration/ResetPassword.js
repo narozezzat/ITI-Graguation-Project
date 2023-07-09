@@ -3,20 +3,17 @@ import { useForm } from "react-hook-form";
 import BaseURL from "../../BaseURL.js";
 
 
-export default function Forget() {
+export default function ResetPassword() {
     const navigate = useNavigate();
-
-    const { register, handleSubmit,watch,formState:{errors} } = useForm();
+    const { register, handleSubmit,formState:{errors} } = useForm();
     const onSubmit =async userData => {
-        const response = await BaseURL.post('/api/auth/forgetPassword', userData)
+        const response = await BaseURL.post('/api/auth/resetPassword', userData)
         console.log(response)
-        
         if(response){
-            navigate(`/ResetCode`)
+            navigate(`/Login`)
         }
-    }
-    // console.log(watch('name'))
     
+    }
     return(
         <>
         <div className="container">
@@ -34,8 +31,7 @@ export default function Forget() {
                 <div className="col-md-6">
                     <div className="card">
                     <div className="card-header">
-                        <h4 className="text-center">Password assistance</h4>
-                        <p className="text-center">Enter the email address associated with your Amazon account.</p>
+                        <h4 className="text-center">Reset Password</h4>
                     </div>
                     <div className="card-body">
                         <form id='form' onSubmit={handleSubmit(onSubmit)} className="form-group row">
@@ -52,19 +48,24 @@ export default function Forget() {
                             </small>
                             </div>
                         </div>
+                        <div className="mb-3">
+                            <label className="form-label"><b>Password</b></label>
+                            <input type="password" 
+                            className="form-control" 
+                            {...register('password',{required: true,minLength : 8 , pattern:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/})}
+                            placeholder="Enter password" />
+                            <div id="emailHelp" className="form-text text-danger">
+                            <small className="form-text text-danger">
+                                {errors.password?.type ==='minLength' && " Your password must be at least 8 characters long"} 
+                                {errors.password?.type ==='required' && " We'll never share your Password with anyone else"} 
+                                {errors.password?.type ==='pattern' && " must include at least one lowercase letter, one uppercase letter, one number, and one special symbol."}
+                            </small>
+                            </div>
+                        </div>
                         <div className="d-grid gap-2">
                             <button type="submit" className="btn btn-warning">Continue</button>
                         </div>
                         </form>
-                    </div>
-                    <div className="card-footer text-center">
-                    <div className="mb-3 card-header">
-                        <h6 className="text-center">Has your email changed?</h6>
-                        <p className="text-center">If you no longer use the email address associated with your Amazon account, you may contact Customer Service for help restoring access to your account.</p>
-                    </div>
-                        <p className="mb-0"><Link className="btn btn-secondary" to="/SignUp">
-                        Create your Amazon account
-                                </Link></p>
                     </div>
                     </div>
                 </div>

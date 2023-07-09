@@ -3,19 +3,19 @@ import { useForm } from "react-hook-form";
 import BaseURL from "../../BaseURL.js";
 
 
-export default function Forget() {
+export default function ResetCode() {
+
     const navigate = useNavigate();
 
-    const { register, handleSubmit,watch,formState:{errors} } = useForm();
+    const { register, handleSubmit,formState:{errors} } = useForm();
     const onSubmit =async userData => {
-        const response = await BaseURL.post('/api/auth/forgetPassword', userData)
+        const response = await BaseURL.post('/api/auth/resetCode', userData)
         console.log(response)
-        
         if(response){
-            navigate(`/ResetCode`)
-        }
+            navigate(`/ResetPassword`)
+        } 
     }
-    // console.log(watch('name'))
+
     
     return(
         <>
@@ -34,21 +34,19 @@ export default function Forget() {
                 <div className="col-md-6">
                     <div className="card">
                     <div className="card-header">
-                        <h4 className="text-center">Password assistance</h4>
-                        <p className="text-center">Enter the email address associated with your Amazon account.</p>
+                        <h4 className="text-center">Reset Code</h4>
                     </div>
                     <div className="card-body">
                         <form id='form' onSubmit={handleSubmit(onSubmit)} className="form-group row">
                         <div className="mb-3">
-                            <label  className="form-label"><b>Email address</b></label>
+                            <label  className="form-label"><b>Enter The Reset Code</b></label>
                             <input type="text" 
                             className="form-control" 
-                            {...register('email',{required:true , pattern:/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/})}
-                            placeholder="Enter email"/>
+                            {...register('resetCode',{required:true})}
+                            placeholder="Enter The Reset Code "/>
                             <div id="emailHelp" className="form-text text-danger">
                             <small className="form-text text-danger" >
-                                {errors.email?.type === 'required' && "We'll never share your Email with anyone else"}
-                                {errors.email?.type === 'pattern' && "Email must   letters ( uppercase and lowercase), Numbers, @ , $ , . , - . EX: abc.12@gmail.com"}
+                                {errors.resetCode?.type === 'required' && "We'll never share your Email with anyone else"}
                             </small>
                             </div>
                         </div>
@@ -57,15 +55,7 @@ export default function Forget() {
                         </div>
                         </form>
                     </div>
-                    <div className="card-footer text-center">
-                    <div className="mb-3 card-header">
-                        <h6 className="text-center">Has your email changed?</h6>
-                        <p className="text-center">If you no longer use the email address associated with your Amazon account, you may contact Customer Service for help restoring access to your account.</p>
-                    </div>
-                        <p className="mb-0"><Link className="btn btn-secondary" to="/SignUp">
-                        Create your Amazon account
-                                </Link></p>
-                    </div>
+
                     </div>
                 </div>
             </div>    
