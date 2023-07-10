@@ -6,8 +6,13 @@ import BaseURL from "../../../BaseURL.js";
 function Deals() {
   const [allCategory, setAllCategory] = useState([]);
   const get = async ()=>{
+    try {
       const response = await BaseURL.get('/api/category')
       setAllCategory(response.data.data)
+    } catch (error) {
+      console.log(error.response.data.message)
+    }
+
   }
   useEffect(() => {
       get();

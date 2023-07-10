@@ -8,12 +8,17 @@ export default function Forget() {
 
     const { register, handleSubmit,watch,formState:{errors} } = useForm();
     const onSubmit =async userData => {
-        const response = await BaseURL.post('/api/auth/forgetPassword', userData)
-        console.log(response)
-        
-        if(response){
-            navigate(`/ResetCode`)
+        try {
+            const response = await BaseURL.post('/api/auth/forgetPassword', userData)
+            console.log(response)
+            
+            if(response){
+                navigate(`/ResetCode`)
+            }
+        } catch (error) {
+            console.log(error.response.data.message)
         }
+
     }
     // console.log(watch('name'))
     

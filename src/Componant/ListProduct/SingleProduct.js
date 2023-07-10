@@ -4,8 +4,10 @@ import StarsRating from "../../Componant/Shared/StarsRating"
 import BaseURL from "../../BaseURL.js"
 
 export default function SingleProduct() {
+    const navigate = useNavigate();
     const [ allProduct, setAllProduct]=useState([])
     console.log(allProduct)
+
     const fetchAxios = async ()=>{
         const response = await BaseURL.get('/api/products')
         setAllProduct(response.data.data)
@@ -15,7 +17,6 @@ export default function SingleProduct() {
         fetchAxios();
     },[])
 
-    const navigate = useNavigate();
     
     const singleMove = ((item) => {
         navigate(`/MainProductDetails/${item.id}`, {

@@ -9,11 +9,16 @@ export default function ResetCode() {
 
     const { register, handleSubmit,formState:{errors} } = useForm();
     const onSubmit =async userData => {
-        const response = await BaseURL.post('/api/auth/resetCode', userData)
-        console.log(response)
-        if(response){
-            navigate(`/ResetPassword`)
-        } 
+        try {
+            const response = await BaseURL.post('/api/auth/resetCode', userData)
+            console.log(response)
+            if(response){
+                navigate(`/ResetPassword`)
+            } 
+        } catch (error) {
+            console.log(error.response.data.message)
+        }
+
     }
 
     

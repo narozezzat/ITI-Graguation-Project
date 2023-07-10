@@ -5,8 +5,11 @@ import BaseURL from "../BaseURL.js";
 
 export default function Cart(){
     const [cart , setCart]= useState()
+
     const token = localStorage.getItem("token");
+
     console.log(cart)
+    
     const getProductFromCart = async ()=>{
         try {
             const response = await BaseURL.get('api/cart',
