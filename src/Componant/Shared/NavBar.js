@@ -5,21 +5,27 @@ import BaseURL from "../../BaseURL.js";
 
 export default function NavBar() {
     const navigate = useNavigate();
-    
     const [allCategory, setAllCategory] = useState([]);
+
     const get = async ()=>{
         const response = await BaseURL.get('/api/category')
         setAllCategory(response.data.data)
     }
+
     useEffect(() => {
         get();
     }, []);
 
-
     const SignOut = () => {
         localStorage.removeItem("token")
     }
-    
+
+    const showProductByCategory = (id)=>{
+        // console.log("id")
+        // console.log(id)
+        navigate(`/ListProduct${id}`)
+    }
+
     return (
         <div className="sticky-top">
 
@@ -162,7 +168,7 @@ export default function NavBar() {
                     {
                     allCategory.map((item,index)=>{
                         return(
-                        <Link key={index} className="mx-2 list-group-item btn" to="/ListProduct"><small>{item.name}</small></Link>
+                        <button key={index} className="mx-2 list-group-item btn"><small onClick={()=>showProductByCategory(item._id)}>{item.name}</small></button>
                         )
                     })
                     }

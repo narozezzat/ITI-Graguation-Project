@@ -14,10 +14,11 @@ export default function ProductDetails(props) {
 
     const AddProduct= async (id)=>{
         console.log(id)
-        const token = document.cookie.split(';').find(cookie => cookie.startsWith('token')).split('=')[1];
-        // console.log(token)
+        const token = localStorage.getItem("token");
+        console.log(token)
         // const userData =JSON.stringify({productId:id})
-        const response = await BaseURL.post('/api/cart',
+        try {
+            const response = await BaseURL.post('/api/cart',
             {
                 productId: id
             },
@@ -27,6 +28,10 @@ export default function ProductDetails(props) {
                 }
             })
         console.log(response)
+        } catch (error) {
+            console.log(error.response.data.message)
+        }
+
     }
 
     return(
