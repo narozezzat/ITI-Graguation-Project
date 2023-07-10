@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .paymentHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 200px;
+    border-bottom: 1px solid lightgray;
+  }
+  
+  .paymentHeader h3 {
+    font-size: xx-large;
+    margin-bottom: 10px;
+    font-weight: 400;
+  }
+  
+  .paymentHeader .logo img {
+    width: 100px;
+  }
+  
+  .paymentBody {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  .paymentBody h3 {
+    border-bottom: 1px solid lightgray;
+  }
+  .paymentLeft {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    flex: 3;
+    border: 1px solid black;
+    margin-right: 30px;
+    padding-bottom: 20px;
+  }
+  
+  .paymentLeft h1 {
+    color: chocolate;
+  }
+
+  
+  .paymentLeft input {
+    border: 1px solid black;
+    width: 100%;
+  }
+  form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+  }
+  form button {
+    background-color: #fad840;
+    padding: 8px;
+    border-radius: 10px;
+  }
+  
+  .address {
+    height: 40px;
+    width: 200px;
+    padding-left: 10px;
+  }
+  
+  .right {
+    flex: 1;
+    margin-right: 0;
+  }
+  .checkOutRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 400px;
+    height: 165px;
+    padding-top: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    /* border-radius: 10px; */
+    position: sticky;
+    top: 100px;
+  }
+  
+  .subTotal p {
+    padding-top: 30px;
+    font-size: x-large;
+  }
+  
+  .subTotalGift input {
+    margin-top: 5px;
+    font-size: x-large;
+  }
+  
+  .checkOutRight button {
+    background-color: #fad840;
+    border-radius: 10px;
+    padding: 7px 20px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    width: 100%;
+    font-weight: normal;
+    font-size: 13px;
+  }
+  
+  @media (max-width: 600px) {
+    .checkOutRight {
+      justify-content: center;
+      width: 300px;
+      padding: 20px;
+      height: 165px;
+      flex: 1rem;
+    }
+    .checkOutRight button {
+      width: 40%;
+      font-weight: normal;
+      font-size: 13px;
+    }
+  
+    .paymentBody {
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .paymentHeader {
+      flex-direction: column;
+    }
+  }
+  

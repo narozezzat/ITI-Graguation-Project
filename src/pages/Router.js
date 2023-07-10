@@ -9,6 +9,7 @@ import Cart from "../Componant/Cart";
 import PaymentPage from "../Componant/Payment/PaymentPage";
 import ResetCode from "../Componant/Regestration/ResetCode";
 import ResetPassword from "../Componant/Regestration/ResetPassword";
+import PaymentModel from "../Componant/Payment/PaymentModel"
 
 export default function Router() {
 
@@ -29,6 +30,7 @@ export default function Router() {
             <Route path="/MainPage" element={ <MainPage/> }></Route>
             <Route path="/Cart" element={ <Cart/> }></Route>
             <Route path="/PaymentPage" element={ <PaymentPage/> }></Route>
+            <Route path="/PaymentModel" element={ <PaymentModel/> }></Route>
             
         </Routes>
     </div>

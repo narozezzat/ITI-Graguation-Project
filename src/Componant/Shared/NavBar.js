@@ -112,7 +112,7 @@ export default function NavBar() {
                                 </li>
 
                                 <li>
-                                    <Link className="" to="/Login">
+                                    <Link className="" to="/PaymentModel">
                                         Your Seller Account
                                     </Link>
                                 </li>
