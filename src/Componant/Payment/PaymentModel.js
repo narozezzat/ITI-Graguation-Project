@@ -10,10 +10,10 @@ function Payment() {
 
   const onSubmit = (data) => {
     console.log(data);
-    rest();
+    // rest();
   };
 
-  console.log(errors);
+
   
   return (
     <>
@@ -41,25 +41,25 @@ function Payment() {
 
           <form onSubmit={handleSubmit(onSubmit)}>
 
-            <h4>Full Name</h4>
+            {/* <h4>Full Name</h4>
             <input className="address" type="text" placeholder="Enter Your Name" 
               {...register('name',{required:true,pattern:/^[a-zA-Z ]*$/})}/>
             <small className="form-text text-danger" >
               {errors.name?.type === 'required' && "Name is Required"}  
               {errors.name?.type === 'pattern' && "Name must allows only alphabets and spaces"}
-            </small>
+            </small> */}
     
             <h4>Mobile Number</h4>
             <input className="address" type="text" placeholder="Enter Your Mobile number" 
-              {...register("phone", { required: "Phone is Required",
+              {...register("phoneNumber", { required: "Phone is Required",
                 pattern: {
                   value: /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{5})(?: *x(\d+))?\s*$/,
                   message: "Invalid Mobile No",
               },
               })}
             />
-            {errors.phone && (
-              <small className="text-danger">{errors.phone.message}</small>
+            {errors.phoneNumber && (
+              <small className="text-danger">{errors.phoneNumber.message}</small>
             )}
 
             <h4>Country/Region</h4>

@@ -7,24 +7,31 @@ export default function NavBar() {
     const navigate = useNavigate();
     const [allCategory, setAllCategory] = useState([]);
 
-    const get = async ()=>{
-        const response = await BaseURL.get('/api/category')
-        setAllCategory(response.data.data)
+    const getAllCategory = async ()=>{
+        try {
+            const response = await BaseURL.get('/api/category')
+            setAllCategory(response.data.data)
+        } catch (error) {
+            console.log(error.response.data.message)
+        }
     }
 
     useEffect(() => {
-        get();
+        getAllCategory();
     }, []);
 
     const SignOut = () => {
         localStorage.removeItem("token")
     }
+    const showProductByCategory = ((id) => {
+        console.log(id)
+        navigate(`/ListProduct`, {
+            state: {
+                id
+            }
+        })
+    })
 
-    const showProductByCategory = (id)=>{
-        // console.log("id")
-        // console.log(id)
-        navigate(`/ListProduct${id}`)
-    }
 
     return (
         <div className="sticky-top">

@@ -1,34 +1,40 @@
 import { useEffect, useState } from "react";
 import SingleProduct from "./SingleProduct";
-import axios from "axios";
+import { useLocation } from "react-router-dom";
+import BaseURL from "../../BaseURL.js";
 
 
 
 export default function ListProduct() {
+    const location = useLocation()
+    const objectIdForCategory = location.state; 
+    // console.log(objectIdForCategory);
 
-    const [ allProduct, setAllProduct] = useState([])
-    const [uniqueCategory,setUniqueCategory] =  useState([])
+    const [ allProduct, setAllProduct]=useState([])
+    // console.log(allProduct)
 
-    const SimilarCategory = allProduct.map((item)=>item.category)
-
-    SimilarCategory.forEach((item)=>{
-        if(!uniqueCategory.includes(item)){
-            uniqueCategory.push(item)
+    const getAlProduct = async ()=>{
+        try {
+            if(objectIdForCategory){
+                const onlyId = objectIdForCategory.id;
+                const response =await  BaseURL.get(`/api/products/category/${onlyId}`)
+                setAllProduct(response.data.data)
+                // console.log("id true")
+            }else{
+                const response = await BaseURL.get('/api/products')
+                setAllProduct(response.data.data)
+                // console.log("id falce")
+            }
+        } catch (error) {
+            console.log(error.response.data.message)
         }
-    })
-
-    // console.log(uniqueCategory)
-
-    // const fetchAxios = async ()=>{
-    //     const response = await axios.get('https://dummyjson.com/products')
-    //     setAllProduct(response.data.products)
-
-    // }
+    }
+    // getAlProduct()
     
-    // useEffect(()=>{
-    //     fetchAxios();
-        
-    // },[])
+    useEffect(()=>{
+        getAlProduct();
+    },[])
+
 
     return (
         <>
@@ -47,7 +53,7 @@ export default function ListProduct() {
             </div> */}
         {/* End navbar category*/}
 
-            <SingleProduct/>
+            <SingleProduct products={allProduct}/>
         </>
     );
 }

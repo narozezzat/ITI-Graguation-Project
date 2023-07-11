@@ -1,15 +1,16 @@
-import axios from "axios"
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react"
 import BaseURL from "../BaseURL.js";
 
 export default function Cart(){
-    const [cart , setCart]= useState()
+    const [cart , setCart]= useState([])
 
     const token = localStorage.getItem("token");
 
     console.log(cart)
-    
+    // console.log(cart.cartItems[0].quantity)
+    // console.log((cart.cartItems).length)
+
     const getProductFromCart = async ()=>{
         try {
             const response = await BaseURL.get('api/cart',
@@ -17,13 +18,12 @@ export default function Cart(){
                 headers: {
                 'Authorization': `Bearer ${token}`
                 }
-            })
-            console.log(response.data.data)
+            }) 
+            // console.log(response.data.data)
             setCart(response.data.data)
         } catch (error) {
             console.log(error)
         }
-
     }
 
     useEffect(()=>{
@@ -37,15 +37,14 @@ export default function Cart(){
         <div className="d-flex justify-content-around ">
             <div className="fs-4 fw-bold mb-3">Shopping Cart</div>
             <div className=" mb-3">
-                {/* <div className="fs-5">Subtotal (lenght): <span className="fw-bold">EGP {cart.totalCartPrice} </span></div> */}
-                {/* <button className="btn btn-warning w-100" >Proceed to Buy</button> */}
+                <div className="fs-5">Subtotal (  ): <span className="fw-bold">EGP {Math.ceil(cart.totalCartPrice)} </span></div>
                 <Link className="btn btn-warning w-100"  to="/PaymentPage"> Proceed to Buy </Link>
-
+                {/* {(cart.cartItems).length} */}
             </div>
         </div>
 
         <hr className="mt-0"/>
-        {/* {
+        {
             cart.cartItems.map((item,index)=>{
                 return(
                     <>
@@ -61,7 +60,7 @@ export default function Cart(){
                                 <div>
                                     <span>
                                         <a className="btn btn-danger" href="#1" >-</a>
-                                        <span className="mx-2">1</span>
+                                        <span className="mx-2">{item.quantity}</span>
                                         <a className="btn btn-success" href="#1">+</a>
                                     </span>
 
@@ -69,15 +68,15 @@ export default function Cart(){
 
                                 </div>
                             </div>
-                            <span className="col-lg-1 col-md-2 fw-bold fs-5">EGP : {item.product.price}</span>
+                            <span className="col-lg-1 col-md-2 fw-bold fs-5">EGP : {item.product.price - item.product.discount}</span>
                         </div>
                         <hr/>
                     </>
                 )
             })
-        } */}
+        }
         
-        {/* <h4 className="text-end">Total :{cart.totalCartPrice} EGP</h4> */}
+        <h4 className="text-end">Total :{Math.ceil(cart.totalCartPrice)} EGP</h4>
 
         </>
     )

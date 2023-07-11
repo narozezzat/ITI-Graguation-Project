@@ -5,15 +5,10 @@ import { useForm } from "react-hook-form";
 
 export default function PaymentPage(){
 
-    const { register, handleSubmit,watch,formState:{errors} } = useForm();
+    const { register, handleSubmit,formState:{errors} } = useForm();
 
-    const onSubmit = data => console.log(data)
-    // console.log(watch('name'))
-    const password = watch("password");
-     // const confirm = watch("confirm");
-
-    const passwordMatch = (value) => {
-    return value === password || "Passwords do not match";
+    const onSubmit = data => {
+        console.log(data)
     }
 
     return(
@@ -25,73 +20,87 @@ export default function PaymentPage(){
             <hr className="m-0"/>
 
             <div className="container">
-                <span className="text-danger fw-bold fs-5">1 Enter a new shipping address</span>
+                <span className="text-danger fw-bold fs-5 ">1 Enter a new shipping address</span>
 
-                <div className="card-body">
-                            <form id='form' onSubmit={handleSubmit(onSubmit)} className="form-group row">
-                                <div className="mb-3">
-                                    <label  className="form-label"><b>Your name</b></label>
-                                    <input type="text" className="form-control" 
-                                    placeholder="First and last name"
-                                    {...register('name',{required:true,pattern:/^[a-zA-Z ]*$/})}
-                                    />
-                                    <div id="emailHelp" className="form-text text-danger" >
-                                    <small className="form-text text-danger" >
-                                        {errors.name?.type === 'required' && "We'll never share your Name with anyone else"}  
-                                        {errors.name?.type === 'pattern' && "Name must allows only alphabets and spaces"}
-                                    </small>
-                                    </div>
-                                </div>
-
-                                <div className="mb-3">
-                                    <label  className="form-label"><b>Email address</b></label>
-                                    <input type="text" 
-                                    className="form-control" 
-                                    {...register('email',{required:true , pattern:/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/})}
-                                    placeholder="Enter email"/>
-                                    <div id="emailHelp" className="form-text text-danger">
-                                    <small className="form-text text-danger" >
-                                        {errors.email?.type === 'required' && "We'll never share your Email with anyone else"}
-                                        {errors.email?.type === 'pattern' && "Email must   letters ( uppercase and lowercase), Numbers, @ , $ , . , - . EX: abc.12@gmail.com"}
-                                    </small>
-                                    </div>
-                                </div>
-
-                                <div className="mb-3">
-                                    <label className="form-label"><b>Password</b></label>
-                                    <input type="password" 
-                                    className="form-control" 
-                                    {...register('password',{required: true,minLength : 8 , pattern:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/})}
-                                    placeholder="Enter password" />
-                                    <div id="emailHelp" className="form-text text-danger">
-                                    <small className="form-text text-danger">
-                                        {errors.password?.type ==='minLength' && " Your password must be at least 8 characters long"} 
-                                        {errors.password?.type ==='required' && " We'll never share your Password with anyone else"} 
-                                        {errors.password?.type ==='pattern' && " must include at least one lowercase letter, one uppercase letter, one number, and one special symbol."}
-                                    </small>
-                                    </div>
-                                </div>
-
-                                <div className="mb-3">
-                                    <label  className="form-label"><b>Re-enter password</b></label>
-                                    <input type="password" 
-                                    className="form-control"
-                                    {...register('confirm',{ required: true, minLength: 8, validate: passwordMatch })}
-                                    placeholder="Confirm password"
-                                    />
-                                    <div id="emailHelp" className="form-text text-danger">
-                                    <small className="form-text text-danger">
-                                        {errors.confirm?.type ==='validate' && " Passwords do not match"}
-                                    </small>
-                                    </div>
-                                </div>
-                                
-                                <div className="d-grid gap-2">
-                                    <button type="submit" className="btn btn-warning">Continue</button>
-                                </div>
-
-                            </form>
+                <div className="card-body container">
+                    <form id='form' onSubmit={handleSubmit(onSubmit)} className="form-group row col-12 mx-auto mx-md-0 col-md-6 border border-black mt-2 p-2 rounded-2 ">
+                        <div className="mb-3">
+                            <label  className="form-label"><b>Mobile Number</b></label>
+                            <input type="tel" className="form-control" 
+                            placeholder="Enter Your Mobile Number"
+                            {...register('phone',{required:true,pattern:/^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{5})(?: *x(\d+))?\s*$/})}
+                            />
+                            <div id="emailHelp" className="form-text text-danger" >
+                            <small className="form-text text-danger" >
+                                {errors.phone?.type === 'required' && "Phone is Required"}  
+                                {errors.phone?.type === 'pattern' && "Invalid Mobile Nomber"}
+                            </small>
+                            </div>
                         </div>
+
+                        <div className="mb-3">
+                            <label  className="form-label"><b>Bulding Number</b></label>
+                            <input type="text" 
+                            className="form-control" 
+                            {...register('buldingNumber',{required:true , pattern:/[0-9A-Za-z\s]{1,5}/})}
+                            placeholder="Bulding Number"/>
+                            <div id="emailHelp" className="form-text text-danger">
+                            <small className="form-text text-danger" >
+                                {errors.buldingNumber?.type === 'required' && " Bulding Number is Required"}
+                                {errors.buldingNumber?.type === 'pattern' && "must include at least 1 to 5 Number or Letter"}
+                            </small>
+                            </div>
+                        </div>
+
+                        <div className="mb-3">
+                            <label  className="form-label"><b>Street Name</b></label>
+                            <input type="text" 
+                            className="form-control" 
+                            {...register('details',{required:true , pattern:/[A-Za-z\s]{5,}/})}
+                            placeholder="Street Name"/>
+                            <div id="emailHelp" className="form-text text-danger">
+                            <small className="form-text text-danger" >
+                                {errors.details?.type === 'required' && "Your Address is required "}
+                                {errors.details?.type === 'pattern' && "must include at least 5 letter"}
+                            </small>
+                            </div>
+                        </div>
+
+                        <div className="mb-3">
+                            <label className="form-label"><b>City</b></label>
+                            <input type="text" 
+                            className="form-control" 
+                            {...register('city',{required: true, pattern:/[A-Za-z\s]{2,}/})}
+                            placeholder="Your City" />
+                            <div id="emailHelp" className="form-text text-danger">
+                            <small className="form-text text-danger">
+                                {errors.city?.type ==='required' && " City is Required"} 
+                                {errors.city?.type ==='pattern' && " must include at least two letter"}
+                            </small>
+                            </div>
+                        </div>
+
+                        <div className="mb-3">
+                            <label  className="form-label"><b>Postal Code</b></label>
+                            <input type="number" 
+                            className="form-control"
+                            {...register('postalCode',{ required: true,pattern:/[0-9]{3,}/})}
+                            placeholder="Postal Code"
+                            />
+                            <div id="emailHelp" className="form-text text-danger">
+                            <small className="form-text text-danger">
+                                {errors.postalCode?.type ==='required' && " Postal Code is Required"} 
+                                {errors.postalCode?.type ==='pattern' && " at least three number"}
+                            </small>
+                            </div>
+                        </div>
+                        
+                        <div className="d-grid gap-2">
+                            <button type="submit" className="btn btn-warning">Continue</button>
+                        </div>
+
+                    </form>
+                </div>
 
 
             </div>
