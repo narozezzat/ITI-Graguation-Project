@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./NavBar.css";
 import BaseURL from "../../BaseURL.js";
+import { AllQun } from "../../context/QunForCart";
 
 export default function NavBar() {
     const navigate = useNavigate();
@@ -31,6 +32,8 @@ export default function NavBar() {
             }
         })
     })
+
+    const {qun , setQun} = useContext(AllQun)
 
 
     return (
@@ -158,7 +161,7 @@ export default function NavBar() {
                         <Link to="/Cart" className="borderWhite">
                             <div>
                                 <i className="fa-solid fa-cart-shopping cartIcon "> 
-                                    <span className=" fw-normal text-warning"> 0 </span> 
+                                    <span className=" fw-normal text-warning"> {qun} </span> 
                                     <span className=" fw-normal cartFont">Cart</span> 
                                 </i>
                             </div>

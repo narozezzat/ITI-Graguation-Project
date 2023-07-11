@@ -5,18 +5,21 @@
 import { json } from "react-router-dom";
 import BaseURL from "../../BaseURL.js";
 import StarsRating from "../Shared/StarsRating"
+import { useContext } from "react";
+import { AllQun } from "../../context/QunForCart.js";
 
 export default function ProductDetails(props) {
 
 
     const item = props.singleProduct.singleProduct
     // console.log(item._id)
+    const {qun , setQun} = useContext(AllQun)
 
     const AddProduct= async (id)=>{
-        console.log(id)
+        // console.log(id)
         const token = localStorage.getItem("token");
-        console.log(token)
-        // const userData =JSON.stringify({productId:id})
+        // console.log(token)
+        
         try {
             const response = await BaseURL.post('/api/cart',
             {
@@ -31,7 +34,8 @@ export default function ProductDetails(props) {
         } catch (error) {
             console.log(error.response.data.message)
         }
-
+        
+        setQun(Math.ceil(qun + item.price))
     }
 
     return(
@@ -67,7 +71,7 @@ export default function ProductDetails(props) {
                     <hr/>
 
                     <div className="ms-2">
-                        <span className="text-danger me-2 fs-5"> {item.discount} </span>
+                        <span className="text-danger me-2 fs-5"> - {item.discount} </span>
                         <span>
                             <sup className="" style={{fontSize:"12px"}}> EGP </sup> 
                             <span className="fs-4 fw-semibold">{Math.ceil(item.price - item.discount)}</span>

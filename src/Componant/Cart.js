@@ -1,13 +1,17 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import BaseURL from "../BaseURL.js";
+import { AllQun } from "../context/QunForCart.js";
 
 export default function Cart(){
     const [cart , setCart]= useState([])
+    const {qun , setQun} = useContext(AllQun)
 
     const token = localStorage.getItem("token");
 
-    console.log(cart)
+    console.log(cart.totalCartPrice)
+    setQun(Math.ceil(cart.totalCartPrice))
+
     // console.log(cart.cartItems[0].quantity)
     // console.log((cart.cartItems).length)
 
@@ -44,7 +48,7 @@ export default function Cart(){
         </div>
 
         <hr className="mt-0"/>
-        {
+        {/* {
             cart.cartItems.map((item,index)=>{
                 return(
                     <>
@@ -74,7 +78,7 @@ export default function Cart(){
                     </>
                 )
             })
-        }
+        } */}
         
         <h4 className="text-end">Total :{Math.ceil(cart.totalCartPrice)} EGP</h4>
 
