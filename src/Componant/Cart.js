@@ -9,8 +9,10 @@ export default function Cart(){
 
     const token = localStorage.getItem("token");
 
-    console.log(cart.totalCartPrice)
-    setQun(Math.ceil(cart.totalCartPrice))
+    console.log(cart)
+    if(cart.totalCartPrice){
+        setQun(cart.totalCartPrice)
+    }
 
     // console.log(cart.cartItems[0].quantity)
     // console.log((cart.cartItems).length)
@@ -41,7 +43,7 @@ export default function Cart(){
         <div className="d-flex justify-content-around ">
             <div className="fs-4 fw-bold mb-3">Shopping Cart</div>
             <div className=" mb-3">
-                <div className="fs-5">Subtotal (  ): <span className="fw-bold">EGP {Math.ceil(cart.totalCartPrice)} </span></div>
+                <div className="fs-5">Subtotal (  ): <span className="fw-bold">EGP {cart.totalCartPrice ===undefined ? "0" : cart.totalCartPrice} </span></div>
                 <Link className="btn btn-warning w-100"  to="/PaymentPage"> Proceed to Buy </Link>
                 {/* {(cart.cartItems).length} */}
             </div>
@@ -80,7 +82,7 @@ export default function Cart(){
             })
         } */}
         
-        <h4 className="text-end">Total :{Math.ceil(cart.totalCartPrice)} EGP</h4>
+        <h4 className="text-end">Total : {cart.totalCartPrice ===undefined ? "0" : cart.totalCartPrice} EGP</h4>
 
         </>
     )

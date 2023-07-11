@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./NavBar.css";
 import BaseURL from "../../BaseURL.js";
 import { AllQun } from "../../context/QunForCart";
+import { useForm } from "react-hook-form";
 
 export default function NavBar() {
     const navigate = useNavigate();
@@ -35,7 +36,14 @@ export default function NavBar() {
 
     const {qun , setQun} = useContext(AllQun)
 
+    const { register, handleSubmit} = useForm();
 
+    const sarch = (data)=>{
+        navigate(`/ProdctFiltretion`, {
+            state: { data }
+        })
+        }
+        
     return (
         <div className="sticky-top">
 
@@ -59,9 +67,11 @@ export default function NavBar() {
                     
                     <div className="collapse navbar-collapse " id="navbarSupportedContent">
 
-                        <div className="searchBoxContainer m-0 w-100 mx-md-2">
+                        {/* <div className="   "> */}
+                        <form className="m-0 p-1 w-100 mx-md-2 d-flex flex-row rounded-2 borderWhite gap-0"
+                        onSubmit={handleSubmit(sarch)}>
 
-                            <select className="searchSelect">
+                            <select className="col-1 p-0 rounded-start">
                                 <option>All</option>
                                 <option>Arts & Crafts</option>
                                 <option>Automotive</option>
@@ -75,22 +85,27 @@ export default function NavBar() {
                                 <option>Home & Kitchen</option>
                             </select>
 
-                            <input type="text" placeholder="Search Amazon" className="searchInput" />
+                            <input type="text" placeholder="   Search Amazon" className="col-10  " 
+                            {...register('keyword',{required:false})}
+                            />
 
-                            <div className="searchIcon">
-                                <i className="fa-solid fa-magnifying-glass"></i>
-                            </div>
+                            <button type="submit" className="py-0 rounded-0 rounded-end col-1">
+                                {/* Serach */}
+                                <i className="fa-solid fa-magnifying-glass  p-0  col-1"> </i>
+                            </button>
 
-                        </div>
+
+                        </form>
+                        {/* </div> */}
                                 
-                        <div className="languageContainer borderWhite">
+                        <div className="languageContainer borderWhite m-0 rounded-2">
                             <div className="languageImage">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_Egypt.svg/255px-Flag_of_Egypt.svg.png" alt="" />
                             </div>
                             <p>EN</p>
                         </div>
 
-                        <div className="nav-item dropdown borderWhite">
+                        <div className="nav-item dropdown borderWhite rounded-2">
                             <a className="nav-link dropdown-toggle text-light" href="#1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Accounts & Lists
                             </a>
@@ -156,9 +171,9 @@ export default function NavBar() {
                             </ul>
                         </div>
 
-                        <Link className="text-light borderWhite" style={{ textDecoration: "none" }} to="/"> Order </Link>
+                        <Link className="text-light borderWhite rounded-2" style={{ textDecoration: "none" }} to="/"> Order </Link>
 
-                        <Link to="/Cart" className="borderWhite">
+                        <Link to="/Cart" className="borderWhite rounded-2">
                             <div>
                                 <i className="fa-solid fa-cart-shopping cartIcon "> 
                                     <span className=" fw-normal text-warning"> {qun} </span> 

@@ -35,7 +35,7 @@ export default function ProductDetails(props) {
             console.log(error.response.data.message)
         }
         
-        setQun(Math.ceil(qun + item.price))
+        setQun(qun + item.price)
     }
 
     return(
@@ -65,16 +65,16 @@ export default function ProductDetails(props) {
                     <div className="ms-2">   
                         <p className="mb-1 p-2 fw-semibold fs-5">{item.title}</p>
                         {/* <a href="#1">Vist ( Store name ) Store</a> */}
-                        {/* <StarsRating Rating={item.ratingAverage} /> */}
+                        <StarsRating Rating={item.ratingAverage} />
                     </div>
 
                     <hr/>
 
                     <div className="ms-2">
-                        <span className="text-danger me-2 fs-5"> - {item.discount} </span>
+                        <span className="text-danger me-2 fs-5"> {item.discount === 0? " " :"-" + item.discount } </span>
                         <span>
                             <sup className="" style={{fontSize:"12px"}}> EGP </sup> 
-                            <span className="fs-4 fw-semibold">{Math.ceil(item.price - item.discount)}</span>
+                            <span className="fs-4 fw-semibold">{item.price - item.discount}</span>
                             <sup className="" style={{fontSize:"12px"}}> 00 </sup> 
                         </span>
 

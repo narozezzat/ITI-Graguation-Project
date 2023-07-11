@@ -34,7 +34,7 @@ export default function SingleProduct(props) {
             test.map((item)=>{
                 return(
                     
-                        <div key={item.id} className="col-12 col-sm-6 col-md-4 col-lg- col-xl-2 mb-3 ">
+                        <div key={item.id} className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3 ">
                             <hr/>
                             <div className="" >
                                 <img src={item.imageCover} className="card-img-top " style={{"height": "15rem"}}

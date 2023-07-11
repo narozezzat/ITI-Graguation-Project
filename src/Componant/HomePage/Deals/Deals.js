@@ -19,37 +19,6 @@ function Deals() {
   }, []);
 
 
-  // const data = [{
-  //   image: 'https://m.media-amazon.com/images/I/31f7nuANQNL._AC_SY200_.jpg',
-  //   title:'Crocs Footwear',
-  //   sell: '53' },
-  //   {
-  //     image: 'https://m.media-amazon.com/images/I/41-+itFyZlL._AC_SY200_.jpg',
-  //     title:'Grand Gaming Days - Game o..',
-  //     sell: '35' },
-  //     {
-  //     image: 'https://m.media-amazon.com/images/I/31RwE3ltrQL._AC_SY200_.jpg',
-  //     title:'Exciting offers on One Plus Mobi..',
-  //     sell: '46' },
-  //     {
-  //     image: 'https://m.media-amazon.com/images/I/4151aOEWqAL._AC_SY200_.jpg',
-  //     title:'Lava Blaze 5G (6GB) available at..',
-  //     sell: '27' },
-  //     {
-  //     image: 'https://m.media-amazon.com/images/I/61QQtY6qtHL._AC_SY200_.jpg',
-  //     title:"Levi's, Allen Solly, ANNI Designer..",
-  //     sell: '87' },
-  //     {
-  //     image: 'https://m.media-amazon.com/images/I/41Jzbjg6TpL._AC_SY200_.jpg',
-  //     title:'ROCCAT Tusko Across-The-Board Flat...',
-  //     sell: '21' },
-  //     {
-  //     image: 'https://m.media-amazon.com/images/I/31Ypgh5SJyL._AC_SY200_.jpg',
-  //     title:'Sunny Health & Fitness Exercise Vinyl...',
-  //     sell: '49' }
-  
-  // ]
-
   return (
     <>
       <div className="todaysDealsContainer text-nowrap">
