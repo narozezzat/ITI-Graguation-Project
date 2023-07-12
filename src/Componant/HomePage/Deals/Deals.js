@@ -29,7 +29,7 @@ function Deals() {
           </span>
         </div>
           
-        <div className="table-responsive todayDealsProductList">
+        <div className="table-responsive todayDealsProductList mx-3">
           {
             allCategory.map((item, index) => {
               return (

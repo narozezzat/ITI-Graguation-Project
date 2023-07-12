@@ -48,7 +48,7 @@ function PopularProducts() {
           <h5 className="mx-3">Popular items this season</h5>
         </div>
           
-        <div className="table-responsive todayDealsProductList">
+        <div className="table-responsive todayDealsProductList mx-3">
             
           {
             data.map((item, index) => {
