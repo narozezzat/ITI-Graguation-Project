@@ -38,7 +38,7 @@ export default function PaymentPage(){
                             </div>
                         </div>
 
-                        <div className="mb-3">
+                        {/* <div className="mb-3">
                             <label  className="form-label"><b>Bulding Number</b></label>
                             <input type="text" 
                             className="form-control" 
@@ -50,7 +50,7 @@ export default function PaymentPage(){
                                 {errors.buldingNumber?.type === 'pattern' && "must include at least 1 to 5 Number or Letter"}
                             </small>
                             </div>
-                        </div>
+                        </div> */}
 
                         <div className="mb-3">
                             <label  className="form-label"><b>Street Name</b></label>

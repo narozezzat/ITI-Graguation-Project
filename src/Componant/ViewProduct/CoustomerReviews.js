@@ -1,3 +1,4 @@
+import { useForm } from "react-hook-form";
 import StarsRating from "../Shared/StarsRating";
 
 export default function CoustomerReviews(props){
@@ -8,6 +9,11 @@ export default function CoustomerReviews(props){
         // alert("hi")
     }
 
+    const { register, handleSubmit,formState:{errors} } = useForm();
+
+    const onSubmit = userData => {
+        console.log(userData)
+    }
     return(
         <>
         <div className="row m-0">
@@ -33,17 +39,75 @@ export default function CoustomerReviews(props){
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5 mx-auto " id="staticBackdropLabel">Write Your review</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            ...
-                        </div>
-                        <div class="modal-footer mx-auto">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Not Now </button>
-                            <button type="button" class="btn btn-primary">submit</button>
-                        </div>
+
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5 mx-auto " id="staticBackdropLabel">Write Your review</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+
+                            <div class="modal-body">
+
+                                <form id='form' onSubmit={handleSubmit(onSubmit)} className="form-group row">
+
+                                    <div className="mb-3">
+                                        <label  className="form-label"><b>Rating Average</b></label>
+                                        <input type="number" className="form-control" 
+                                        placeholder="2...."
+                                        {...register('rating',{required:true , min:1 , max:5 })}
+                                        />
+                                        <div id="emailHelp" className="form-text text-danger" >
+                                        <small className="form-text text-danger" >
+                                            {errors.rating?.type === 'required' && "Rating is required"}
+                                            {errors.rating?.type === 'min' && "Minimum Average 1"}
+                                            {errors.rating?.type === 'max' && "Maximum Average 5"}
+                                        </small>
+                                        </div>
+                                    </div>
+
+                                    <div className="mb-3">
+                                        <label  className="form-label"><b>Your Opinion</b></label>
+                                        <input type="text" 
+                                        className="form-control" 
+                                        {...register('Opinion',{required:true , minLength:3 , maxLength:10 , pattern:/[0-9A-Za-z\s]{1,10}/})}
+                                        placeholder="Good....."/>
+                                        <div id="emailHelp" className="form-text text-danger">
+                                        <small className="form-text text-danger" >
+                                            {errors.Opinion?.type === 'required' && "We'll never share your Email with anyone else"}
+                                            {errors.Opinion?.type === 'pattern' && "Your Opinion must have only letters and number"}
+                                            {errors.Opinion?.type === 'minLength' && "3 letters Minimum"}
+                                            {errors.Opinion?.type === 'maxLength' && "10 Average Maximum"}
+                                        </small>
+                                        </div>
+                                    </div>
+
+                                    <div className="mb-3">
+                                        <label className="form-label"><b>Comment</b></label>
+                                        <input type="text" 
+                                        className="form-control" 
+                                        {...register('comment',{required: true, pattern:/[0-9A-Za-z\s]{5,}/})}
+                                        placeholder="This product helpful ......" />
+                                        <div id="emailHelp" className="form-text text-danger">
+                                        <small className="form-text text-danger">
+                                            {errors.comment?.type ==='required' && " Comment is required"} 
+                                            {errors.comment?.type ==='pattern' && " must include at least 5 letter"}
+                                        </small>
+                                        </div>
+                                    </div>
+
+                                    <div className="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Not Now </button>
+                                        <button type="submit" className="btn btn-warning">Continue</button>
+                                    </div>
+
+                                </form>
+
+                            </div>
+
+                            {/* <div class="modal-footer mx-auto">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Not Now </button>
+                                <button type="button" class="btn btn-primary">submit</button>
+                            </div> */}
+
                         </div>
                     </div>
                     </div>
