@@ -31,21 +31,21 @@ export default function CoustomerReviews(props){
                     <p>Share your thoughts with other customers</p>
                     {/* <button className="border p-2 w-100" onClick={()=>writeReview()}>Write a customer review </button> */}
 
-                    <button type="button" class="border p-2 w-100" data-bs-toggle="modal" 
+                    <button type="button" className="border p-2 w-100" data-bs-toggle="modal" 
                     data-bs-target="#staticBackdrop" onClick={()=>writeReview()}>
                     Write a customer review
                     </button>
 
-                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
+                    <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
 
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5 mx-auto " id="staticBackdropLabel">Write Your review</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <div className="modal-header">
+                                <h1 className="modal-title fs-5 mx-auto " id="staticBackdropLabel">Write Your review</h1>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
 
-                            <div class="modal-body">
+                            <div className="modal-body">
 
                                 <form id='form' onSubmit={handleSubmit(onSubmit)} className="form-group row">
 
@@ -95,7 +95,7 @@ export default function CoustomerReviews(props){
                                     </div>
 
                                     <div className="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Not Now </button>
+                                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"> Not Now </button>
                                         <button type="submit" className="btn btn-warning">Continue</button>
                                     </div>
 
@@ -103,9 +103,9 @@ export default function CoustomerReviews(props){
 
                             </div>
 
-                            {/* <div class="modal-footer mx-auto">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Not Now </button>
-                                <button type="button" class="btn btn-primary">submit</button>
+                            {/* <div className="modal-footer mx-auto">
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"> Not Now </button>
+                                <button type="button" className="btn btn-primary">submit</button>
                             </div> */}
 
                         </div>

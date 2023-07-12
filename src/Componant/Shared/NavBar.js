@@ -167,7 +167,11 @@ export default function NavBar() {
                                 </li>
 
                                 <li><hr className="dropdown-divider"/></li>
-                                <li><a className="dropdown-item text-light" href="#1">Something else here</a></li>
+                                <li><Link className="dropdown-item text-light" to="/Profile" >
+                                        <i className="fa-solid fa-user"></i>
+                                        Your Profile
+                                    </Link>
+                                </li>
                             </ul>
                         </div>
 

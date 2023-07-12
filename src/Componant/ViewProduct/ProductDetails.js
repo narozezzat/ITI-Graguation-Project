@@ -16,30 +16,29 @@ export default function ProductDetails(props) {
     const {qun , setQun} = useContext(AllQun)
 
     const AddProduct= async (id)=>{
-        // console.log(id)
         const token = localStorage.getItem("token");
-        // console.log(token)
-        
+        console.log(token)
+    
+        // console.log(id)
         try {
-            const response = await BaseURL.post('/api/cart',
-            {
-                productId: id
-            },
-            {
-                headers: {
-                'Authorization': `Bearer ${token}`
-                }
-            })
-        console.log(response)
+            const response = await BaseURL.post('/api/cart',{productId: id},{ headers:{'Authorization': `Bearer ${token}`}})
+            console.log(response)
         } catch (error) {
             console.log(error.response.data.message)
         }
+
         
         setQun(qun + item.price)
     }
 
     return(
         <>
+        {/* { token === null ?
+            <div class="alert alert-danger " role="alert">
+                A simple primary alert—check it out!
+            </div>
+            :""
+        } */}
             <div className="row me-0 mt-5 mb-3">
 
                 <div className="col-11 col-lg-5 col-md-8 mx-auto mb-2 mb-lg-0 left border row">
