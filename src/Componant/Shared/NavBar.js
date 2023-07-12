@@ -68,10 +68,10 @@ export default function NavBar() {
                     <div className="collapse navbar-collapse " id="navbarSupportedContent">
 
                         {/* <div className="   "> */}
-                        <form className="m-0 p-1 w-100 mx-md-2 d-flex flex-row rounded-2 borderWhite gap-0"
+                        <form className="p-1 w-100 mx-md-2 d-flex flex-row rounded-2 borderWhite gap-0"
                         onSubmit={handleSubmit(sarch)}>
 
-                            <select className="col-1 p-0 rounded-start">
+                            <select className="col-1 rounded-start" style={{height: "33px"}}>
                                 <option>All</option>
                                 <option>Arts & Crafts</option>
                                 <option>Automotive</option>
@@ -86,12 +86,12 @@ export default function NavBar() {
                             </select>
 
                             <input type="text" placeholder="   Search Amazon" className="col-10  " 
-                            {...register('keyword',{required:false})}
+                            {...register('keyword',{required:false})} style={{height: "33px"}}
                             />
 
-                            <button type="submit" className="py-0 rounded-0 rounded-end col-1">
+                            <button type="submit" className="py-0 rounded-0 rounded-end col-1" style={{height: "33px"}}> 
                                 {/* Serach */}
-                                <i className="fa-solid fa-magnifying-glass  p-0  col-1"> </i>
+                                <i className="fa-solid fa-magnifying-glass col-1"> </i>
                             </button>
 
 
@@ -175,8 +175,8 @@ export default function NavBar() {
 
                         <Link to="/Cart" className="borderWhite rounded-2">
                             <div>
-                                <i className="fa-solid fa-cart-shopping cartIcon "> 
-                                    <span className=" fw-normal text-warning"> {qun} </span> 
+                                <i className="fa-solid fa-cart-shopping cartIcon pt-1"> 
+                                    <span className=" fw-normal text-warning"> <sup>{qun}</sup> </span> 
                                     <span className=" fw-normal cartFont">Cart</span> 
                                 </i>
                             </div>
