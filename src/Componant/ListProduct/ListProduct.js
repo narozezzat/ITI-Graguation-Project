@@ -10,7 +10,7 @@ export default function ListProduct() {
     const objectIdForCategory = location.state; 
     // console.log(objectIdForCategory);
 
-    const [ allProduct, setAllProduct]=useState([])
+    const [ allProduct , setAllProduct ]= useState([])
     // console.log(allProduct)
 
     const getAlProduct = async ()=>{
@@ -33,7 +33,7 @@ export default function ListProduct() {
     
     useEffect(()=>{
         getAlProduct();
-    },[])
+    },[allProduct])
 
 
     return (

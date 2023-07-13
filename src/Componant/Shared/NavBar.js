@@ -24,7 +24,9 @@ export default function NavBar() {
 
     const SignOut = () => {
         localStorage.removeItem("token")
+        localStorage.removeItem("userId")
     }
+
     const showProductByCategory = ((id) => {
         console.log(id)
         navigate(`/ListProduct`, {

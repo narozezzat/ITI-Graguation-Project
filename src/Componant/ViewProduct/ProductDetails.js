@@ -5,7 +5,7 @@
 import { json } from "react-router-dom";
 import BaseURL from "../../BaseURL.js";
 import StarsRating from "../Shared/StarsRating"
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AllQun } from "../../context/QunForCart.js";
 
 export default function ProductDetails(props) {
@@ -14,31 +14,29 @@ export default function ProductDetails(props) {
     const item = props.singleProduct.singleProduct
     // console.log(item._id)
     const {qun , setQun} = useContext(AllQun)
+    const token = localStorage.getItem("token");
+    // console.log(token)
+    const[ error , setError] = useState([])
+
 
     const AddProduct= async (id)=>{
-        const token = localStorage.getItem("token");
-        console.log(token)
-    
         // console.log(id)
+
         try {
             const response = await BaseURL.post('/api/cart',{productId: id},{ headers:{'Authorization': `Bearer ${token}`}})
             console.log(response)
         } catch (error) {
-            console.log(error.response.data.message)
+            debugger
+            setError(error.response.data.message)
+
         }
 
-        
         setQun(qun + item.price)
     }
 
     return(
         <>
-        {/* { token === null ?
-            <div class="alert alert-danger " role="alert">
-                A simple primary alert—check it out!
-            </div>
-            :""
-        } */}
+        { error ? <p>login please</p> : "" }
             <div className="row me-0 mt-5 mb-3">
 
                 <div className="col-11 col-lg-5 col-md-8 mx-auto mb-2 mb-lg-0 left border row">

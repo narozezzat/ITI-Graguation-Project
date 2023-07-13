@@ -11,6 +11,8 @@ export default function Login() {
         try {
             const response = await BaseURL.post('/api/auth/login', userData)
             localStorage.setItem("token",response.data.token)
+            localStorage.setItem("userId",response.data.data._id)
+            // console.log()
             
             if(response){
                 navigate(`/MainPage`)

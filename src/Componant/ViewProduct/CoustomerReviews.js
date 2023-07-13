@@ -1,24 +1,126 @@
 import { useForm } from "react-hook-form";
 import StarsRating from "../Shared/StarsRating";
+import BaseURL from "../../BaseURL.js";
+import { useEffect, useState } from "react";
 
 export default function CoustomerReviews(props){
-    const item = props.singleProduct.singleProduct
-    // console.log(item)    
-    
+    const item = props.singleProduct.singleProduct 
+    const userId = localStorage.getItem("userId")
+    const token = localStorage.getItem("token");
+    const itemId = item._id
+    const [allReview , setAllReview]= useState([])
+    const [reviewId , setReviewId]= useState([])
+    const [myReview , setMyReview]= useState([])
+    // console.log(myReview);
+    // console.log(reviewId);
+
+    const getAllReview = async ()=>{
+        try {
+            const response = await BaseURL.get(`/api/products/${itemId}/reviews`,
+            {
+                headers: {
+                'Authorization': `Bearer ${token}`
+                }
+            }) 
+            // console.log(response.data.data)
+            setAllReview(response.data.data)
+        } catch (error) {
+            console.log(error.response.data.message)
+        }
+    }
+
+    const getMyReview = async ()=>{
+        try {
+            const response = await BaseURL.get(`/api/products/${itemId}/reviews/${reviewId}`,
+            {
+                headers: {
+                'Authorization': `Bearer ${token}`
+                }
+            }) 
+            // console.log(response.data.data[0])
+            setMyReview(response.data.data[0])
+        } catch (error) {
+            console.log(error.response.data.message)
+        }
+    }
+
+    useEffect(()=>{
+        getAllReview()
+        getMyReview()
+    },[])
+
     const writeReview = ( ) => {
         // alert("hi")
     }
 
     const { register, handleSubmit,formState:{errors} } = useForm();
 
-    const onSubmit = userData => {
-        console.log(userData)
+    const onSubmit =async userData => {
+        const reviewData = {
+            ratings:userData.ratings,
+            title: userData.title,
+            product:itemId,
+            user:userId
+        };
+
+        try {
+                const response = await BaseURL.post(`/api/reviews`,reviewData,
+                {
+                    headers: {
+                    'Authorization': `Bearer ${token}`
+                    }
+                })
+                // console.log(response.data.data)
+                // console.log(response)
+                setReviewId(response.data.data._id)
+                if(response){
+                    getAllReview()
+                    getMyReview()
+                }
+            
+        } catch (error) {
+            console.log("Already Creating Review Before")
+        }
     }
+
+    const deleteMyReview = async ()=>{
+        try {
+            const response = await BaseURL.delete(`/api/reviews/${reviewId}`,
+            {
+                headers: {
+                'Authorization': `Bearer ${token}`
+                }
+            }) 
+            console.log(response.data.data)
+            if (response) {
+                getAllReview()
+                getMyReview()
+            }
+        } catch (error) {
+            console.log(error.response.data.message)
+        }
+    }
+
+    // const idetMyReview = async ()=>{
+    //     // try {
+    //     //     const response = await BaseURL.get(`/api/products/${itemId}/reviews`,
+    //     //     {
+    //     //         headers: {
+    //     //         'Authorization': `Bearer ${token}`
+    //     //         }
+    //     //     }) 
+    //     //     // console.log(response.data.data)
+    //     //     setAllReview(response.data.data)
+    //     // } catch (error) {
+    //     //     console.log(error.response.data.message)
+    //     // }
+    // }
+
     return(
         <>
         <div className="row m-0">
 
-            <div className="col-4  left">
+            <div className="col-4 left">
                 <div className=" p-2">
                     <h2>Customer Reviews</h2>
                     <span> <StarsRating Rating={item.ratingAverage}/> {item.ratingAverage} out of 5</span>
@@ -29,7 +131,6 @@ export default function CoustomerReviews(props){
                 <div className=" p-2">
                     <h2>Review this product</h2>
                     <p>Share your thoughts with other customers</p>
-                    {/* <button className="border p-2 w-100" onClick={()=>writeReview()}>Write a customer review </button> */}
 
                     <button type="button" className="border p-2 w-100" data-bs-toggle="modal" 
                     data-bs-target="#staticBackdrop" onClick={()=>writeReview()}>
@@ -53,18 +154,18 @@ export default function CoustomerReviews(props){
                                         <label  className="form-label"><b>Rating Average</b></label>
                                         <input type="number" className="form-control" 
                                         placeholder="2...."
-                                        {...register('rating',{required:true , min:1 , max:5 })}
+                                        {...register('ratings',{required:true , min:1 , max:5 })}
                                         />
                                         <div id="emailHelp" className="form-text text-danger" >
                                         <small className="form-text text-danger" >
-                                            {errors.rating?.type === 'required' && "Rating is required"}
-                                            {errors.rating?.type === 'min' && "Minimum Average 1"}
-                                            {errors.rating?.type === 'max' && "Maximum Average 5"}
+                                            {errors.ratings?.type === 'required' && "Rating is required"}
+                                            {errors.ratings?.type === 'min' && "Minimum Average 1"}
+                                            {errors.ratings?.type === 'max' && "Maximum Average 5"}
                                         </small>
                                         </div>
                                     </div>
 
-                                    <div className="mb-3">
+                                    {/* <div className="mb-3">
                                         <label  className="form-label"><b>Your Opinion</b></label>
                                         <input type="text" 
                                         className="form-control" 
@@ -78,18 +179,18 @@ export default function CoustomerReviews(props){
                                             {errors.Opinion?.type === 'maxLength' && "10 Average Maximum"}
                                         </small>
                                         </div>
-                                    </div>
+                                    </div> */}
 
                                     <div className="mb-3">
-                                        <label className="form-label"><b>Comment</b></label>
+                                        <label className="form-label"><b>Your Comment</b></label>
                                         <input type="text" 
                                         className="form-control" 
-                                        {...register('comment',{required: true, pattern:/[0-9A-Za-z\s]{5,}/})}
+                                        {...register('title',{required: true, pattern:/[0-9A-Za-z\s]{5,}/})}
                                         placeholder="This product helpful ......" />
                                         <div id="emailHelp" className="form-text text-danger">
                                         <small className="form-text text-danger">
-                                            {errors.comment?.type ==='required' && " Comment is required"} 
-                                            {errors.comment?.type ==='pattern' && " must include at least 5 letter"}
+                                            {errors.title?.type ==='required' && " Comment is required"} 
+                                            {errors.title?.type ==='pattern' && " must include at least 5 letter"}
                                         </small>
                                         </div>
                                     </div>
@@ -111,7 +212,16 @@ export default function CoustomerReviews(props){
                         </div>
                     </div>
                     </div>
-
+                    
+                    <div className="text-center mt-2">
+                        My Review
+                    </div>
+                    <div className="border border-black">
+                            {/* <p> <StarsRating Rating={myReview.ratings} /></p> */}
+                            <p>{myReview.title}</p>
+                            <button className="btn btn-danger"onClick={()=>deleteMyReview()}>delete</button>
+                            {/* <button className="btn btn-success" onClick={()=>idetMyReview()}>idet</button> */}
+                    </div>
                 </div>
                 
                 <hr/>
@@ -119,117 +229,36 @@ export default function CoustomerReviews(props){
 
             </div>
             
-            <div className="col-8  right">
+            <div className="col-8 right">
                 <h2>Top reviews from Egypt</h2>
 
                 <div className="comments">
 
-                    <div className=" border col-12 mb-2 p-2">
-                        <div>
-                            <span className="me-2">
-                                <img className="rounded-circle shadow-4-strong"  src="https://images-eu.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png" alt=""/>
-                            </span>
-                            <span>Mina Onsy</span>
-                        </div>
-                        
-                        <div >
-                            {/* <span> <StarsRating Rating={4} /> </span> */}
-                            <span>:  Small Review</span>  
-                        </div>
+                    {allReview.map((review,index)=>{
+                        return(
+                            <>
+                                <div className=" border col-12 mb-2 p-2">
+                                    <div>
+                                        <span className="me-2">
+                                            <img className="rounded-circle shadow-4-strong"  src="https://images-eu.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png" alt=""/>
+                                        </span>
+                                        <span>{review.user.name}</span>
+                                    </div>
+                                    
+                                    <div >
+                                        <span> <StarsRating Rating={review.ratings} /> </span>
+                                    </div>
 
-                        <div>
-                            Reviewed in Egypt 🇪🇬 on 5 May 2023
-                        </div>
+                                    <div>
+                                        Reviewed in Egypt 🇪🇬 on {review.createdAt.substring(0, 10)}
+                                    </div>
 
-                        <div>
-                            Comment Comment Comment Comment Comment  Comment Comment Comment Comment Comment Comment 
-                        </div>
-                    </div>
-
-                    <div className="border col-12 mb-2 p-2">
-                        <div>
-                            <span className="me-2">
-                                <img className="rounded-circle shadow-4-strong"  src="https://images-eu.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png" alt=""/>
-                            </span>
-                            <span>Mina Onsy</span>
-                        </div>
-                        
-                        <div>
-                            stars  :  Small Review 
-                        </div>
-
-                        <div>
-                            Reviewed in Egypt 🇪🇬 on 5 May 2023
-                        </div>
-
-                        <div>
-                            Comment Comment Comment Comment Comment  
-                        </div>
-                    </div>
-
-                    <div className="border col-12 mb-2 p-2">
-                        <div>
-                            <span className="me-2">
-                                <img className="rounded-circle shadow-4-strong"  src="https://images-eu.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png" alt=""/>
-                            </span>
-                            <span>Mina Onsy</span>
-                        </div>
-                        
-                        <div>
-                            stars  :  Small Review 
-                        </div>
-
-                        <div>
-                            Reviewed in Egypt 🇪🇬 on 5 May 2023
-                        </div>
-
-                        <div>
-                            Comment Comment Comment Comment Comment  
-                        </div>
-                    </div>
-
-                    <div className="border col-12 mb-2 p-2">
-                        <div>
-                            <span className="me-2">
-                                <img className="rounded-circle shadow-4-strong"  src="https://images-eu.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png" alt=""/>
-                            </span>
-                            <span>Mina Onsy</span>
-                        </div>
-                        
-                        <div>
-                            stars  :  Small Review 
-                        </div>
-
-                        <div>
-                            Reviewed in Egypt 🇪🇬 on 5 May 2023
-                        </div>
-
-                        <div>
-                            Comment Comment Comment Comment Comment  
-                        </div>
-                    </div>
-
-                    <div className="border col-12 mb-2 p-2">
-                        <div>
-                            <span className="me-2">
-                                <img className="rounded-circle shadow-4-strong"  src="https://images-eu.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png" alt=""/>
-                            </span>
-                            <span>Mina Onsy</span>
-                        </div>
-                        
-                        <div>
-                            stars  :  Small Review 
-                        </div>
-
-                        <div>
-                            Reviewed in Egypt 🇪🇬 on 5 May 2023
-                        </div>
-
-                        <div>
-                            Comment Comment Comment Comment Comment  
-                        </div>
-                    </div>
-
+                                    <div>{review.title}</div>
+                                </div>
+                            </>
+                        )
+                        })
+                    }
 
                 </div>
             </div>
