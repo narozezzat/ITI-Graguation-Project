@@ -26,9 +26,7 @@ export default function ProductDetails(props) {
             const response = await BaseURL.post('/api/cart',{productId: id},{ headers:{'Authorization': `Bearer ${token}`}})
             console.log(response)
         } catch (error) {
-            debugger
             setError(error.response.data.message)
-
         }
 
         setQun(qun + item.price)

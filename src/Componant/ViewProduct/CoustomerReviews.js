@@ -12,6 +12,7 @@ export default function CoustomerReviews(props){
     const [reviewId , setReviewId]= useState([])
     const [myReview , setMyReview]= useState([])
     // console.log(myReview);
+    // console.log(itemId);
     // console.log(reviewId);
 
     const getAllReview = async ()=>{
@@ -37,8 +38,8 @@ export default function CoustomerReviews(props){
                 'Authorization': `Bearer ${token}`
                 }
             }) 
-            // console.log(response.data.data[0])
-            setMyReview(response.data.data[0])
+            console.log(response.data.data)
+            // setMyReview(response.data.data[0])
         } catch (error) {
             console.log(error.response.data.message)
         }
@@ -46,7 +47,7 @@ export default function CoustomerReviews(props){
 
     useEffect(()=>{
         getAllReview()
-        getMyReview()
+        // getMyReview()
     },[])
 
     const writeReview = ( ) => {
@@ -72,7 +73,8 @@ export default function CoustomerReviews(props){
                 })
                 // console.log(response.data.data)
                 // console.log(response)
-                setReviewId(response.data.data._id)
+                // setReviewId(response.data.data._id)
+                // console.log(response.data.data._id)
                 if(response){
                     getAllReview()
                     getMyReview()
@@ -83,23 +85,23 @@ export default function CoustomerReviews(props){
         }
     }
 
-    const deleteMyReview = async ()=>{
-        try {
-            const response = await BaseURL.delete(`/api/reviews/${reviewId}`,
-            {
-                headers: {
-                'Authorization': `Bearer ${token}`
-                }
-            }) 
-            console.log(response.data.data)
-            if (response) {
-                getAllReview()
-                getMyReview()
-            }
-        } catch (error) {
-            console.log(error.response.data.message)
-        }
-    }
+    // const deleteMyReview = async ()=>{
+    //     try {
+    //         const response = await BaseURL.delete(`/api/reviews/${reviewId}`,
+    //         {
+    //             headers: {
+    //             'Authorization': `Bearer ${token}`
+    //             }
+    //         }) 
+    //         console.log(response.data.data)
+    //         if (response) {
+    //             getAllReview()
+    //             getMyReview()
+    //         }
+    //     } catch (error) {
+    //         console.log(error.response.data.message)
+    //     }
+    // }
 
     // const idetMyReview = async ()=>{
     //     // try {
@@ -213,15 +215,17 @@ export default function CoustomerReviews(props){
                     </div>
                     </div>
                     
-                    <div className="text-center mt-2">
+                    {/* <div className="text-center mt-2">
                         My Review
                     </div>
+
                     <div className="border border-black">
-                            {/* <p> <StarsRating Rating={myReview.ratings} /></p> */}
+                            <p> <StarsRating Rating={myReview.ratings} /></p>
                             <p>{myReview.title}</p>
                             <button className="btn btn-danger"onClick={()=>deleteMyReview()}>delete</button>
-                            {/* <button className="btn btn-success" onClick={()=>idetMyReview()}>idet</button> */}
-                    </div>
+                            <button className="btn btn-success" onClick={()=>idetMyReview()}>idet</button>
+                    </div> */}
+                    
                 </div>
                 
                 <hr/>
