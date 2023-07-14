@@ -2,25 +2,51 @@ import { BrowserRouter } from "react-router-dom";
 import Footer from "../Componant/Shared/Footer";
 import NavBar from "../Componant/Shared/NavBar";
 import Router from "./Router";
-import { AllQun } from "../context/QunForCart"
+import { CartContext, CartProvider } from "../context/QunForCart"
 import"./App.css" 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import BaseURL from "../BaseURL.js";
+// import { useState } from "react";
 
 function App() {
   // const localHost = "https://"
   // console.log(localHost)
-  const [qun , setQun] = useState(0)
+  // const [qun , setQun] = useState(0)
+  const [cartNum, setCartNum] = useState(0);
+  const token = localStorage.getItem("token");
+
+  const getTotalPrice = async ()=>{
+    try {
+        const response = await BaseURL.get('api/cart',
+        {
+            headers: {
+            'Authorization': `Bearer ${token}`
+            }
+        })
+        setCartNum(response.data.data.totalCartQuantity)
+        // console.log('Cart Data', response.data.data)
+    } catch (error) {
+        console.log(error.response.data.message)
+    }
+}
+
+
+useEffect(() => {
+  getTotalPrice()
+}, [])
+
+
   return (
     <div className="App">
+    <CartContext.Provider value={{cartNum, setCartNum}}>
       <BrowserRouter>
-        <AllQun.Provider value = {{qun , setQun}}>
           <NavBar/>
 
-            <Router/>
+          <Router/>
 
           <Footer/>
-        </AllQun.Provider>
       </BrowserRouter>
+    </CartContext.Provider>
     </div>
   );
 }

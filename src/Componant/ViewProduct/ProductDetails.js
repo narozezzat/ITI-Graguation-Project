@@ -2,18 +2,17 @@
 // import { useEffect, useState } from "react"
 // import { useLocation } from "react-router-dom";
 
-import { json } from "react-router-dom";
 import BaseURL from "../../BaseURL.js";
 import StarsRating from "../Shared/StarsRating"
 import { useContext, useState } from "react";
-import { AllQun } from "../../context/QunForCart.js";
+import { CartContext } from "../../context/QunForCart.js";
 
 export default function ProductDetails(props) {
 
 
     const item = props.singleProduct.singleProduct
     // console.log(item._id)
-    const {qun , setQun} = useContext(AllQun)
+    const {cartNum , setCartNum} = useContext(CartContext)
     const token = localStorage.getItem("token");
     // console.log(token)
     const[ error , setError] = useState([])
@@ -29,7 +28,7 @@ export default function ProductDetails(props) {
             setError(error.response.data.message)
         }
 
-        setQun(qun + item.price)
+        setCartNum(cartNum + 1)
     }
 
     return(

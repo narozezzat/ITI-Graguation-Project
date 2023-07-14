@@ -80,8 +80,8 @@ export default function CoustomerReviews(props){
                     getMyReview()
                 }
             
-        } catch (error) {
-            console.log("Already Creating Review Before")
+        }catch (error) {
+            alert(error.response.data.message)
         }
     }
 
@@ -122,7 +122,7 @@ export default function CoustomerReviews(props){
         <>
         <div className="row m-0">
 
-            <div className="col-4 left">
+            <div className="col-12 col-md-4 left">
                 <div className=" p-2">
                     <h2>Customer Reviews</h2>
                     <span> <StarsRating Rating={item.ratingAverage}/> {item.ratingAverage} out of 5</span>
@@ -233,15 +233,15 @@ export default function CoustomerReviews(props){
 
             </div>
             
-            <div className="col-8 right">
+            <div className="col-12 col-md-8 right">
                 <h2>Top reviews from Egypt</h2>
 
                 <div className="comments">
 
-                    {allReview.map((review,index)=>{
+                    {/* {allReview.map((review,index)=>{
                         return(
                             <>
-                                <div className=" border col-12 mb-2 p-2">
+                                <div key={index} className=" border col-12 mb-2 p-2">
                                     <div>
                                         <span className="me-2">
                                             <img className="rounded-circle shadow-4-strong"  src="https://images-eu.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png" alt=""/>
@@ -262,7 +262,7 @@ export default function CoustomerReviews(props){
                             </>
                         )
                         })
-                    }
+                    } */}
 
                 </div>
             </div>

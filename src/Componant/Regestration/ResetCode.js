@@ -16,7 +16,7 @@ export default function ResetCode() {
                 navigate(`/ResetPassword`)
             } 
         } catch (error) {
-            console.log(error.response.data.message)
+            alert(error.response.data.message)
         }
 
     }

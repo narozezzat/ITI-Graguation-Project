@@ -1,19 +1,19 @@
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react"
 import BaseURL from "../BaseURL.js";
-import { AllQun } from "../context/QunForCart.js";
+import { CartContext } from "../context/QunForCart.js";
 
 export default function Cart(){
     const [cart , setCart]= useState([])
     const [TotalPrice , setTotalPrice]= useState([])
-    const {qun , setQun} = useContext(AllQun)
+    const {cartNum , setCartNum} = useContext(CartContext)
 
     const token = localStorage.getItem("token");
     // console.log(cart)
     // console.log(TotalPrice)
 
     if(cart.totalCartPrice){
-        setQun(cart.totalCartPrice)
+        setCartNum(cart.totalCartPrice)
     }
 
     const getProductFromCart = async ()=>{
@@ -95,9 +95,9 @@ export default function Cart(){
                                 <pre className="text-success"> {item.product.stock} in stock</pre>
                                 <div>
                                     <span>
-                                        <a className="btn btn-danger" href="#1" >-</a>
+                                        <button onClick={() => setCartNum(cartNum - 1)} className="btn btn-danger" >-</button>
                                         <span className="mx-2">{item.quantity}</span>
-                                        <a className="btn btn-success" href="#1">+</a>
+                                        <button onClick={() => setCartNum(cartNum + 1)} className="btn btn-success" >+</button>
                                     </span>
 
                                     <a className="ms-3 border-start boeder-black ps-2" href="#1" style={{textDecoration:"none"}} onClick={() => deleteProduct(item.product.id)}>delete</a>

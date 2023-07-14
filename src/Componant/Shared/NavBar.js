@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./NavBar.css";
 import BaseURL from "../../BaseURL.js";
-import { AllQun } from "../../context/QunForCart";
+import { CartContext } from "../../context/QunForCart";
 import { useForm } from "react-hook-form";
 
 export default function NavBar() {
@@ -36,7 +36,7 @@ export default function NavBar() {
         })
     })
 
-    const {qun , setQun} = useContext(AllQun)
+    const { cartNum, setCartNum} = useContext(CartContext)
 
     const { register, handleSubmit} = useForm();
 
@@ -182,7 +182,7 @@ export default function NavBar() {
                         <Link to="/Cart" className="borderWhite rounded-2">
                             <div>
                                 <i className="fa-solid fa-cart-shopping cartIcon pt-1"> 
-                                    <span className=" fw-normal text-warning"> <sup>{qun}</sup> </span> 
+                                    <span className=" fw-normal text-warning"> <sup>{cartNum}</sup> </span> 
                                     <span className=" fw-normal cartFont">Cart</span> 
                                 </i>
                             </div>

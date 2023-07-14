@@ -1,3 +1,2 @@
 import { createContext } from "react";
-
-export const AllQun = createContext()
+export const CartContext = createContext({})
