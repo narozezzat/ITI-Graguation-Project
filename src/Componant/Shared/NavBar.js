@@ -12,7 +12,7 @@ export default function NavBar() {
     const getAllCategory = async ()=>{
         try {
             const response = await BaseURL.get('/api/category')
-            setAllCategory(response.data.data)
+            setAllCategory(response.data?.data || [])
         } catch (error) {
             console.log(error.response.data.message)
         }

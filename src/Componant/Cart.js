@@ -1,24 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react"
 import BaseURL from "../BaseURL.js";
 import { CartContext } from "../context/QunForCart.js";
 
 export default function Cart(){
+    const navigate = useNavigate();
     const [cart , setCart]= useState([])
     const [TotalPrice , setTotalPrice]= useState([])
+    const [cartId , setCartId]= useState([])
     const {cartNum , setCartNum} = useContext(CartContext)
-
     const token = localStorage.getItem("token");
-    // console.log(cart)
-    // console.log(TotalPrice)
-
     if(cart.totalCartPrice){
         setCartNum(cart.totalCartPrice)
     }
 
     const getProductFromCart = async ()=>{
         try {
-            const response = await BaseURL.get('api/cart',
+            const response = await BaseURL.get('/api/cart',
             {
                 headers: {
                 'Authorization': `Bearer ${token}`
@@ -26,6 +24,8 @@ export default function Cart(){
             }) 
             // console.log(response.data.data.cartItems)
             setCart(response.data.data.cartItems)
+            // console.log(response.data.data._id)
+            setCartId(response.data.data._id)
         } catch (error) {
             console.log(error.response.data.message)
         }
@@ -41,6 +41,7 @@ export default function Cart(){
             }) 
             // console.log(response.data.data.cartItems)
             setTotalPrice(response.data.data.totalCartPrice)
+            setCartNum(response.data.data.totalCartQuantity || 0)
         } catch (error) {
             console.log(error.response.data.message)
         }
@@ -49,22 +50,62 @@ export default function Cart(){
     useEffect(()=>{
         getProductFromCart();
         getTotalPrice()
-    },[])
+    },[cartNum])
 
     const deleteProduct = async (id)=> {
         console.log(id)
         try {
-            const response = await BaseURL.delete(`api/cart/${id}`,
-            {
-                headers: {
-                'Authorization': `Bearer ${token}`
-                }
-            })
+            const response = await BaseURL.delete(`/api/cart/${id}`,{ headers:{'Authorization': `Bearer ${token}`}})
             console.log(response)
-            getProductFromCart()
         } catch (error) {
-            console.log(error.response.data.message)
+            alert(error.response.data.message)
             
+        }
+        
+        getProductFromCart();
+        getTotalPrice();
+    }
+
+    const addQun= async (id)=>{
+        // console.log(id)
+
+        try {
+            const response = await BaseURL.post('/api/cart',{productId: id},{ headers:{'Authorization': `Bearer ${token}`}})
+            console.log(response)
+        } catch (error) {
+            alert(error.response.data.message)
+        }
+
+        setCartNum(cartNum + 1)
+    }
+
+    const removeQun= async (id)=>{
+        console.log({token})
+        try {
+            const response = await BaseURL.put(`/api/cart/${id}`,null,{ headers:{'Authorization': `Bearer ${token}`}})
+            console.log(response)
+        } catch (error) {
+            alert(error.response.data.message)
+        }
+
+        // setCartNum(cartNum - 1)
+
+        getProductFromCart();
+        getTotalPrice();
+    }
+
+    const proceedToBuy = async()=>{
+        // navigate(`/PaymentPage`, {
+        //     state: { cartId }
+        // })
+        try {
+            const response = await BaseURL.get(`/api/orders/checkout-session/${cartId}` ,{ headers:{'Authorization': `Bearer ${token}`}})
+            console.log(response.data.session.url)
+
+            // navigate(`response.data.session.url`)
+            window.location.href = response.data.session.url
+        } catch (error) {
+            alert(error.response.data.message)
         }
     }
 
@@ -73,8 +114,8 @@ export default function Cart(){
         <div className="d-flex justify-content-around ">
             <div className="fs-4 fw-bold mb-3">Shopping Cart</div>
             <div className=" mb-3">
-                <div className="fs-5">Subtotal (  ): <span className="fw-bold">EGP {TotalPrice === undefined ? "0" : TotalPrice} </span></div>
-                <Link className="btn btn-warning w-100"  to="/PaymentPage"> Proceed to Buy </Link>
+                <div className="fs-5">Subtotal (  ): <span className="fw-bold">EGP {TotalPrice ? TotalPrice : "0"} </span></div>
+                <button className="btn btn-warning w-100" onClick={()=>proceedToBuy()} > Proceed To Buy </button>
                 {/* {(cart.cartItems).length} */}
             </div>
         </div>
@@ -95,12 +136,12 @@ export default function Cart(){
                                 <pre className="text-success"> {item.product.stock} in stock</pre>
                                 <div>
                                     <span>
-                                        <button onClick={() => setCartNum(cartNum - 1)} className="btn btn-danger" >-</button>
+                                        <button onClick={() => removeQun(item.product._id)} className="btn btn-danger" >-</button>
                                         <span className="mx-2">{item.quantity}</span>
-                                        <button onClick={() => setCartNum(cartNum + 1)} className="btn btn-success" >+</button>
+                                        <button onClick={() => addQun(item.product._id)} className="btn btn-success" >+</button>
                                     </span>
 
-                                    <a className="ms-3 border-start boeder-black ps-2" href="#1" style={{textDecoration:"none"}} onClick={() => deleteProduct(item.product.id)}>delete</a>
+                                    <a className="ms-3 border-start boeder-black ps-2" href="#1" style={{textDecoration:"none"}} onClick={() => deleteProduct(item.product._id)}>delete</a>
 
                                 </div>
                             </div>
@@ -112,7 +153,7 @@ export default function Cart(){
             })
         }
         
-        <h4 className="text-end">Total : {TotalPrice ===undefined ? "0" : TotalPrice} EGP</h4>
+        <h4 className="text-end">Total : {TotalPrice ? TotalPrice : "0"} EGP</h4>
 
         </>
     )

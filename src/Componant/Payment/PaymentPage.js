@@ -2,13 +2,34 @@
 // import { Link } from "react-router-dom";
 
 import { useForm } from "react-hook-form";
+import BaseURL from "../../BaseURL.js";
+import { useLocation } from "react-router-dom";
 
 export default function PaymentPage(){
+    const location = useLocation()
+    const cartId = location.state.cartId; 
+    console.log(cartId)
+
+    const token = localStorage.getItem("token");
 
     const { register, handleSubmit,formState:{errors} } = useForm();
 
-    const onSubmit = data => {
+    const onSubmit =async data => {
         console.log(data)
+        try {
+            
+            // const sendDataAdress = await BaseURL.post(`/api/orders/${cartId}`, data ,{ headers:{'Authorization': `Bearer ${token}`}})
+            // console.log(sendDataAdress)
+
+            const response = await BaseURL.get(`/api/orders/checkout-session/${cartId}`  ,{ headers:{'Authorization': `Bearer ${token}`}})
+            console.log(response.data.session.url)
+
+            // navigate(`response.data.session.url`)
+            window.location.href = response.data.session.url
+
+        } catch (error) {
+            alert(error.response.data.message)
+        }
     }
 
     return(

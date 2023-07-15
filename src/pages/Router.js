@@ -12,6 +12,7 @@ import ResetPassword from "../Componant/Regestration/ResetPassword";
 import PaymentModel from "../Componant/Payment/PaymentModel"
 import ProdctFiltretion from "../Componant/ListProduct/ProdctFiltretion";
 import Profile from "../Componant/Shared/Profile";
+import CheckoutSuccessed from "../Componant/Payment/CheckoutSuccessed";
 
 export default function Router() {
 
@@ -35,6 +36,7 @@ export default function Router() {
             <Route path="/PaymentModel" element={ <PaymentModel/> }></Route>
             <Route path="/ProdctFiltretion" element={ <ProdctFiltretion/> }></Route>
             <Route path="/Profile" element={ <Profile/> }></Route>
+            <Route path="/CheckoutSuccessed" element={ <CheckoutSuccessed/> }></Route>
             
         </Routes>
     </div>

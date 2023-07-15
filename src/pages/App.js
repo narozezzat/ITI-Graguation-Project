@@ -23,7 +23,7 @@ function App() {
             'Authorization': `Bearer ${token}`
             }
         })
-        setCartNum(response.data.data.totalCartQuantity)
+        setCartNum(response.data.data.totalCartQuantity || 0)
         // console.log('Cart Data', response.data.data)
     } catch (error) {
         console.log(error.response.data.message)
