@@ -112,9 +112,10 @@ export default function Cart(){
     return(
         <>
         <div className="d-flex justify-content-around ">
-            <div className="fs-4 fw-bold mb-3">Shopping Cart</div>
-            <div className=" mb-3">
-                <div className="fs-5">Subtotal (  ): <span className="fw-bold">EGP {TotalPrice ? TotalPrice : "0"} </span></div>
+            <div className="fs-4 fw-bold my-3">Shopping Cart</div>
+            <div className="my-3">
+                {/* Subtotal (  ): */}
+                <div className="fs-5"><span className="fw-bold">EGP: {TotalPrice ? TotalPrice : "0"} </span></div> 
                 <button className="btn btn-warning w-100" onClick={()=>proceedToBuy()} > Proceed To Buy </button>
                 {/* {(cart.cartItems).length} */}
             </div>

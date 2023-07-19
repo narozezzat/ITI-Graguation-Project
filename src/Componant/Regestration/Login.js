@@ -37,7 +37,7 @@ export default function Login() {
             </Link>
 
             <div className="row justify-content-center">
-                <div className="col-md-6">
+                <div className="col-md-4">
                     <div className="card">
                     <div className="card-header">
                         <h4 className="text-center">Logn in</h4>
@@ -86,7 +86,15 @@ export default function Login() {
                     </div>
                     </div>
                 </div>
-            </div>    
+            </div>  
+
+            <div className="mb-5">
+                <Link to="/admin/allproducts">
+                    <span>
+                        Login as Admin
+                    </span>
+                </Link>
+            </div>
         </div>
         </>
     )
