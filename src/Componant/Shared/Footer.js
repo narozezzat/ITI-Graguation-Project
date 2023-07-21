@@ -10,7 +10,8 @@ function Footer() {
       <div className="footer">
 
         <Link onClick={BackToTop} className="lie">
-          <div className="footerBottomToTop fixed-bottom m-0">
+          {/* after this link fixed-bottom in div classname */}
+          <div className="footerBottomToTop m-0">
             <p className="m-0">Back to Top</p>
           </div>
         </Link>

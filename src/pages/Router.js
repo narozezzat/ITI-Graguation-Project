@@ -19,6 +19,7 @@ import AdminAllProducts from "../Componant/Admin/AllProducts";
 import Admin from "../Componant/Admin/Admin";
 import AddCategory from "../Componant/Admin/AddCategory";
 import AddProducts from "../Componant/Admin/AddProducts";
+import NotFoundPage from "../Componant/NotFoundPage";
 
 
 export default function Router() {
@@ -30,6 +31,7 @@ export default function Router() {
         <Routes>
 
             <Route path="/" element={ <MainPage/> }></Route>
+            <Route path="*" element={ <NotFoundPage /> }></Route>
             <Route path="/Login" element={ <Login/> }></Route>
             <Route path="/SignUp" element={ <SignUp/> }></Route>
             <Route path="/Forget" element={ <Forget/>}></Route>

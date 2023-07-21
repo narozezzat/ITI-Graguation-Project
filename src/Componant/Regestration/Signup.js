@@ -33,7 +33,7 @@ export default function SignUp() {
     
     return(
         <>
-        <div className="container">
+        <div className="container mb-5">
             <Link to="/MainPage">
                 <div className="row d-flex justify-content-center align-items-center">
                 <img style={{width:'150px'}} 
@@ -45,7 +45,7 @@ export default function SignUp() {
             </Link>
 
             <div className="row justify-content-center">
-                <div className="col-md-6">
+                <div className="col-md-4">
                     <div className="card">
                         <div className="card-header">
                             <h4 className="text-center">Create account</h4>
