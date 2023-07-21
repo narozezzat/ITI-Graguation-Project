@@ -22,7 +22,7 @@ export default function ResetPassword() {
     }
     return(
         <>
-        <div className="container">
+        <div className="container mb-5">
             <Link to="/MainPage">
                 <div className="row d-flex justify-content-center align-items-center">
                 <img style={{width:'150px'}} 
@@ -34,7 +34,7 @@ export default function ResetPassword() {
             </Link>
 
             <div className="row justify-content-center">
-                <div className="col-md-6">
+                <div className="col-md-4">
                     <div className="card">
                     <div className="card-header">
                         <h4 className="text-center">Reset Password</h4>
