@@ -14,6 +14,7 @@ export default function CoustomerReviews(props){
     // console.log(myReview);
     // console.log(itemId);
     // console.log(reviewId);
+    console.log(allReview);
 
     const getAllReview = async ()=>{
         try {
@@ -77,11 +78,11 @@ export default function CoustomerReviews(props){
                 // console.log(response.data.data._id)
                 if(response){
                     getAllReview()
-                    getMyReview()
+                    // getMyReview()
                 }
             
         }catch (error) {
-            alert(error.response.data.message)
+            alert('Already Creating Review Before')
         }
     }
 
@@ -238,7 +239,7 @@ export default function CoustomerReviews(props){
 
                 <div className="comments">
 
-                    {/* {allReview.map((review,index)=>{
+                    {allReview.map((review,index)=>{
                         return(
                             <>
                                 <div key={index} className=" border col-12 mb-2 p-2">
@@ -246,7 +247,7 @@ export default function CoustomerReviews(props){
                                         <span className="me-2">
                                             <img className="rounded-circle shadow-4-strong"  src="https://images-eu.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png" alt=""/>
                                         </span>
-                                        <span>{review.user.name}</span>
+                                        <span>{review.user == null? " User" : review.user.name }</span>
                                     </div>
                                     
                                     <div >
@@ -262,7 +263,7 @@ export default function CoustomerReviews(props){
                             </>
                         )
                         })
-                    } */}
+                    }
 
                 </div>
             </div>

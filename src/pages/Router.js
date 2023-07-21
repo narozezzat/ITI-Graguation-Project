@@ -13,12 +13,12 @@ import PaymentModel from "../Componant/Payment/PaymentModel"
 import ProdctFiltretion from "../Componant/ListProduct/ProdctFiltretion";
 import Profile from "../Componant/Shared/Profile";
 import CheckoutSuccessed from "../Componant/Payment/CheckoutSuccessed";
-import AllProductsPage from "../Componant/Admin/AllProductsPage";
-import AllOrders from "../Componant/Admin/AllOrdersPage";
+import AllOrders from "../Componant/Admin/AllOrders";
 import OrdersDetailsPage from "../Componant/Admin/OrdersDetailsPage"
-import AddBrandPage from "../Componant/Admin/AddBrandPage";
-import AddCategoryPage from './../Componant/Admin/AddCategoryPage';
-import AddProductsPage from "../Componant/Admin/AddProductsPage";
+import AdminAllProducts from "../Componant/Admin/AllProducts";
+import Admin from "../Componant/Admin/Admin";
+import AddCategory from "../Componant/Admin/AddCategory";
+import AddProducts from "../Componant/Admin/AddProducts";
 
 
 export default function Router() {
@@ -44,13 +44,15 @@ export default function Router() {
             <Route path="/ProdctFiltretion" element={ <ProdctFiltretion/> }></Route>
             <Route path="/Profile" element={ <Profile/> }></Route>
             <Route path="/CheckoutSuccessed" element={ <CheckoutSuccessed/> }></Route>
-            <Route path="/admin/allproducts" element={ <AllProductsPage /> }></Route>
-            <Route path="/admin/allorders" element={ <AllOrders/> }></Route>
-            <Route path="/admin/orders/:id" element={ <OrdersDetailsPage /> }></Route>
-            <Route path="/addbrand" element={ <AddBrandPage /> }></Route>
-            <Route path="/addcategory" element={ <AddCategoryPage /> }></Route>
-            <Route path="/addproducts" element={ <AddProductsPage /> }></Route>
-            
+            <Route path="/Admin" element={ <Admin/> }>
+                <Route path="/Admin/Allproducts" element={ <AdminAllProducts /> }></Route>
+                <Route index element={ <AdminAllProducts /> }></Route>
+                <Route path="/Admin/Orders" element={ <AllOrders/> }></Route>
+                <Route path="/Admin/Orders/:id" element={ <OrdersDetailsPage /> }></Route>
+                <Route path="/Admin/AddCategory" element={ <AddCategory /> }></Route>
+                <Route path="/Admin/AddProducts" element={ <AddProducts /> }></Route>
+            </Route>
+
         </Routes>
     </div>
     )

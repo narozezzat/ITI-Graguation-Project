@@ -14,6 +14,7 @@ function AdminAllProducts() {
             <AdminAllProductsCard />
             <AdminAllProductsCard />
             <AdminAllProductsCard />
+            {/* <h1>HAMADA</h1> */}
         </Row>
     </div>
   )

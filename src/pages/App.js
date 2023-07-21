@@ -6,6 +6,7 @@ import { CartContext, CartProvider } from "../context/QunForCart"
 import"./App.css" 
 import { useEffect, useState } from "react";
 import BaseURL from "../BaseURL.js";
+import { Container } from "react-bootstrap";
 // import { useState } from "react";
 
 function App() {
@@ -41,9 +42,9 @@ useEffect(() => {
     <CartContext.Provider value={{cartNum, setCartNum}}>
       <BrowserRouter>
           <NavBar/>
-
-          <Router/>
-
+            <Container>
+              <Router/>
+            </Container>
           <Footer/>
       </BrowserRouter>
     </CartContext.Provider>
