@@ -33,7 +33,6 @@ export default function ProductDetails(props) {
 
     return(
         <>
-        { error ? <p>login please</p> : "" }
             <div className="row me-0 mt-5 mb-3">
 
                 <div className="col-11 col-lg-5 col-md-8 mx-auto mb-2 mb-lg-0 left border row">
