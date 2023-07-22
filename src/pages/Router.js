@@ -14,12 +14,13 @@ import ProdctFiltretion from "../Componant/ListProduct/ProdctFiltretion";
 import Profile from "../Componant/Shared/Profile";
 import CheckoutSuccessed from "../Componant/Payment/CheckoutSuccessed";
 import AllOrders from "../Componant/Admin/AllOrders";
-import OrdersDetailsPage from "../Componant/Admin/OrdersDetailsPage"
+// import OrdersDetailsPage from "../Componant/Admin/OrdersDetailsPage"
 import AdminAllProducts from "../Componant/Admin/AllProducts";
 import Admin from "../Componant/Admin/Admin";
 import AddCategory from "../Componant/Admin/AddCategory";
 import AddProducts from "../Componant/Admin/AddProducts";
 import NotFoundPage from "../Componant/NotFoundPage";
+import OrdersDetails from "../Componant/Admin/OrdersDetails";
 
 
 export default function Router() {
@@ -50,7 +51,7 @@ export default function Router() {
                 <Route path="/Admin/Allproducts" element={ <AdminAllProducts /> }></Route>
                 <Route index element={ <AdminAllProducts /> }></Route>
                 <Route path="/Admin/Orders" element={ <AllOrders/> }></Route>
-                <Route path="/Admin/Orders/:id" element={ <OrdersDetailsPage /> }></Route>
+                <Route path="/Admin/Orders/:id" element={ <OrdersDetails  /> }></Route>
                 <Route path="/Admin/AddCategory" element={ <AddCategory /> }></Route>
                 <Route path="/Admin/AddProducts" element={ <AddProducts /> }></Route>
             </Route>

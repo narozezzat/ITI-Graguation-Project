@@ -296,7 +296,7 @@ body {
   
   /* user card data */
   .user-data {
-    height: 270px;
+    /* height: 270px; */
     width: 100% i !important;
     border-radius: 7px;
     background-color: #ffffff;

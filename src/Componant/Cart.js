@@ -53,10 +53,10 @@ export default function Cart(){
     },[cartNum])
 
     const deleteProduct = async (id)=> {
-        console.log(id)
+        // console.log(id)
         try {
             const response = await BaseURL.delete(`/api/cart/${id}`,{ headers:{'Authorization': `Bearer ${token}`}})
-            console.log(response)
+            // console.log(response)
         } catch (error) {
             alert(error.response.data.message)
             
@@ -80,10 +80,10 @@ export default function Cart(){
     }
 
     const removeQun= async (id)=>{
-        console.log({token})
+        // console.log({token})
         try {
             const response = await BaseURL.put(`/api/cart/${id}`,null,{ headers:{'Authorization': `Bearer ${token}`}})
-            console.log(response)
+            // console.log(response)
         } catch (error) {
             alert(error.response.data.message)
         }
@@ -100,7 +100,7 @@ export default function Cart(){
         // })
         try {
             const response = await BaseURL.get(`/api/orders/checkout-session/${cartId}` ,{ headers:{'Authorization': `Bearer ${token}`}})
-            console.log(response.data.session.url)
+            // console.log(response.data.session.url)
 
             // navigate(`response.data.session.url`)
             window.location.href = response.data.session.url
@@ -114,8 +114,8 @@ export default function Cart(){
         <div className="d-flex justify-content-around ">
             <div className="fs-4 fw-bold my-3">Shopping Cart</div>
             <div className="my-3">
-                {/* Subtotal (  ): */}
-                <div className="fs-5"><span className="fw-bold">EGP: {TotalPrice ? TotalPrice : "0"} </span></div> 
+                
+                <div className="fs-5"> Subtotal ( {cart.length} ): <span className="fw-bold">EGP: {TotalPrice ? TotalPrice : "0"} </span></div> 
                 <button className="btn btn-warning w-100" onClick={()=>proceedToBuy()} > Proceed To Buy </button>
                 {/* {(cart.cartItems).length} */}
             </div>

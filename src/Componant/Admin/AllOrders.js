@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
-import AllOrdersItem from './AllOrdersItem'
-import { Link } from 'react-router-dom'
-import landscape from "../../assets/Images/img8.jpg"
+import { Link, useNavigate } from 'react-router-dom'
 import BaseURL from '../../BaseURL.js'
 
 
 function AllOrders() {
+  const navigate = useNavigate();
   const token = localStorage.getItem("token");
   const [ allOrders , setAllOrders ]= useState([])
   console.log(allOrders)
@@ -26,7 +25,13 @@ function AllOrders() {
     getAlOrders();
   },[])
 
-
+const showDetalisItem = ((item) => {
+  navigate(`/Admin/Orders/${item._id}`, {
+      state: {
+          item
+      }
+  })
+})
   return (
     <div>
         <div className='my-4 pro-text'>Manage all Orders</div>
@@ -36,11 +41,10 @@ function AllOrders() {
               return(
                 <>
                   <Col sm="12">
-                    <Link 
-                        to="/admin/orders/123"
-                        className='cart-item-body my-2 px-1 d-flex'
-                        style={{textDecoration: "none"}}>
+                    <div className='cart-item-body my-2 px-1 d-flex' onClick={() => showDetalisItem(item)}>
+
                         <img className='rounded-3' width="160px" height="197px" src={item.cartItems[0].product.imageCover} alt="" />
+                        
                         <div className='w-100'>
                             <Row className='justify-content-between mx-1'>
                                 <Col sm="12" className='d-flex flex-row  justify-content-between'>
@@ -77,7 +81,8 @@ function AllOrders() {
                                 </Col>
                             </Row>
                         </div>
-                    </Link>
+
+                    </div>
                   </Col>
                 </>
               )

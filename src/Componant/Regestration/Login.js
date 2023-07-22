@@ -46,7 +46,7 @@ export default function Login() {
             </Link>
 
             <div className="row justify-content-center">
-                <div className="col-md-4">
+                <div className="col-lg-6 col-md-8 col-12">
                     <div className="card">
                         <div className="card-header">
                             <h4 className="text-center">Logn in</h4>
@@ -76,7 +76,8 @@ export default function Login() {
                                             className="form-control"
                                             id="password"
                                             name="password"
-                                            {...register('password',{required: true,minLength : 8 , pattern:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/})}
+                                            //, pattern:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+                                            {...register('password',{required: true,minLength : 8  })}
                                             placeholder="password"/>
                                         <button
                                             type="button"
@@ -115,13 +116,14 @@ export default function Login() {
                 </div>
             </div>  
 
-            <div className="mb-5">
+            {/* <div className="mb-5">
                 <Link to="/Admin">
                     <span>
                         Login as Admin
                     </span>
                 </Link>
-            </div>
+            </div> */}
+
         </div>
         </>
     )

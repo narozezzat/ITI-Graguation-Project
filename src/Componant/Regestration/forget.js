@@ -36,7 +36,7 @@ export default function Forget() {
             </Link>
 
             <div className="row justify-content-center">
-                <div className="col-md-4">
+                <div className="col-lg-6 col-md-8 col-12">
                     <div className="card">
                     <div className="card-header">
                         <h4 className="text-center">Password assistance</h4>

@@ -25,6 +25,7 @@ export default function NavBar() {
     const SignOut = () => {
         localStorage.removeItem("token")
         localStorage.removeItem("userId")
+        localStorage.removeItem("Admin")
     }
 
     const showProductByCategory = ((id) => {
@@ -111,12 +112,12 @@ export default function NavBar() {
                             <p>EN</p>
                         </div>
 
-                        <div className="nav-item dropdown borderWhite rounded-2">
+                        <div className="nav-item dropdown borderWhite rounded-2 text-center mx-auto">
                             <a className="nav-link dropdown-toggle text-light" href="#1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Accounts & Lists
                             </a>
 
-                            <ul className="dropdown-menu ps-3 listNavBar">
+                            <ul className="dropdown-menu ps-3 listNavBar text-center">
                                 
                                 <li>
                                     <Link className="" to="/">
