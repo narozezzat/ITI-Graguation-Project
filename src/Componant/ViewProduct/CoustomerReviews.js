@@ -150,22 +150,22 @@ export default function CoustomerReviews(props){
                             </div>
 
                             <div className="modal-body">
-
+                                    
                                 <form id='form' onSubmit={handleSubmit(onSubmit)} className="form-group row">
 
                                     <div className="mb-3">
-                                        <label  className="form-label"><b>Rating Average</b></label>
-                                        <input type="number" className="form-control" 
+                                        <label  className="form-label" for='rating'><b>Rating Average</b></label>
+                                        <input type="number" className="form-control" name='rating' min="1" max="5"
                                         placeholder="2...."
                                         {...register('ratings',{required:true , min:1 , max:5 })}
                                         />
-                                        <div id="emailHelp" className="form-text text-danger" >
+                                        {/* <div id="emailHelp" className="form-text text-danger" >
                                         <small className="form-text text-danger" >
                                             {errors.ratings?.type === 'required' && "Rating is required"}
                                             {errors.ratings?.type === 'min' && "Minimum Average 1"}
                                             {errors.ratings?.type === 'max' && "Maximum Average 5"}
                                         </small>
-                                        </div>
+                                        </div> */}
                                     </div>
 
                                     {/* <div className="mb-3">
