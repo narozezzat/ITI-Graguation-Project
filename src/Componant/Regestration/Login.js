@@ -1,12 +1,20 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import BaseURL from "../../BaseURL.js";
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function Login() {
     const navigate = useNavigate();
     
     const { register, handleSubmit,formState:{errors} } = useForm();
+    // show password
+    const [showPassword, setShowPassword] = useState(false);
+  function handleTogglePassword() {
+    setShowPassword(!showPassword);
+  }
     const onSubmit =async userData => {
         try {
             const response = await BaseURL.post('/api/auth/login', userData)
@@ -46,7 +54,6 @@ export default function Login() {
 
                         <div className="card-body">
                             <form id='form' onSubmit={handleSubmit(onSubmit)} className="form-group row">
-                            
                                 <div className="mb-3">
                                     <label  className="form-label"><b>Email address</b></label>
                                     <input type="text" 
@@ -63,17 +70,28 @@ export default function Login() {
 
                                 <div className="mb-3">
                                     <label className="form-label"><b>Password</b></label>
-                                    <input type="password" 
-                                    className="form-control" 
-                                    // , pattern:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/})
-                                    {...register('password',{required: true,minLength : 8 })}
-                                    placeholder="Enter password" />
+                                    <div className="input-group">
+                                        <input
+                                            type={showPassword ? 'text' : 'password'}
+                                            className="form-control"
+                                            id="password"
+                                            name="password"
+                                            {...register('password',{required: true,minLength : 8 , pattern:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/})}
+                                            placeholder="password"/>
+                                        <button
+                                            type="button"
+                                            className="btn btn-outline-secondary"
+                                            onClick={handleTogglePassword}>
+                                            <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                                        </button>
+                                    </div>
+
                                     <div id="emailHelp" className="form-text text-danger">
-                                    <small className="form-text text-danger">
-                                        {errors.password?.type ==='minLength' && " Your password must be at least 8 characters long"} 
-                                        {errors.password?.type ==='required' && " We'll never share your Password with anyone else"} 
-                                        {errors.password?.type ==='pattern' && " must include at least one lowercase letter, one uppercase letter, one number, and one special symbol."}
-                                    </small>
+                                        <small className="form-text text-danger">
+                                            {errors.password?.type ==='minLength' && " Your password must be at least 8 characters long"} 
+                                            {errors.password?.type ==='required' && " We'll never share your Password with anyone else"} 
+                                            {errors.password?.type ==='pattern' && " must include at least one lowercase letter, one uppercase letter, one number, and one special symbol."}
+                                        </small>
                                     </div>
                                 </div>
 
@@ -84,7 +102,6 @@ export default function Login() {
                                 <div className="mt-3 text-center">
                                     <Link to="/Forget">Forget your passwod</Link>
                                 </div>
-                                
                             </form>
                         </div>
 

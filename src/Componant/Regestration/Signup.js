@@ -1,11 +1,27 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import BaseURL from "../../BaseURL.js";
 
 export default function SignUp() {
     const navigate = useNavigate();
 
     const { register, handleSubmit,watch,formState:{errors} } = useForm();
+
+    // Show ConfirmPassword
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  function handleConfirmPassword() {
+    setShowConfirmPassword(!showConfirmPassword);
+  }
+    // Show Password
+  const [showPassword, setShowPassword] = useState(false);
+
+  function handleTogglePassword() {
+    setShowPassword(!showPassword);
+  }
 
     const onSubmit = async userData => {
         try {
@@ -83,10 +99,21 @@ export default function SignUp() {
 
                                 <div className="mb-3">
                                     <label className="form-label"><b>Password</b></label>
-                                    <input type="password" 
-                                    className="form-control" 
+                                    <div className="input-group">
+                                <input
+                                    type={showPassword ? 'text' : 'password'}
+                                    className="form-control"
+                                    id="password"
+                                    name="password"
                                     {...register('password',{required: true,minLength : 8 , pattern:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/})}
-                                    placeholder="Enter password" />
+                                    placeholder="password"/>
+                                <button
+                                    type="button"
+                                    className="btn btn-outline-secondary"
+                                    onClick={handleTogglePassword}>
+                                    <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                                </button>
+                                </div>
                                     <div id="emailHelp" className="form-text text-danger">
                                     <small className="form-text text-danger">
                                         {errors.password?.type ==='minLength' && " Your password must be at least 8 characters long"} 
@@ -98,11 +125,21 @@ export default function SignUp() {
 
                                 <div className="mb-3">
                                     <label  className="form-label"><b>Re-enter password</b></label>
-                                    <input type="password" 
+                                    <div className="input-group">
+                                <input
+                                    type={showConfirmPassword ? 'text' : 'password'}
                                     className="form-control"
-                                    {...register('confirmPassword',{ required: true, minLength: 8, validate: passwordMatch })}
-                                    placeholder="Confirm password"
-                                    />
+                                    id="password"
+                                    name="password"
+                                    {...register('confirm',{ required: true, minLength: 8, validate: passwordMatch })}
+                                    placeholder="Confirm password"/>
+                                <button
+                                    type="button"
+                                    className="btn btn-outline-secondary"
+                                    onClick={handleConfirmPassword}>
+                                    <FontAwesomeIcon icon={showConfirmPassword ? faEyeSlash : faEye} />
+                                </button>
+                                </div>
                                     <div id="emailHelp" className="form-text text-danger">
                                     <small className="form-text text-danger">
                                         {errors.confirmPassword?.type ==='validate' && " Passwords do not match"}
