@@ -50,7 +50,7 @@ export default function NavBar() {
         <div className="sticky-top">
 
             <nav className="navbar navbar-expand-lg bg-black">
-                <div className="container-fluid">
+                <div className="container-fluid text-center">
                     
                     <Link to="/MainPage">
                         <div className="navbar-brand logoContainer">
@@ -69,7 +69,6 @@ export default function NavBar() {
                     
                     <div className="collapse navbar-collapse " id="navbarSupportedContent">
 
-                        {/* <div className="   "> */}
                         <form className="p-1 w-100 mx-md-2 d-flex flex-row rounded-2 borderWhite gap-0"
                         onSubmit={handleSubmit(sarch)}>
 
@@ -98,11 +97,16 @@ export default function NavBar() {
 
 
                         </form>
-                        {/* </div> */}
-                                
-                        <div className="languageContainer borderWhite m-0 rounded-2">
-                            <div className="languageImage">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_Egypt.svg/255px-Flag_of_Egypt.svg.png" alt="" />
+
+                        <div className="">
+                            <Link to= "/Admin " className="text-light">
+                                {localStorage.getItem("Admin") === "admin" ? "Admin" : "" }
+                            </Link>
+                        </div>
+
+                        <div className="languageContainer borderWhite m-0 rounded-2 text-center mx-auto">
+                            <div className="languageImage ">
+                                <img className="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_Egypt.svg/255px-Flag_of_Egypt.svg.png" alt="" />
                             </div>
                             <p>EN</p>
                         </div>
@@ -115,37 +119,37 @@ export default function NavBar() {
                             <ul className="dropdown-menu ps-3 listNavBar">
                                 
                                 <li>
-                                    <Link className="" to="/Login">
+                                    <Link className="" to="/">
                                         Your Orders
                                     </Link>
                                 </li>
 
                                 <li>
-                                    <Link className="" to="/Login">
+                                    <Link className="" to="/">
                                         Your Account 
                                     </Link>
                                 </li>
 
                                 <li>
-                                    <Link className="" to="/Login">
+                                    <Link className="" to="/">
                                         Your Addresses
                                     </Link>
                                 </li>
 
                                 <li>
-                                    <Link className="" to="/Login">
+                                    <Link className="" to="/">
                                         Your Lists
                                     </Link>
                                 </li>
 
                                 <li>
-                                    <Link className="" to="/PaymentModel">
+                                    <Link className="" to="/">
                                         Your Seller Account
                                     </Link>
                                 </li>
 
                                 <li>
-                                    <Link className="" to="/Login">
+                                    <Link className="" to="/">
                                         Switch Accounts
                                     </Link>
                                 </li>

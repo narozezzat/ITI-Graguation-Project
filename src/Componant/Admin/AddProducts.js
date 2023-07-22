@@ -1,108 +1,85 @@
 import { Col, Row } from 'react-bootstrap'
 import ava from "../../assets/Images/ava1.png"
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 function AddProducts() {
+  const { register, handleSubmit,formState:{errors} } = useForm();
 
-  const [img, setImg] = useState(ava)
+  const onSubmit = async data=> {
+    console.log(data)
+    // const dataToApi = {
+    //     name:data.name,
+    //     image:data.image[0].name
+    // }
+    // console.log(dataToApi)
 
-  const onImageChange = (event) => {
-    if(event.target.files && event.target.files[0])
-      {
-        setImg(URL.createObjectURL(event.target.files[0]))
-      }
-    }
-  const onSelect = ()=> {
+    // try {
+    //     const response =await  BaseURL.post(`https://amazon-project.onrender.com/api/category`, dataToApi ,{ headers:{'Authorization': `Bearer ${token}`}})
+    //     console.log(response.data.data)
 
-  }
-  const onRemove = ()=> {
+    // } catch (error) {
+    //     alert(error.response.data.message)
+    // }
 
-  }
+}
 
-  const options = [
-    {name: "first category", id: 1},
-    {name: "second category", id: 2},
-  ]
+
   return (
     <>
       <Row className='justify-content-start'> 
         <div className='admin-content-text pb-4 mt-3'>Add New Product</div>
         <Col sm='8'>
+          <form onSubmit={handleSubmit(onSubmit)} >
+              <div className="mb-3 w-100">
+                  <label  className="form-label"><b>Category Name</b></label>
+                  <input type="text" 
+                  className="form-control w-100" 
+                  {...register('name',{required:true , pattern:/[a-zA-Z]{3,}/})}
+                  placeholder="Category Name"/>
+                  <div id="emailHelp" className="form-text text-danger">
+                  <small className="form-text text-danger" >
+                      {errors.name?.type === 'required' && "category name is required"}
+                      {errors.name?.type === 'pattern' && "category name must have at lest 3 letters"}
+                  </small>
+                  </div>
+              </div>
 
-          <div className='text-form pb-2'>Product Image</div>
-          
-          <div>
-            <label for="upload-photo">
-              <img
-                src={img}
-                alt="fzx"
-                height="100px"
-                width="100px"
-                style={{ cursor: "pointer" }}
-              />
-            </label>
-            <input
-              type="file"
-              name="photo"
-              onChange={onImageChange}
-              id="upload-photo"
-            />
-          </div>
+              <div className="mb-3 w-100">
+                  <label className="form-label"><b>Category Image</b></label>
+                  <input type="file" 
+                  accept="image/jpeg,image/png,image/gif,image/webp,image/apng"
+                  className="form-control" 
+                  {...register('image',{required: true })} />
+                  <div id="emailHelp" className="form-text text-danger">
+                  <small className="form-text text-danger">
+                      {errors.image?.type ==='required' && "category image is required"} 
+                  </small>
+                  </div>
+              </div>
 
-          <input
-            type='text'
-            className='input-form d-block mt-3 px-3'
-            placeholder='product name'
-          />
+              <div className="mb-3 w-100">
+                  <label  className="form-label"><b>Product Name</b></label>
+                  <input type="text" 
+                  className="form-control w-100" 
+                  {...register('title',{required:true , pattern:/[a-zA-Z0-9\s]{3,}/})}
+                  placeholder="Product Name"/>
+                  <div id="emailHelp" className="form-text text-danger">
+                  <small className="form-text text-danger" >
+                      {errors.title?.type === 'required' && "category name is required"}
+                      {errors.title?.type === 'pattern' && "category name must have at lest 3 letters"}
+                  </small>
+                  </div>
+              </div>
 
-          <textarea
-            className='input-form-area p-2 mt-3'
-            rows="4"
-            cols="50"
-            placeholder='product description'
-          />
 
-          <input 
-            type='number'
-            className='input-form d-block mt-3 px-3'
-            placeholder='price before discount'
-          />
-
-          <input 
-            type='number'
-            className='input-form d-block mt-3 px-3'
-            placeholder='product price'
-          />
-
-          {/* <select
-            name='languages'
-            id='lang'
-            className='select input-form-area mt-3 px-2'>
-            <option value="val">main category</option>
-            <option value="val">first category</option>
-            <option value="val2">second category</option>
-            <option value="val2">three category</option>
-            <option value="val2">four category</option>
-          </select> */}
-
-          {/* <select
-            name='brand'
-            id='brand'
-            className='select input-form-area mt-3 px-2'>
-            <option value="val">brand</option>
-            <option value="val2">category first brand</option>
-            <option value="val2">category second brand</option>
-            <option value="val2">category four brand</option>
-
-          </select> */}
-
+              <Col sm='8' className='d-flex justify-content-end'>
+                  <button  className='btn-save d-inline mt-2'>save edit</button>
+              </Col>
+          </form>
         </Col>
       </Row>
-      <Row className='mb-5'>
-        <Col sm='8' className='d-flex justify-content-end'>
-          <button className='btn-save d-inline mt-2'>Save</button>
-        </Col>
-      </Row>
+
     </>
   )
 }

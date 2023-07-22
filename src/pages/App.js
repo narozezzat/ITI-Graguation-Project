@@ -27,7 +27,7 @@ function App() {
         setCartNum(response.data.data.totalCartQuantity || 0)
         // console.log('Cart Data', response.data.data)
     } catch (error) {
-        console.log(error.response.data.message)
+        // console.log(error.response.data.message)
     }
 }
 

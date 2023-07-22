@@ -1,64 +1,68 @@
 import React, { useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import "./Style.css"
-import ava from "../../assets/Images/ava1.png"
-import axios from 'axios'
+import BaseURL from '../../BaseURL.js'
+import { useForm } from 'react-hook-form'
 
 function AddCategory() {
-    
-    const [img, setImg] = useState(ava)
-    const [name, setName] = useState('')
+    const token = localStorage.getItem("token");
+    const { register, handleSubmit,formState:{errors} } = useForm();
 
-    const onImageChange = (event) => {
-        if(event.target.files && event.target.files[0])
-        {
-            setImg(URL.createObjectURL(event.target.files[0]))
+    const onSubmit = async data=> {
+        // console.log(data)
+        const dataToApi = {
+            name:data.name,
+            image:data.image[0].name
         }
+        console.log(dataToApi)
+
+        try {
+            const response =await  BaseURL.post(`https://amazon-project.onrender.com/api/category`, dataToApi ,{ headers:{'Authorization': `Bearer ${token}`}})
+            console.log(response.data.data)
+    
+        } catch (error) {
+            alert(error.response.data.message)
+        }
+
     }
 
-    const handleSubmit=(event)=> {
-        event.preventDefaulat();
-
-        const response = axios.post("https://amazon-project.onrender.com"
-        ,{name: "naroz", age: "25"}
-        )
-    }
-
-  return (
+    return (
     <div>
         <Row className='justify-content-start'>
             <div className='admin-content-text pb-4'>Add new category</div>
             <Col sm='8'>
-                <div className='text-form pb-2'>Category Image</div>
-                <div>
-                    <label for="upload-photo">
-                        <img
-                            src={img}
-                            alt="fzx"
-                            height="100px"
-                            width="100px"
-                            style={{ cursor: "pointer" }}
-                        />
-                    </label>
-                    <input
-                        type="file"
-                        name="photo"
-                        onChange={onImageChange}
-                        id="upload-photo"
-                    />
-                </div>
-                <input
-                    onChange={(e)=> setName(e.target.value)}
-                    value={name}
-                    type='text'
-                    className='input-form d-block mt-3 px-3 border border-2'
-                    placeholder='category name'
-                />
-            </Col>
-        </Row>
-        <Row>
-            <Col sm='8' className='d-flex justify-content-end'>
-                <button onClick={handleSubmit} className='btn-save d-inline mt-2'>save edit</button>
+                <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
+                    <div className="mb-3 w-100">
+                        <label  className="form-label"><b>Category Name</b></label>
+                        <input type="text" 
+                        className="form-control w-100" 
+                        {...register('name',{required:true , pattern:/[a-zA-Z]{3,}/})}
+                        placeholder="Category Name"/>
+                        <div id="emailHelp" className="form-text text-danger">
+                        <small className="form-text text-danger" >
+                            {errors.name?.type === 'required' && "category name is required"}
+                            {errors.name?.type === 'pattern' && "category name must have at lest 3 letters"}
+                        </small>
+                        </div>
+                    </div>
+
+                    <div className="mb-3 w-100">
+                        <label className="form-label"><b>Category Image</b></label>
+                        <input type="file" 
+                        accept="image/png, image/gif, image/jpeg"
+                        className="form-control" 
+                        {...register('image',{required: true })} />
+                        <div id="emailHelp" className="form-text text-danger">
+                        <small className="form-text text-danger">
+                            {errors.image?.type ==='required' && "category image is required"} 
+                        </small>
+                        </div>
+                    </div>
+
+                    <Col sm='8' className='d-flex justify-content-end'>
+                        <button  className='btn-save d-inline mt-2'>save edit</button>
+                    </Col>
+                </form>
             </Col>
         </Row>
     </div>

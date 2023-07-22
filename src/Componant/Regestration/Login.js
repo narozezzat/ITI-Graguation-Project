@@ -11,6 +11,7 @@ export default function Login() {
         try {
             const response = await BaseURL.post('/api/auth/login', userData)
             localStorage.setItem("token",response.data.token)
+            localStorage.setItem("Admin",response.data.data.role)
             localStorage.setItem("userId",response.data.data._id)
             // console.log()
             
@@ -45,39 +46,45 @@ export default function Login() {
 
                         <div className="card-body">
                             <form id='form' onSubmit={handleSubmit(onSubmit)} className="form-group row">
-                            <div className="mb-3">
-                                <label  className="form-label"><b>Email address</b></label>
-                                <input type="text" 
-                                className="form-control" 
-                                {...register('email',{required:true , pattern:/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/})}
-                                placeholder="Enter email"/>
-                                <div id="emailHelp" className="form-text text-danger">
-                                <small className="form-text text-danger" >
-                                    {errors.email?.type === 'required' && "We'll never share your Email with anyone else"}
-                                    {errors.email?.type === 'pattern' && "Email must   letters ( uppercase and lowercase), Numbers, @ , $ , . , - . EX: abc.12@gmail.com"}
-                                </small>
+                            
+                                <div className="mb-3">
+                                    <label  className="form-label"><b>Email address</b></label>
+                                    <input type="text" 
+                                    className="form-control" 
+                                    {...register('email',{required:true , pattern:/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/})}
+                                    placeholder="Enter email"/>
+                                    <div id="emailHelp" className="form-text text-danger">
+                                    <small className="form-text text-danger" >
+                                        {errors.email?.type === 'required' && "We'll never share your Email with anyone else"}
+                                        {errors.email?.type === 'pattern' && "Email must   letters ( uppercase and lowercase), Numbers, @ , $ , . , - . EX: abc.12@gmail.com"}
+                                    </small>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="mb-3">
-                                <label className="form-label"><b>Password</b></label>
-                                <input type="password" 
-                                className="form-control" 
-                                {...register('password',{required: true,minLength : 8 , pattern:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/})}
-                                placeholder="Enter password" />
-                                <div id="emailHelp" className="form-text text-danger">
-                                <small className="form-text text-danger">
-                                    {errors.password?.type ==='minLength' && " Your password must be at least 8 characters long"} 
-                                    {errors.password?.type ==='required' && " We'll never share your Password with anyone else"} 
-                                    {errors.password?.type ==='pattern' && " must include at least one lowercase letter, one uppercase letter, one number, and one special symbol."}
-                                </small>
+
+                                <div className="mb-3">
+                                    <label className="form-label"><b>Password</b></label>
+                                    <input type="password" 
+                                    className="form-control" 
+                                    // , pattern:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/})
+                                    {...register('password',{required: true,minLength : 8 })}
+                                    placeholder="Enter password" />
+                                    <div id="emailHelp" className="form-text text-danger">
+                                    <small className="form-text text-danger">
+                                        {errors.password?.type ==='minLength' && " Your password must be at least 8 characters long"} 
+                                        {errors.password?.type ==='required' && " We'll never share your Password with anyone else"} 
+                                        {errors.password?.type ==='pattern' && " must include at least one lowercase letter, one uppercase letter, one number, and one special symbol."}
+                                    </small>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="d-grid gap-2">
-                                <button type="submit" className="btn btn-warning">Continue</button>
-                            </div>
-                            <div className="mt-3 text-center">
-                                <Link to="/Forget">Forget your passwod</Link>
-                            </div>
+
+                                <div className="d-grid gap-2">
+                                    <button type="submit" className="btn btn-warning">Continue</button>
+                                </div>
+
+                                <div className="mt-3 text-center">
+                                    <Link to="/Forget">Forget your passwod</Link>
+                                </div>
+                                
                             </form>
                         </div>
 
