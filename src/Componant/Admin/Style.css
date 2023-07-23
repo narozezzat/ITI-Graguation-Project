@@ -444,3 +444,11 @@ body {
   position: absolute;
   z-index: -1;
 }
+
+.seller-text{
+  background-color: #272727;
+  color: #f9f9f9;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 14px;
+}

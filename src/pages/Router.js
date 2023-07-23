@@ -21,6 +21,9 @@ import AddCategory from "../Componant/Admin/AddCategory";
 import AddProducts from "../Componant/Admin/AddProducts";
 import NotFoundPage from "../Componant/NotFoundPage";
 import OrdersDetails from "../Componant/Admin/OrdersDetails";
+import Seller from './../Componant/Seller/Seller';
+import MyProducts from './../Componant/Seller/MyProducts';
+import SellerAddProducts from "../Componant/Seller/SellerAddProducts";
 
 
 export default function Router() {
@@ -55,6 +58,13 @@ export default function Router() {
                 <Route path="/Admin/AddCategory" element={ <AddCategory /> }></Route>
                 <Route path="/Admin/AddProducts" element={ <AddProducts /> }></Route>
             </Route>
+
+            <Route path="/Seller" element={ <Seller /> }>
+                <Route path="/Seller/MyProducts" index element ={<MyProducts />} ></Route>
+                <Route path="/Seller/MyProducts" element ={<MyProducts />} ></Route>
+                <Route path="/Seller/SellerAddProducts" element ={<SellerAddProducts />} ></Route>
+            </Route>
+
 
         </Routes>
     </div>

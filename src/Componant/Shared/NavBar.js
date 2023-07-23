@@ -144,7 +144,7 @@ export default function NavBar() {
                                 </li>
 
                                 <li>
-                                    <Link className="" to="/">
+                                    <Link className="" to="/Seller">
                                         Your Seller Account
                                     </Link>
                                 </li>
