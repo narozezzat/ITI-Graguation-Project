@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import BaseURL from "../BaseURL.js"
 import { Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Orders.js
 export default function Orders(){
@@ -17,10 +19,18 @@ export default function Orders(){
                 'Authorization': `Bearer ${token}`
                 }
             }) 
-            console.log(response.data.data)
             setAllOrders(response.data.data)
         } catch (error) {
-            console.log(error.response.data.message)
+            toast.error(' please login to Know Your Order', {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
         }
     }
 
@@ -59,6 +69,8 @@ export default function Orders(){
                                                 <sup className="" style={{fontSize:"12px"}}> 00 </sup> 
                                             </p>
 
+                                            <p className="card-text m-0">Created At {item.createdAt.substring(0, 10)}</p>
+
                                         </div>
                                     </div>
                                 </div>
@@ -68,6 +80,8 @@ export default function Orders(){
                     )})
                 }
             </div>
+        <ToastContainer/>
+
         </>
     )
     

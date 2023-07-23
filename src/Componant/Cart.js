@@ -12,6 +12,7 @@ export default function Cart(){
     const [cartId , setCartId]= useState([])
     const {cartNum , setCartNum} = useContext(CartContext)
     const token = localStorage.getItem("token");
+
     if(cart.totalCartPrice){
         setCartNum(cart.totalCartPrice)
     }
@@ -29,7 +30,17 @@ export default function Cart(){
             // console.log(response.data.data._id)
             setCartId(response.data.data._id)
         } catch (error) {
-            console.log(error.response.data.message)
+            // console.log(error.response.data.message)
+            toast.error(' Please login To Know Your Cart ', {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
         }
     }
 
@@ -173,7 +184,7 @@ export default function Cart(){
             <div className="fs-4 fw-bold my-3">Shopping Cart</div>
             <div className="my-3">
                 
-                <div className="fs-5"> Subtotal ( {cart.length} ): <span className="fw-bold">EGP: {TotalPrice ? TotalPrice : "0"} </span></div> 
+                <div className="fs-5"> Subtotal ( {cart.length} ): <span className="fw-bold">EGP: {cart ? TotalPrice : "0"} </span></div> 
                 <button className="btn btn-warning w-100" onClick={()=>proceedToBuy()} > Proceed To Buy </button>
             </div>
         </div>

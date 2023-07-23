@@ -66,7 +66,7 @@ export default function NavBar() {
             <nav className="navbar navbar-expand-lg bg-black">
                 <div className="container-fluid text-center">
                     
-                    <Link to="/MainPage">
+                    <Link to="/">
                         <div className="navbar-brand logoContainer">
                         <img
                             src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
@@ -139,33 +139,23 @@ export default function NavBar() {
                             <ul className="dropdown-menu ps-3 listNavBar text-center">
                                 
                                 <li>
-                                    <Link className="" to="/">
-                                        Your Orders
-                                    </Link>
+                                    Your Orders
                                 </li>
 
                                 <li>
-                                    <Link className="" to="/">
-                                        Your Account 
-                                    </Link>
+                                    Your Account 
                                 </li>
 
                                 <li>
-                                    <Link className="" to="/">
-                                        Your Addresses
-                                    </Link>
+                                    Your Addresses
                                 </li>
 
                                 <li>
-                                    <Link className="" to="/">
-                                        Your Lists
-                                    </Link>
+                                    Your Lists
                                 </li>
 
                                 <li>
-                                    <Link className="" to="/">
-                                        Your Seller Account
-                                    </Link>
+                                    Your Seller Account
                                 </li>
 
                                 <li>

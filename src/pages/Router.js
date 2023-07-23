@@ -67,12 +67,11 @@ export default function Router() {
             </Route>
 
             <Route path="/Seller" element={ <Seller /> }>
-                <Route index element ={<MyProducts />} ></Route>
                 <Route path="/Seller/MyProducts" element ={<MyProducts />} ></Route>
+                <Route index element ={<SellerAddProducts />} ></Route>
                 <Route path="/Seller/SellerAddProducts" element ={<SellerAddProducts />} ></Route>
             </Route>
-
-
+            
         </Routes>
     </div>
     )
