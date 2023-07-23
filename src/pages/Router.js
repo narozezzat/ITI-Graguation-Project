@@ -14,7 +14,6 @@ import ProdctFiltretion from "../Componant/ListProduct/ProdctFiltretion";
 import Profile from "../Componant/Shared/Profile";
 import CheckoutSuccessed from "../Componant/Payment/CheckoutSuccessed";
 import AllOrders from "../Componant/Admin/AllOrders";
-// import OrdersDetailsPage from "../Componant/Admin/OrdersDetailsPage"
 import AdminAllProducts from "../Componant/Admin/AllProducts";
 import Admin from "../Componant/Admin/Admin";
 import AddCategory from "../Componant/Admin/AddCategory";
@@ -24,6 +23,10 @@ import OrdersDetails from "../Componant/Admin/OrdersDetails";
 import Seller from './../Componant/Seller/Seller';
 import MyProducts from './../Componant/Seller/MyProducts';
 import SellerAddProducts from "../Componant/Seller/SellerAddProducts";
+import ShowUsers from "../Componant/Admin/ShowUsers";
+import CreateAdmin from "../Componant/Admin/CreateAdmin";
+import Orders from "../Componant/Orders";
+import SignUpAsSeller from "../Componant/Seller/SignUpAsSeller";
 
 
 export default function Router() {
@@ -38,6 +41,7 @@ export default function Router() {
             <Route path="*" element={ <NotFoundPage /> }></Route>
             <Route path="/Login" element={ <Login/> }></Route>
             <Route path="/SignUp" element={ <SignUp/> }></Route>
+            <Route path="/SignUpAsSeller" element={ <SignUpAsSeller/> }></Route>
             <Route path="/Forget" element={ <Forget/>}></Route>
             <Route path="/ResetCode" element={ <ResetCode/>}></Route>
             <Route path="/ResetPassword" element={ <ResetPassword/>}></Route>
@@ -45,6 +49,7 @@ export default function Router() {
             <Route path="/MainProductDetails/:id" element={ <MainProductDetails/> }></Route>
             <Route path="/MainPage" element={ <MainPage/> }></Route>
             <Route path="/Cart" element={ <Cart/> }></Route>
+            <Route path="/Orders" element={ <Orders/> }></Route>
             <Route path="/PaymentPage" element={ <PaymentPage/> }></Route>
             <Route path="/PaymentModel" element={ <PaymentModel/> }></Route>
             <Route path="/ProdctFiltretion" element={ <ProdctFiltretion/> }></Route>
@@ -57,6 +62,8 @@ export default function Router() {
                 <Route path="/Admin/Orders/:id" element={ <OrdersDetails  /> }></Route>
                 <Route path="/Admin/AddCategory" element={ <AddCategory /> }></Route>
                 <Route path="/Admin/AddProducts" element={ <AddProducts /> }></Route>
+                <Route path="/Admin/ShowUsers" element={ <ShowUsers /> }></Route>
+                <Route path="/Admin/CreateAdmin" element={ <CreateAdmin /> }></Route>
             </Route>
 
             <Route path="/Seller" element={ <Seller /> }>

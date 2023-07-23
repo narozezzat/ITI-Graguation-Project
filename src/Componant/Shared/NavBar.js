@@ -4,10 +4,14 @@ import "./NavBar.css";
 import BaseURL from "../../BaseURL.js";
 import { CartContext } from "../../context/QunForCart";
 import { useForm } from "react-hook-form";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function NavBar() {
     const navigate = useNavigate();
     const [allCategory, setAllCategory] = useState([]);
+    const { cartNum, setCartNum} = useContext(CartContext)
+    const { register, handleSubmit} = useForm();
 
     const getAllCategory = async ()=>{
         try {
@@ -25,7 +29,20 @@ export default function NavBar() {
     const SignOut = () => {
         localStorage.removeItem("token")
         localStorage.removeItem("userId")
-        localStorage.removeItem("Admin")
+        localStorage.removeItem("role")
+        
+        toast.success(' Log Out Success', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
+        
+
     }
 
     const showProductByCategory = ((id) => {
@@ -36,10 +53,6 @@ export default function NavBar() {
             }
         })
     })
-
-    const { cartNum, setCartNum} = useContext(CartContext)
-
-    const { register, handleSubmit} = useForm();
 
     const sarch = (data)=>{
         navigate(`/ProdctFiltretion`, {
@@ -101,7 +114,13 @@ export default function NavBar() {
 
                         <div className="">
                             <Link to= "/Admin " className="text-light">
-                                {localStorage.getItem("Admin") === "admin" ? "Admin" : "" }
+                                {localStorage.getItem("role") === "admin" ? "Admin" : "" }
+                            </Link>
+                        </div>
+
+                        <div className="">
+                            <Link to= "/Seller " className="text-light">
+                                {localStorage.getItem("role") === "seller" ? "seller" : "" }
                             </Link>
                         </div>
 
@@ -144,14 +163,14 @@ export default function NavBar() {
                                 </li>
 
                                 <li>
-                                    <Link className="" to="/Seller">
+                                    <Link className="" to="/">
                                         Your Seller Account
                                     </Link>
                                 </li>
 
                                 <li>
-                                    <Link className="" to="/">
-                                        Switch Accounts
+                                    <Link className="" to="/SignUpAsSeller">
+                                        Sign up as a seller
                                     </Link>
                                 </li>
 
@@ -182,7 +201,7 @@ export default function NavBar() {
                             </ul>
                         </div>
 
-                        <Link className="text-light borderWhite rounded-2" style={{ textDecoration: "none" }} to="/"> Order </Link>
+                        <Link className="text-light borderWhite rounded-2" style={{ textDecoration: "none" }} to="/Orders"> Order </Link>
 
                         <Link to="/Cart" className="borderWhite rounded-2">
                             <div>
@@ -210,7 +229,8 @@ export default function NavBar() {
                     }
                 </ul>
             </div>
-
+            
+            <ToastContainer/>
         </div>
 )
 }

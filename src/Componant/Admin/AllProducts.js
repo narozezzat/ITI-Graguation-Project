@@ -5,8 +5,10 @@ import { useNavigate } from 'react-router';
 
 function AdminAllProducts() {
   const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+
   const [ allProduct , setAllProduct ]= useState([])
-  console.log(allProduct)
+//   console.log(allProduct)
 
   const getAlProduct = async ()=>{
       try {
@@ -59,7 +61,6 @@ function AdminAllProducts() {
                             </div>
                         </div>
                     
-                
                 )})
             }
                 

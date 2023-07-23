@@ -4,6 +4,8 @@ import BaseURL from "../../BaseURL.js";
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function Login() {
@@ -12,26 +14,54 @@ export default function Login() {
     const { register, handleSubmit,formState:{errors} } = useForm();
     // show password
     const [showPassword, setShowPassword] = useState(false);
-  function handleTogglePassword() {
-    setShowPassword(!showPassword);
-  }
+    function handleTogglePassword() {
+        setShowPassword(!showPassword);
+    }
+    
     const onSubmit =async userData => {
         try {
             const response = await BaseURL.post('/api/auth/login', userData)
             localStorage.setItem("token",response.data.token)
-            localStorage.setItem("Admin",response.data.data.role)
+            localStorage.setItem("role",response.data.data.role)
             localStorage.setItem("userId",response.data.data._id)
-            // console.log()
+            toast.success(' Welcom :) ', {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
             
-            if(response){
+            // if(response){
+            //     navigate(`/MainPage`)
+            // }
+
+            if( response.data.data.role === "admin"){
+                navigate(`/Admin`)
+            }else if(response.data.data.role === "seller"){
+                navigate(`/Seller`)
+            }else{
                 navigate(`/MainPage`)
             }
-
         } catch (error) {
-            alert(error.response.data.message)
+            // alert(error.response.data.message)
+            toast.error(error.response.data.message, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
         }
 
     }
+
     return(
         <>
         <div className="container">
@@ -125,6 +155,8 @@ export default function Login() {
             </div> */}
 
         </div>
+        <ToastContainer/>
+
         </>
     )
 }

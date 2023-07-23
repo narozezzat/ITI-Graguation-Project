@@ -3,11 +3,11 @@ import { useForm } from "react-hook-form";
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import BaseURL from "../../BaseURL.js";
+import BaseURL from "../../BaseURL.js.js";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function SignUp() {
+export default function SignUpAsSeller() {
     const navigate = useNavigate();
 
     const { register, handleSubmit,watch,formState:{errors} } = useForm();
@@ -28,7 +28,7 @@ export default function SignUp() {
     const onSubmit = async userData => {
         console.log(userData)
         try {
-            const response = await BaseURL.post('/api/auth/signup', userData)
+            const response = await BaseURL.post('/api/auth/sellerSignup', userData)
             console.log(response) 
             toast.success('Your Signup Successfully ', {
                 position: "top-center",
@@ -83,7 +83,7 @@ export default function SignUp() {
                 <div className="col-lg-6 col-md-8 col-12">
                     <div className="card">
                         <div className="card-header">
-                            <h4 className="text-center">Create account</h4>
+                            <h4 className="text-center">Create account as a seller</h4>
                         </div>
 
                         <div className="card-body">

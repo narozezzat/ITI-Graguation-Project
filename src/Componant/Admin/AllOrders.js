@@ -8,7 +8,7 @@ function AllOrders() {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   const [ allOrders , setAllOrders ]= useState([])
-  console.log(allOrders)
+  // console.log(allOrders)
 
   const getAlOrders = async ()=>{
     try {
@@ -41,7 +41,7 @@ const showDetalisItem = ((item) => {
               return(
                 <>
                   <Col sm="12">
-                    <div className='cart-item-body my-2 px-1 d-flex' onClick={() => showDetalisItem(item)}>
+                    <div key={index} className='cart-item-body my-2 px-1 d-flex' onClick={() => showDetalisItem(item)}>
 
                         <img className='rounded-3' width="160px" height="197px" src={item.cartItems[0].product.imageCover} alt="" />
                         
@@ -57,26 +57,14 @@ const showDetalisItem = ((item) => {
                                     <div className='d-inline cat-title'>
                                         Order by <span className='fw-bold'>{item.user.name} </span>  
                                     </div>
-                                    {/* <div className='d-inline cat-rate'>4.5</div> */}
                                 </Col>
                             </Row>
-                            {/* <Row>
-                                <Col sm='12' className='d-flex mx-3'>
-                                    <div className='mt-2 cat-text d-inline'>Marka :</div>
-                                    <div className='mt-1 brand-text  d-inline mx-1'>iphone</div>
-                                    <div className='color mt-1 border' style={{backgroundColor: '#E52c2c'}}></div>
-                                </Col>
-                            </Row> */}
+
                             <Row className='justify-content-between mx-1'>
                                 <Col sm='12' className='d-flex flex-row justify-content-between'>
                                     <div className='d-inline pt-2 d-flex'>
-                                        <div className='cat-text pt-1 d-inline '>Quantity</div>
-                                        <input 
-                                            className='mx-2 mt-1'
-                                            type='number'
-                                            style={{width: "20px", height: "25px"}}
-                                        />
-                                        <div className='d-inline pt-1 brand-text'>{item.totalOrderPrice} EGY</div>
+                                        <span className='cat-text pt-1 d-inline me-1'>Total Price : </span>
+                                        <span className='d-inline pt-1 brand-text'> {item.totalOrderPrice} EGY</span>
                                     </div>
                                 </Col>
                             </Row>
