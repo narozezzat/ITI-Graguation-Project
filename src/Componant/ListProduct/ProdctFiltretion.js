@@ -45,9 +45,7 @@ export default function ProdctFiltretion(){
     return(
         <>
             <div className="row mx-auto pt-3 ">
-                {
-                    productsAfteSearch?(<p>done</p>):(<p>not ok</p>)
-                }
+                
                 {
                 productsAfteSearch.map((item)=>{
                     return(

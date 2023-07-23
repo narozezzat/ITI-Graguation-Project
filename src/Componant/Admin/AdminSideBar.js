@@ -29,6 +29,12 @@ function AdminSideBar() {
                         Add product
                     </div>
                 </Link>
+
+                <Link to="/Admin/AddProducts" style={{textDecoration: 'none'}}>
+                    <div className='admin-side-text my-1 border-bottom p-2 mx-auto text-center'>
+                        Show Users
+                    </div>
+                </Link>
                 
 
             </div>

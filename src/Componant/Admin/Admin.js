@@ -10,11 +10,11 @@ export default function Admin(){
         <>
             <Container >
                 <Row className='py-3'>
-                    <Col sm="3" xs="2" md="2">
+                    <Col sm="4" xs="3" md="2">
                         <AdminSideBar />
                     </Col>
 
-                    <Col sm="9" xs="10" md="10">
+                    <Col sm="8" xs="8" md="10">
                         <Outlet/>
                     </Col>
                 </Row>

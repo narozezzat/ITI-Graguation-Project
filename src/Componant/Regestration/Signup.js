@@ -24,12 +24,13 @@ export default function SignUp() {
   }
 
     const onSubmit = async userData => {
+        console.log(userData)
         try {
             const response = await BaseURL.post('/api/auth/signup', userData)
             console.log(response) 
             navigate(`/Login`)
         } catch (error) {
-            alert(error.response.data.message)
+            console.log(error.response)
         }
 
 
@@ -131,7 +132,7 @@ export default function SignUp() {
                                     className="form-control"
                                     id="password"
                                     name="password"
-                                    {...register('confirm',{ required: true, minLength: 8, validate: passwordMatch })}
+                                    {...register('confirmPassword',{ required: true, minLength: 8, validate: passwordMatch })}
                                     placeholder="Confirm password"/>
                                 <button
                                     type="button"
