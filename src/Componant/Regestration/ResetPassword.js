@@ -12,12 +12,32 @@ export default function ResetPassword() {
         console.log(userData)
         try {
             const response = await BaseURL.put('/api/auth/resetPassword', userData)
-            console.log(response)
+            // console.log(response)
+            toast.success(' Your password changed successfully', {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
             if(response){
                 navigate(`/Login`)
             }
         } catch (error) {
-            alert(error.response.data.message)
+            // alert(error.response.data.message)
+            toast.error(error.response.data.message, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
         }
 
     

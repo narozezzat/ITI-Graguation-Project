@@ -78,7 +78,7 @@ export default function NavBar() {
                         </div>
                     </Link>
                     {
-                        localStorage.getItem('name') ? <p className="text-light pt-3 ">Hi : {localStorage.getItem('name').toUpperCase()} </p> : ""
+                        localStorage.getItem('name') ? <p className="text-light pt-3 ">Hi {localStorage.getItem('name').toUpperCase()} </p> : ""
                     }
                     
                 

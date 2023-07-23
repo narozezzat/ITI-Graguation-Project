@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import BaseURL from "../../BaseURL.js";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function ResetCode() {
@@ -11,12 +13,32 @@ export default function ResetCode() {
     const onSubmit =async userData => {
         try {
             const response = await BaseURL.post('/api/auth/resetCode', userData)
-            console.log(response)
+            // console.log(response)
+            toast.success(' code is correct ', {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
             if(response){
                 navigate(`/ResetPassword`)
             } 
         } catch (error) {
-            alert(error.response.data.message)
+            // alert(error.response.data.message)
+            toast.error(error.response.data.message, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
         }
 
     }
@@ -65,6 +87,8 @@ export default function ResetCode() {
                 </div>
             </div>    
         </div>
+        <ToastContainer/>
+
         </>
     )
 }
