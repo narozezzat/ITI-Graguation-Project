@@ -4,6 +4,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 function SellerSideBar() {
+
+    const SignOut = () => {
+        localStorage.removeItem("token")
+        localStorage.removeItem("userId")
+        localStorage.removeItem("Admin")
+    }
+    
     return (
         <>
             <div className='d-flex flex-column'>
@@ -21,6 +28,12 @@ function SellerSideBar() {
                 <Link to="/Seller/SellerAddProducts" style={{textDecoration: 'none'}}>
                     <div className='admin-side-text my-1 border-bottom p-2 mx-auto text-center'>
                         Add product
+                    </div>
+                </Link>
+
+                <Link to="/MainPage" style={{textDecoration: 'none'}} onClick={SignOut}>
+                    <div className='seller-text mb-3 mt-4 border-bottom p-2 mx-auto text-center'>
+                        SignOut
                     </div>
                 </Link>
                 

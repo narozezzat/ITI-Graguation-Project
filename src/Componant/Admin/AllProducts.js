@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import BaseURL from "../../BaseURL.js";
 import StarsRating from '../Shared/StarsRating.js';
 import { useNavigate } from 'react-router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
 
 function AdminAllProducts() {
   const navigate = useNavigate();
@@ -31,7 +33,6 @@ function AdminAllProducts() {
     })
 })
 
-
   return(
     <>
         <div className="row mx-auto pt-3 ">
@@ -56,6 +57,7 @@ function AdminAllProducts() {
                                         </p>
                                         
                                         <StarsRating Rating={item.ratingAverage}/>
+                                        <span className='px-3 text-danger'><FontAwesomeIcon icon={faTrashCan} /></span>
                                     </div>
                                 </div>
                             </div>
