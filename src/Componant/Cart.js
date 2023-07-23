@@ -2,6 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react"
 import BaseURL from "../BaseURL.js";
 import { CartContext } from "../context/QunForCart.js";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Cart(){
     const navigate = useNavigate();
@@ -57,8 +59,29 @@ export default function Cart(){
         try {
             const response = await BaseURL.delete(`/api/cart/${id}`,{ headers:{'Authorization': `Bearer ${token}`}})
             // console.log(response)
+            toast.success('delete product Successfully :( !! ', {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
+
         } catch (error) {
-            alert(error.response.data.message)
+            // alert(error.response.data.message)
+            toast.error(error.response.data.message, {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
             
         }
         
@@ -71,9 +94,29 @@ export default function Cart(){
 
         try {
             const response = await BaseURL.post('/api/cart',{productId: id},{ headers:{'Authorization': `Bearer ${token}`}})
-            console.log(response)
+            // console.log(response)
+            toast.success('added Quantity Successfully :)', {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
         } catch (error) {
-            alert(error.response.data.message)
+            // alert(error.response.data.message)
+            toast.error(error.response.data.message, {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                })
         }
 
         setCartNum(cartNum + 1)
@@ -84,8 +127,28 @@ export default function Cart(){
         try {
             const response = await BaseURL.put(`/api/cart/${id}`,null,{ headers:{'Authorization': `Bearer ${token}`}})
             // console.log(response)
+            toast.success('delete Quantity Successfully :( !! why ?', {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
         } catch (error) {
-            alert(error.response.data.message)
+            // alert(error.response.data.message)
+            toast.error(error.response.data.message, {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                })
         }
 
         // setCartNum(cartNum - 1)
@@ -95,17 +158,12 @@ export default function Cart(){
     }
 
     const proceedToBuy = async()=>{
-        // navigate(`/PaymentPage`, {
-        //     state: { cartId }
-        // })
         try {
             const response = await BaseURL.get(`/api/orders/checkout-session/${cartId}` ,{ headers:{'Authorization': `Bearer ${token}`}})
             // console.log(response.data.session.url)
-
-            // navigate(`response.data.session.url`)
             window.location.href = response.data.session.url
         } catch (error) {
-            alert(error.response.data.message)
+            console(error.response.data.message)
         }
     }
 
@@ -117,7 +175,6 @@ export default function Cart(){
                 
                 <div className="fs-5"> Subtotal ( {cart.length} ): <span className="fw-bold">EGP: {TotalPrice ? TotalPrice : "0"} </span></div> 
                 <button className="btn btn-warning w-100" onClick={()=>proceedToBuy()} > Proceed To Buy </button>
-                {/* {(cart.cartItems).length} */}
             </div>
         </div>
 
@@ -155,6 +212,7 @@ export default function Cart(){
         }
         
         <h4 className="text-end">Total : {TotalPrice ? TotalPrice : "0"} EGP</h4>
+        <ToastContainer/>
 
         </>
     )

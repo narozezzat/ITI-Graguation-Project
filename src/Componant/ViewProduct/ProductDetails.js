@@ -1,34 +1,46 @@
-// import axios from "axios"
-// import { useEffect, useState } from "react"
-// import { useLocation } from "react-router-dom";
-
 import BaseURL from "../../BaseURL.js";
 import StarsRating from "../Shared/StarsRating"
 import { useContext, useState } from "react";
 import { CartContext } from "../../context/QunForCart.js";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function ProductDetails(props) {
-
-
     const item = props.singleProduct.singleProduct
-    // console.log(item._id)
     const {cartNum , setCartNum} = useContext(CartContext)
     const token = localStorage.getItem("token");
-    // console.log(token)
-    const[ error , setError] = useState([])
 
 
     const AddProduct= async (id)=>{
-        // console.log(id)
 
         try {
             const response = await BaseURL.post('/api/cart',{productId: id},{ headers:{'Authorization': `Bearer ${token}`}})
-            console.log(response)
+            // console.log(response)
+            toast.success(' Added Successfully:) ', {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
+                setCartNum(cartNum + 1)
         } catch (error) {
-            setError(error.response.data.message)
+            // setError(error.response.data.message)
+            toast.error('You are not login :( ', {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
         }
 
-        setCartNum(cartNum + 1)
     }
 
     return(
@@ -79,21 +91,6 @@ export default function ProductDetails(props) {
 
                     <hr/>
 
-                    {/* <div className="ms-2">
-                        <h3 className="text-center">data</h3>
-                        <div>
-                            <span className="fw-semibold">Color</span> : {item.brand}
-                        </div>
-                        <div>
-                            <span className="fw-semibold">Brand</span> : {item.brand}
-                        </div>
-                        <div>
-                            <span className="fw-semibold">Model</span> : {item.brand}
-                        </div>
-                    </div>
-                        
-                    <hr/> */}
-
                     <div className="ms-2">
                         <span className="fw-semibold">About this item</span>
                         <div>
@@ -114,9 +111,7 @@ export default function ProductDetails(props) {
 
                         <div className="dropdown">
                             <a href="#1">FREE Returns</a>
-                            {/* <div className="dropdown-content">
-                                <p>Easy and Hassle Free Returns You can return this item for FREE within the allowed return period for any reason and without any shipping charges. The item must be returned in new and unused condition.</p>
-                            </div> */}
+
                         </div>
 
                         <div style={{fontSize:"13px"}} className="my-2 ps-2">
@@ -145,6 +140,8 @@ export default function ProductDetails(props) {
                     </div>
                 </div>
             </div>
+        <ToastContainer/>
+
         </>
     )
     
