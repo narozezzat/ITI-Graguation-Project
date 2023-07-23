@@ -4,6 +4,9 @@ import StarsRating from '../Shared/StarsRating.js';
 import { useNavigate } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { async } from 'q';
 
 function AdminAllProducts() {
     const navigate = useNavigate();
@@ -33,8 +36,36 @@ function AdminAllProducts() {
         })
     })
 
-    const deleteProduct = (id)=>{
-        console.log(id)
+    const deleteProduct =async (id)=>{
+        // console.log(id)
+
+        try {
+            const response = await BaseURL.delete(`/api/products/${id}`,{ headers:{'Authorization': `Bearer ${token}`}})
+            getAlProduct();
+        
+            toast.success('You deleted successfly', {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
+        } catch (error) {
+            // console.log(error.response.data.message)
+            toast.error(error.response.data.message, {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
+        }
     } 
     return(
         <>
@@ -70,6 +101,8 @@ function AdminAllProducts() {
                 }
                     
             </div>
+        <ToastContainer/>
+
         </>
     )
 }

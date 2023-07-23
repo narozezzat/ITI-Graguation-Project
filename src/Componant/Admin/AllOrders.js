@@ -58,7 +58,7 @@ const deleteOrder = (id)=>{
                             <Row className='justify-content-center mt-2 mx-1'>
                                 <Col sm='12' className='d-flex flex-row justify-content-start'>
                                     <div className='d-inline cat-title' onClick={() => showDetalisItem(item)}>
-                                        Order by <span className='fw-bold'>{item.user.name} </span>  
+                                        Order by <span className='fw-bold'>{ item.user ? item.user.name : " " } </span>  
                                     </div>
                                 </Col>
                             </Row>

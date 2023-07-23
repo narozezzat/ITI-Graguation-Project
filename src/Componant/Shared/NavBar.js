@@ -30,6 +30,7 @@ export default function NavBar() {
         localStorage.removeItem("token")
         localStorage.removeItem("userId")
         localStorage.removeItem("role")
+        localStorage.removeItem("name")
         
         toast.success(' Log Out Success', {
         position: "top-center",
@@ -76,7 +77,11 @@ export default function NavBar() {
                         <span className="dotIn text-light">.in</span>
                         </div>
                     </Link>
-
+                    {
+                        localStorage.getItem('name') ? <p className="text-light pt-3 ">Welcome : <span className="text-warning"> {localStorage.getItem('name').toUpperCase()} </span> </p> : ""
+                    }
+                    
+                
                     <button className="navbar-toggler bg-light runded-5" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon "></span>
                     </button>

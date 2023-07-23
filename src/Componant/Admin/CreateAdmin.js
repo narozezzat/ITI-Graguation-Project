@@ -154,6 +154,8 @@ export default function CreateAdmin(){
             </div>
 
         </form>
+        <ToastContainer/>
+
         </>
     )
     

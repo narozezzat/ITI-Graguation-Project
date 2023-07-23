@@ -11,7 +11,6 @@ export default function CoustomerReviews(props){
     const token = localStorage.getItem("token");
     const itemId = item._id
     const [allReview , setAllReview]= useState([])
-
     const getAllReview = async ()=>{
         try {
             const response = await BaseURL.get(`/api/products/${itemId}/reviews`,
@@ -87,8 +86,9 @@ export default function CoustomerReviews(props){
                 <div className=" p-2">
                     <h2>Customer Reviews</h2>
                     <span> <StarsRating Rating={item.ratingAverage}/> {item.ratingAverage} out of 5</span>
+                    <p> Reviews : ( {allReview.length} )</p>
                 </div>
-
+                <p></p>
                 <hr/>
 
                 <div className=" p-2">
