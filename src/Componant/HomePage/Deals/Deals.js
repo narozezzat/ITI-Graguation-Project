@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Deals.css";
 import { Link } from "react-router-dom";
 import BaseURL from "../../../BaseURL.js";
+import imgForDeal from "../../../assets/Images/img6.jpg"
 
 function Deals() {
   const [allCategory, setAllCategory] = useState([]);
@@ -35,7 +36,7 @@ function Deals() {
               return (
                 <span className="" key={index}>
                   <span className="todayDealsProductItem">
-                    <img className="dealsImage" src={item.image} alt="" />
+                    <img className="dealsImage" src={imgForDeal} alt="" />
                     <div className="discountContainer mx-4">
                       <Link>Upto 35 % off</Link>
                       <Link>Deal of the Day</Link>

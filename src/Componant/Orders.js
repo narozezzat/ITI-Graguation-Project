@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function Orders(){
     const token = localStorage.getItem("token");
     const [allOrders , setAllOrders]= useState([])
+    console.log(allOrders);
     const navigate = useNavigate();
 
     const getProductFromCart = async ()=>{
@@ -56,7 +57,7 @@ export default function Orders(){
                             <div key={item.id} className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3 ">
                                 <hr/>
                                 <div className="" >
-                                    <img src={item.cartItems[0].product.imageCover} className="card-img-top " style={{"height": "15rem"}}
+                                    <img src={item.cartItems[0].product? item.cartItems[0].product.imageCover:""} className="card-img-top " style={{"height": "15rem"}}
                                     alt="" 
                                     onClick={() => showDetalisItem(item)}/>
                                     <div className="card-body">
