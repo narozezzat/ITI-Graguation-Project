@@ -77,7 +77,7 @@ export default function ResetPassword() {
                             </div>
                         </div>
                         <div className="mb-3">
-                            <label className="form-label"><b>Password</b></label>
+                            <label className="form-label"><b>New Password</b></label>
                             <input type="password" 
                             className="form-control" 
                             {...register('password',{required: true,minLength : 8 , pattern:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/})}
